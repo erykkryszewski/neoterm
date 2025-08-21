@@ -1,0 +1,39 @@
+{
+  "keep": [
+    "blank-button",
+    "blank-image",
+    "blog-archive",
+    "border-divider",
+    "contact",
+    "decorated-text",
+    "faq",
+    "icons",
+    "iframe",
+    "list",
+    "logos",
+    "map",
+    "section-title",
+    "shortcode",
+    "subpage-hero",
+    "text-images",
+    "text-with-image",
+    "thank-you",
+    "three-boxes",
+    "three-columns-content",
+    "three-images",
+    "two-buttons",
+    "two-columns-list",
+    "two-columns-text",
+    "two-images",
+    "wyswig-content"
+  ],
+  "aliases": {
+    "scss": {
+      "products": "popular-products"
+    },
+    "js": {}
+  },
+  "features": {
+    "woocommerce": true
+  }
+}
