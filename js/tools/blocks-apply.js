@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 function readJson(p) {
   return JSON.parse(fs.readFileSync(p, 'utf8'));
@@ -29,6 +30,13 @@ function uniq(a) {
 }
 function mapSlug(slug, aliases) {
   return aliases && aliases[slug] ? aliases[slug] : slug;
+}
+function studly(s) {
+  return s
+    .split(/[^a-z0-9]+/i)
+    .filter(Boolean)
+    .map((w) => w[0].toUpperCase() + w.slice(1))
+    .join(' ');
 }
 
 function pruneDir(dir, keepSet, exts, aliasMap) {
@@ -126,14 +134,120 @@ function slugifyAcfBlockTitle(s) {
 }
 
 function allowedAcfSets(keep, acfAliases) {
-  const slugs = new Set();
-  const full = new Set();
+  const slugs = new Set(),
+    full = new Set();
   keep.forEach((k) => {
     const a = acfAliases && acfAliases[k] ? acfAliases[k] : k;
     slugs.add(a);
     full.add('acf/' + a);
   });
   return { slugs, full };
+}
+
+function ensureFile(p, content) {
+  if (!fs.existsSync(p)) writeFile(p, content);
+}
+
+function scaffoldPhpBlock(dir, slug) {
+  const p = path.join(dir, `${slug}.php`);
+  const cls = slug;
+  const html = `<?php
+$url='http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+$section_id=get_field('section_id');
+$title=get_field('title');
+$subtitle=get_field('subtitle');
+$text=get_field('text');
+?>
+<div class="${cls}">
+\t<?php if(!empty($section_id)):?><div class="section-id" id="<?php echo esc_html($section_id);?>"></div><?php endif;?>
+\t<div class="container">
+\t\t<div class="${cls}__wrapper">
+\t\t\t<?php if(!empty($title)):?><h2 class="${cls}__title"><?php echo apply_filters('the_title',$title);?></h2><?php endif;?>
+\t\t\t<?php if(!empty($subtitle)):?><h3 class="${cls}__subtitle"><?php echo apply_filters('the_title',$subtitle);?></h3><?php endif;?>
+\t\t\t<?php if(!empty($text)):?><?php echo apply_filters('acf_the_content',str_replace('&nbsp;',' ',$text));?><?php endif;?>
+\t\t</div>
+\t</div>
+</div>
+`;
+  ensureFile(p, html);
+}
+
+function scaffoldPhpFrontend(dir, slug) {
+  const p = path.join(dir, `${slug}.php`);
+  const cls = slug;
+  const php = `<?php
+
+$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+$background = get_field('background');
+$section_id = get_field('section_id');
+
+?>
+<div class="${cls}"></div>
+`;
+  ensureFile(p, php);
+}
+
+function scaffoldScssBlock(dir, slug) {
+  const p = path.join(dir, `_${slug}.scss`);
+  const cls = slug;
+  const scss = `.${cls}{
+\tposition:relative;
+\twidth:100%;
+}
+`;
+  ensureFile(p, scss);
+}
+
+function scaffoldJsBlock(dir, slug) {
+  const p = path.join(dir, `${slug}.js`);
+  const js = `document.addEventListener('DOMContentLoaded',()=>{});`;
+  ensureFile(p, js);
+}
+
+function hashKey(s) {
+  return crypto.createHash('md5').update(String(s)).digest('hex').slice(0, 12);
+}
+function groupFilenameFor(slug) {
+  return `group_${hashKey('acf/' + slug)}.json`;
+}
+
+function ensureAcfJson(localDir, slug) {
+  const want = 'acf/' + slug;
+  if (!fs.existsSync(localDir)) fs.mkdirSync(localDir, { recursive: true });
+  const files = listFiles(localDir).filter((f) => f.endsWith('.json'));
+  for (const f of files) {
+    try {
+      const data = JSON.parse(fs.readFileSync(path.join(localDir, f), 'utf8'));
+      const loc = data && data.location ? data.location : [];
+      let match = false;
+      loc.forEach((andG) => {
+        (andG || []).forEach((rule) => {
+          if (rule && rule.param === 'block' && rule.value === want) match = true;
+        });
+      });
+      if (match) return;
+    } catch (e) {}
+  }
+  const file = path.join(localDir, `group_${hashKey('acf/' + slug)}.json`);
+  if (fs.existsSync(file)) return;
+  const title = 'Block: ' + studly(slug);
+  const group = {
+    key: 'group_' + hashKey('key:' + slug),
+    title: title,
+    fields: [],
+    location: [[{ param: 'block', operator: '==', value: want }]],
+    active: 1,
+    description: '',
+    menu_order: 0,
+    position: 'normal',
+    style: 'default',
+    label_placement: 'top',
+    instruction_placement: 'label',
+    hide_on_screen: '',
+    show_in_rest: 0,
+    modified: Math.floor(Date.now() / 1000),
+  };
+  writeFile(file, JSON.stringify(group, null, 2));
 }
 
 function pruneAcfLocalJson(localDir, keep, acfAliases) {
@@ -152,23 +266,25 @@ function pruneAcfLocalJson(localDir, keep, acfAliases) {
     if (!data) return;
     const title = String(data.title || data.label || '').trim();
     const isTitleBlock = /^block:\s*/i.test(title);
-    const isTitleKeep = /^(theme settings|component:|global:)/i.test(title);
+    const isTitleKeep = /^(theme settings|component|global)/i.test(title);
     const loc = data.location;
-    let hasBlockRule = false;
-    let matches = false;
+    let hasTargeted = false,
+      matches = false,
+      keepByRule = false;
     if (Array.isArray(loc)) {
       loc.forEach((andG) => {
         (andG || []).forEach((rule) => {
           if (rule && rule.param === 'block') {
-            hasBlockRule = true;
-            const v = String(rule.value || '');
+            const v = String(rule.value || '').toLowerCase();
+            if (v === 'all' || v === 'acf/all' || v === '*') keepByRule = true;
+            if (v.startsWith('acf/') && v !== 'acf/all') hasTargeted = true;
             if (full.has(v) || slugs.has(v.replace(/^acf\//, ''))) matches = true;
           }
         });
       });
     }
-    let isBlockGroup = hasBlockRule || isTitleBlock;
-    if (isTitleKeep) isBlockGroup = false;
+    let isBlockGroup = hasTargeted || isTitleBlock;
+    if (isTitleKeep || keepByRule) isBlockGroup = false;
     if (isBlockGroup && !matches) {
       removeFile(fullPath);
       removed.push(f);
@@ -230,7 +346,17 @@ function run() {
     scssWoo: path.resolve('scss/woocommerce'),
     jsWoo: path.resolve('js/src/woocommerce'),
     acfLocal: path.resolve('acf/local-json'),
+    blocksDir: path.resolve('blocks'),
   };
+
+  keep.forEach((slug) => {
+    scaffoldPhpBlock(paths.phpBlocks, slug);
+    scaffoldPhpFrontend(paths.blocksDir, slug); // <-- to korzysta z blocksDir
+    scaffoldScssBlock(paths.scssBlocks, mapSlug(slug, scssAliases));
+    scaffoldJsBlock(paths.jsBlocks, mapSlug(slug, jsAliases));
+    ensureAcfJson(paths.acfLocal, slug);
+  });
+
   const removed = {
     php: pruneDir(paths.phpBlocks, keepSet, ['.php']),
     scss: pruneDir(paths.scssBlocks, keepSet, ['.scss'], scssAliases),

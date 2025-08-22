@@ -25,6 +25,11 @@ return [
     'category' => 'ercodingtheme',
     'align' => 'full',
   ],
+	'cta' => [
+    'title' => __('CTA', 'ercodingtheme'),
+    'category' => 'ercodingtheme',
+    'align' => 'full',
+  ],
 	'decorated-text' => [
     'title' => __('Decorated text', 'ercodingtheme'),
     'category' => 'ercodingtheme',
@@ -60,6 +65,11 @@ return [
     'category' => 'ercodingtheme',
     'align' => 'full',
   ],
+	'offer' => [
+    'title' => __('Offer', 'ercodingtheme'),
+    'category' => 'ercodingtheme',
+    'align' => 'full',
+  ],
 	'section-title' => [
     'title' => __('Section Title', 'ercodingtheme'),
     'category' => 'ercodingtheme',
@@ -72,11 +82,6 @@ return [
   ],
 	'subpage-hero' => [
     'title' => __('Subpage hero', 'ercodingtheme'),
-    'category' => 'ercodingtheme',
-    'align' => 'full',
-  ],
-	'text-images' => [
-    'title' => __('Text images', 'ercodingtheme'),
     'category' => 'ercodingtheme',
     'align' => 'full',
   ],
@@ -125,6 +130,7 @@ return [
     'category' => 'ercodingtheme',
     'align' => 'full',
   ],
+	'services' => [ 'title' => __('Services', 'ercodingtheme'), 'category' => 'ercodingtheme', 'align' => 'full' ],
 	'wyswig-content' => [
     'title' => __('Wyswig content', 'ercodingtheme'),
     'category' => 'ercodingtheme',

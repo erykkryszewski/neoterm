@@ -53,15 +53,50 @@ $(document).ready(function ($) {
   $('p:empty').remove();
 });
 
+// empty pages redirection
+
+document.addEventListener('DOMContentLoaded', function () {
+  let mainElement = document.querySelector('main#main');
+
+  if (mainElement && mainElement.innerHTML.trim() === '') {
+    window.location.href = '/';
+  }
+});
+
 /* imports */
 
 import './global/recaptcha';
 import './global/zoom';
 
 /* @blocks:start */
+import './blocks/blank-button';
+import './blocks/blank-image';
+import './blocks/blog-archive';
+import './blocks/border-divider';
+import './blocks/contact';
+import './blocks/cta';
+import './blocks/decorated-text';
 import './blocks/faq';
+import './blocks/icons';
 import './blocks/iframe';
+import './blocks/list';
 import './blocks/logos';
+import './blocks/map';
+import './blocks/offer';
+import './blocks/section-title';
+import './blocks/shortcode';
+import './blocks/subpage-hero';
+import './blocks/text-with-image';
+import './blocks/thank-you';
+import './blocks/three-boxes';
+import './blocks/three-columns-content';
+import './blocks/three-images';
+import './blocks/two-buttons';
+import './blocks/two-columns-list';
+import './blocks/two-columns-text';
+import './blocks/two-images';
+import './blocks/services';
+import './blocks/wyswig-content';
 /* @blocks:end */
 
 import './sections/header';
@@ -73,9 +108,3 @@ import './components/popup';
 import './components/animated-number';
 import './components/form';
 import './components/phone-number';
-
-import './woocommerce/archive-product';
-import './woocommerce/single-product';
-import './woocommerce/content-product';
-import './woocommerce/cart';
-import './woocommerce/checkout';

@@ -5,6 +5,7 @@
     "blog-archive",
     "border-divider",
     "contact",
+    "cta",
     "decorated-text",
     "faq",
     "icons",
@@ -12,10 +13,10 @@
     "list",
     "logos",
     "map",
+    "offer",
     "section-title",
     "shortcode",
     "subpage-hero",
-    "text-images",
     "text-with-image",
     "thank-you",
     "three-boxes",
@@ -25,6 +26,7 @@
     "two-columns-list",
     "two-columns-text",
     "two-images",
+    "services",
     "wyswig-content"
   ],
   "aliases": {
@@ -34,6 +36,6 @@
     "js": {}
   },
   "features": {
-    "woocommerce": true
+    "woocommerce": false
   }
 }

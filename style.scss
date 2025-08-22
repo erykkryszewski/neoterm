@@ -50,6 +50,7 @@ Text Domain: ercodingtheme
 @import 'scss/blocks/blog-archive';
 @import 'scss/blocks/border-divider';
 @import 'scss/blocks/contact';
+@import 'scss/blocks/cta';
 @import 'scss/blocks/decorated-text';
 @import 'scss/blocks/faq';
 @import 'scss/blocks/icons';
@@ -57,9 +58,10 @@ Text Domain: ercodingtheme
 @import 'scss/blocks/list';
 @import 'scss/blocks/logos';
 @import 'scss/blocks/map';
+@import 'scss/blocks/offer';
 @import 'scss/blocks/section-title';
+@import 'scss/blocks/shortcode';
 @import 'scss/blocks/subpage-hero';
-@import 'scss/blocks/text-images';
 @import 'scss/blocks/text-with-image';
 @import 'scss/blocks/thank-you';
 @import 'scss/blocks/three-boxes';
@@ -69,6 +71,7 @@ Text Domain: ercodingtheme
 @import 'scss/blocks/two-columns-list';
 @import 'scss/blocks/two-columns-text';
 @import 'scss/blocks/two-images';
+@import 'scss/blocks/services';
 @import 'scss/blocks/wyswig-content';
 /* @blocks:end */
 
@@ -78,22 +81,3 @@ Text Domain: ercodingtheme
 @import 'scss/sections/blog';
 @import 'scss/sections/single';
 @import 'scss/sections/rules-pages';
-
-@import 'scss/woocommerce/global-woocommerce';
-@import 'scss/woocommerce/archive-product';
-@import 'scss/woocommerce/cart';
-@import 'scss/woocommerce/checkout';
-@import 'scss/woocommerce/content-product';
-@import 'scss/woocommerce/order-received';
-@import 'scss/woocommerce/product-filters';
-@import 'scss/woocommerce/single-product';
-@import 'scss/woocommerce/variations';
-@import 'scss/woocommerce/my-account';
-@import 'scss/woocommerce/breadcrumbs';
-@import 'scss/woocommerce/sidebar';
-@import 'scss/woocommerce/empty-cart';
-@import 'scss/woocommerce/woo-pagination';
-@import 'scss/woocommerce/empty-cart';
-@import 'scss/woocommerce/related-products';
-@import 'scss/woocommerce/sale-component';
-@import 'scss/woocommerce/shop-hero';
