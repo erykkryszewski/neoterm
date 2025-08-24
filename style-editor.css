@@ -948,7 +948,7 @@
   /* fix WC overwriting bootstrap classes */
   /* overwrite wp */
   /* reset all margins in gravity forms - delete it later from global and modify in block styles */
-  /* delete gravity forms error styles, FORM MUST BE WRAPPED WITH DIV WITH ERCODING-FORM CLASS */
+  /* delete gravity forms error styles, FORM MUST BE WRAPPED WITH DIV WITH seoleader-FORM CLASS */
   /*slick arrow "next" and "prev" text delete */
   /* 
  * Import fonts
@@ -1139,6 +1139,8 @@
   overflow-x: hidden;
   position: relative;
   font-weight: 400;
+  font-optical-sizing: auto;
+  font-style: normal;
   color: #030303;
 }
 
@@ -1265,34 +1267,34 @@
   padding: 0 !important;
 }
 
-.editor-styles-wrapper .ercoding-form .gform_wrapper div.validation_error {
+.editor-styles-wrapper .seoleader-form .gform_wrapper div.validation_error {
   padding: 0 !important;
   margin: 0 0 10px !important;
   font-size: 12px !important;
 }
 
-.editor-styles-wrapper .ercoding-form .gform_wrapper.gform_validation_error .gform_body .gfield.gfield_error.gfield_contains_required {
+.editor-styles-wrapper .seoleader-form .gform_wrapper.gform_validation_error .gform_body .gfield.gfield_error.gfield_contains_required {
   max-width: 100% !important;
   margin: 0 !important;
   background: none !important;
   border: none !important;
 }
 
-.editor-styles-wrapper .ercoding-form .gform_wrapper.gform_validation_error .gform_body .gfield.gfield_error.gfield_contains_required input,
-.editor-styles-wrapper .ercoding-form .gform_wrapper.gform_validation_error .gform_body .gfield.gfield_error.gfield_contains_required textarea {
+.editor-styles-wrapper .seoleader-form .gform_wrapper.gform_validation_error .gform_body .gfield.gfield_error.gfield_contains_required input,
+.editor-styles-wrapper .seoleader-form .gform_wrapper.gform_validation_error .gform_body .gfield.gfield_error.gfield_contains_required textarea {
   border: 2px solid #d42c2c !important;
 }
 
-.editor-styles-wrapper .ercoding-form .validation_message {
+.editor-styles-wrapper .seoleader-form .validation_message {
   display: none !important;
 }
 
-.editor-styles-wrapper .ercoding-form .gform_validation_errors {
+.editor-styles-wrapper .seoleader-form .gform_validation_errors {
   padding: 16px !important;
   text-align: center;
 }
 
-.editor-styles-wrapper .ercoding-form .gform_validation_errors .gform-icon {
+.editor-styles-wrapper .seoleader-form .gform_validation_errors .gform-icon {
   display: none !important;
 }
 

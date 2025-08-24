@@ -1,16 +1,16 @@
 @charset "UTF-8";
 /*
-Theme Name: Ercoding Theme
-Theme URI: https://ercoding.pl/
-Author: ercoding.pl
-Author URI: https://ercoding.pl/
+Theme Name: Seoleader Theme
+Theme URI: https://seoleader.pl/
+Author: seoleader.pl
+Author URI: https://seoleader.pl/
 Version: 1.0
 Requires at least: 5.3
 Tested up to: 5.5
 Requires PHP: 7.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: ercodingtheme
+Text Domain: seoleadertheme
 */
 .container, .container-fluid {
   margin-right: auto;
@@ -2139,6 +2139,8 @@ body {
   overflow-x: hidden;
   position: relative;
   font-weight: 400;
+  font-optical-sizing: auto;
+  font-style: normal;
   color: #030303;
 }
 
@@ -2268,35 +2270,35 @@ body.woocommerce-page .display-none {
   padding: 0 !important;
 }
 
-/* delete gravity forms error styles, FORM MUST BE WRAPPED WITH DIV WITH ERCODING-FORM CLASS */
-.ercoding-form .gform_wrapper div.validation_error {
+/* delete gravity forms error styles, FORM MUST BE WRAPPED WITH DIV WITH seoleader-FORM CLASS */
+.seoleader-form .gform_wrapper div.validation_error {
   padding: 0 !important;
   margin: 0 0 10px !important;
   font-size: 12px !important;
 }
 
-.ercoding-form .gform_wrapper.gform_validation_error .gform_body .gfield.gfield_error.gfield_contains_required {
+.seoleader-form .gform_wrapper.gform_validation_error .gform_body .gfield.gfield_error.gfield_contains_required {
   max-width: 100% !important;
   margin: 0 !important;
   background: none !important;
   border: none !important;
 }
 
-.ercoding-form .gform_wrapper.gform_validation_error .gform_body .gfield.gfield_error.gfield_contains_required input,
-.ercoding-form .gform_wrapper.gform_validation_error .gform_body .gfield.gfield_error.gfield_contains_required textarea {
+.seoleader-form .gform_wrapper.gform_validation_error .gform_body .gfield.gfield_error.gfield_contains_required input,
+.seoleader-form .gform_wrapper.gform_validation_error .gform_body .gfield.gfield_error.gfield_contains_required textarea {
   border: 2px solid #d42c2c !important;
 }
 
-.ercoding-form .validation_message {
+.seoleader-form .validation_message {
   display: none !important;
 }
 
-.ercoding-form .gform_validation_errors {
+.seoleader-form .gform_validation_errors {
   padding: 16px !important;
   text-align: center;
 }
 
-.ercoding-form .gform_validation_errors .gform-icon {
+.seoleader-form .gform_validation_errors .gform-icon {
   display: none !important;
 }
 
@@ -2791,7 +2793,7 @@ ol > li {
   display: none;
 }
 
-.ercoding-form {
+.seoleader-form {
   width: 100%;
 }
 

@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const ercodingAnimatedCircles = document.querySelectorAll('.animated-number__circle');
+  const seoleaderAnimatedCircles = document.querySelectorAll('.animated-number__circle');
 
-  if (!ercodingAnimatedCircles.length) return;
+  if (!seoleaderAnimatedCircles.length) return;
 
-  const ercodingHandleIntersection = (entries, observer) => {
+  const seoleaderHandleIntersection = (entries, observer) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const target = entry.target;
@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  const ercodingObserver = new IntersectionObserver(ercodingHandleIntersection, {
+  const seoleaderObserver = new IntersectionObserver(seoleaderHandleIntersection, {
     root: null,
     threshold: 0.1,
   });
 
-  ercodingAnimatedCircles.forEach((element) => ercodingObserver.observe(element));
+  seoleaderAnimatedCircles.forEach((element) => seoleaderObserver.observe(element));
 });

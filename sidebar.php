@@ -1,3 +1,3 @@
 <div>
-  <?php dynamic_sidebar('ercodingtheme-sidebar'); ?>
+  <?php dynamic_sidebar('seoleadertheme-sidebar'); ?>
 </div>

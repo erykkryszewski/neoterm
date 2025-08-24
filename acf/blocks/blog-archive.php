@@ -67,7 +67,7 @@ $posts = new WP_Query($args);
                 </p>
               </div>
               <a href="<?php the_permalink(); ?>"
-                class="theme-blog__button"><?php _e('Czytaj więcej', 'ercodingtheme'); ?></a>
+                class="theme-blog__button"><?php _e('Czytaj więcej', 'seoleadertheme'); ?></a>
             </div>
           </div>
         </div>
@@ -100,7 +100,7 @@ $posts = new WP_Query($args);
                 </p>
               </div>
               <a href="<?php the_permalink(); ?>"
-                class="theme-blog__button"><?php _e('Czytaj więcej', 'ercodingtheme'); ?></a>
+                class="theme-blog__button"><?php _e('Czytaj więcej', 'seoleadertheme'); ?></a>
             </div>
           </div>
         </div>
@@ -133,7 +133,7 @@ $posts = new WP_Query($args);
                 </p>
               </div>
               <a href="<?php the_permalink(); ?>"
-                class="theme-blog__button"><?php _e('Czytaj więcej', 'ercodingtheme'); ?></a>
+                class="theme-blog__button"><?php _e('Czytaj więcej', 'seoleadertheme'); ?></a>
             </div>
           </div>
         </div>

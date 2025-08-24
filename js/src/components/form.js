@@ -1,20 +1,20 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const ercodingForm = document.querySelector('.ercoding-form');
-  if (!ercodingForm) return;
-  const ercodingFormName = document.querySelector('.ercoding-form-name');
-  const ercodingFormSurname = document.querySelector('.ercoding-form-surname');
-  const ercodingFormEmail = document.querySelector('.ercoding-form-email');
-  const ercodingFormPhone = document.querySelector('.ercoding-form-phone');
-  const ercodingFormTextarea = document.querySelector('.ercoding-form-textarea');
-  const ercodingFormAcceptance = document.querySelector('.ercoding-form-acceptance');
-  const ercodingFormSubmit = document.querySelector('input[type="submit"]');
+document.addEventListener('DOMContentLoaded', function () {
+  const seoleaderForm = document.querySelector('.seoleader-form');
+  if (!seoleaderForm) return;
+  const seoleaderFormName = document.querySelector('.seoleader-form-name');
+  const seoleaderFormSurname = document.querySelector('.seoleader-form-surname');
+  const seoleaderFormEmail = document.querySelector('.seoleader-form-email');
+  const seoleaderFormPhone = document.querySelector('.seoleader-form-phone');
+  const seoleaderFormTextarea = document.querySelector('.seoleader-form-textarea');
+  const seoleaderFormAcceptance = document.querySelector('.seoleader-form-acceptance');
+  const seoleaderFormSubmit = document.querySelector('input[type="submit"]');
 
-  function ercodingShowError(container, message) {
+  function seoleaderShowError(container, message) {
     if (!container) return;
-    let errorEl = container.querySelector('.ercoding-error-message');
+    let errorEl = container.querySelector('.seoleader-error-message');
     if (!errorEl) {
       errorEl = document.createElement('div');
-      errorEl.classList.add('ercoding-error-message');
+      errorEl.classList.add('seoleader-error-message');
       errorEl.style.color = 'red';
       errorEl.style.fontSize = '13px';
       errorEl.style.marginTop = '3px';
@@ -24,134 +24,134 @@ document.addEventListener('DOMContentLoaded', function() {
     errorEl.textContent = message;
   }
 
-  function ercodingRemoveError(container) {
+  function seoleaderRemoveError(container) {
     if (!container) return;
-    const errorEl = container.querySelector('.ercoding-error-message');
+    const errorEl = container.querySelector('.seoleader-error-message');
     if (errorEl) errorEl.remove();
   }
 
-  function ercodingValidateName() {
-    const input = ercodingFormName.querySelector('input');
+  function seoleaderValidateName() {
+    const input = seoleaderFormName.querySelector('input');
     input.value = input.value.replace(/[^A-Za-z\s]/g, '');
     const value = input.value.trim();
     if (value.length < 3) {
-      ercodingShowError(ercodingFormName, 'Imię nie może być krótsze niż 3 znaki.');
+      seoleaderShowError(seoleaderFormName, 'Imię nie może być krótsze niż 3 znaki.');
       return false;
     } else {
-      ercodingRemoveError(ercodingFormName);
+      seoleaderRemoveError(seoleaderFormName);
       return true;
     }
   }
-  
-  function ercodingValidateSurname() {
-    const input = ercodingFormSurname.querySelector('input');
-    input.value = input.value.replace(/[^A-Za-z\s]/g, '');
-    const value = input.value.trim();
-    if (value.length < 3) {
-      ercodingShowError(ercodingFormSurname, 'Nazwisko nie może być krótsze niż 3 znaki.');
-      return false;
-    } else {
-      ercodingRemoveError(ercodingFormSurname);
-      return true;
-    }
-  }
-   
 
-  function ercodingValidateEmail() {
-    if (!ercodingFormEmail) return true;
-    const input = ercodingFormEmail.querySelector('input');
+  function seoleaderValidateSurname() {
+    const input = seoleaderFormSurname.querySelector('input');
+    input.value = input.value.replace(/[^A-Za-z\s]/g, '');
+    const value = input.value.trim();
+    if (value.length < 3) {
+      seoleaderShowError(seoleaderFormSurname, 'Nazwisko nie może być krótsze niż 3 znaki.');
+      return false;
+    } else {
+      seoleaderRemoveError(seoleaderFormSurname);
+      return true;
+    }
+  }
+
+  function seoleaderValidateEmail() {
+    if (!seoleaderFormEmail) return true;
+    const input = seoleaderFormEmail.querySelector('input');
     const value = input ? input.value.trim() : '';
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!value.match(emailPattern)) {
-      ercodingShowError(ercodingFormEmail, 'Proszę wprowadzić prawidłowy adres email.');
+      seoleaderShowError(seoleaderFormEmail, 'Proszę wprowadzić prawidłowy adres email.');
       return false;
     } else {
-      ercodingRemoveError(ercodingFormEmail);
+      seoleaderRemoveError(seoleaderFormEmail);
       return true;
     }
   }
 
-  function ercodingValidatePhone() {
-    if (!ercodingFormPhone) return true;
-    const input = ercodingFormPhone.querySelector('input');
+  function seoleaderValidatePhone() {
+    if (!seoleaderFormPhone) return true;
+    const input = seoleaderFormPhone.querySelector('input');
     const value = input ? input.value.trim() : '';
-    if (!/^[+0-9\s]+$/.test(value) || (value.replace(/\D/g, '').length < 9)) {
-      ercodingShowError(ercodingFormPhone, 'Wprowadź prawidłowy numer telefonu.');
+    if (!/^[+0-9\s]+$/.test(value) || value.replace(/\D/g, '').length < 9) {
+      seoleaderShowError(seoleaderFormPhone, 'Wprowadź prawidłowy numer telefonu.');
       return false;
     } else {
-      ercodingRemoveError(ercodingFormPhone);
+      seoleaderRemoveError(seoleaderFormPhone);
       return true;
     }
   }
 
-  function ercodingValidateTextarea() {
-    if (!ercodingFormTextarea) return true;
-    const textarea = ercodingFormTextarea.querySelector('textarea');
+  function seoleaderValidateTextarea() {
+    if (!seoleaderFormTextarea) return true;
+    const textarea = seoleaderFormTextarea.querySelector('textarea');
     const value = textarea ? textarea.value.trim() : '';
     if (value.length < 15) {
-      ercodingShowError(ercodingFormTextarea, 'Wiadomość powinna mieć co najmniej 15 znaków.');
+      seoleaderShowError(seoleaderFormTextarea, 'Wiadomość powinna mieć co najmniej 15 znaków.');
       return false;
     } else {
-      ercodingRemoveError(ercodingFormTextarea);
+      seoleaderRemoveError(seoleaderFormTextarea);
       return true;
     }
   }
 
-  function ercodingValidateAcceptance() {
-    if (!ercodingFormAcceptance) return true;
-    const checkbox = ercodingFormAcceptance.querySelector('input[type="checkbox"]');
+  function seoleaderValidateAcceptance() {
+    if (!seoleaderFormAcceptance) return true;
+    const checkbox = seoleaderFormAcceptance.querySelector('input[type="checkbox"]');
     if (!checkbox.checked) {
-      ercodingShowError(ercodingFormAcceptance, 'Musisz wyrazić zgodę, aby kontynuować.');
+      seoleaderShowError(seoleaderFormAcceptance, 'Musisz wyrazić zgodę, aby kontynuować.');
       return false;
     } else {
-      ercodingRemoveError(ercodingFormAcceptance);
+      seoleaderRemoveError(seoleaderFormAcceptance);
       return true;
     }
   }
 
-  function ercodingValidateAllFields() {
+  function seoleaderValidateAllFields() {
     let valid = true;
-    valid = ercodingValidateName() && valid;
-    valid = ercodingValidateSurname() && valid;
-    valid = ercodingValidateEmail() && valid;
-    valid = ercodingValidatePhone() && valid;
-    valid = ercodingValidateTextarea() && valid;
-    valid = ercodingValidateAcceptance() && valid;
+    valid = seoleaderValidateName() && valid;
+    valid = seoleaderValidateSurname() && valid;
+    valid = seoleaderValidateEmail() && valid;
+    valid = seoleaderValidatePhone() && valid;
+    valid = seoleaderValidateTextarea() && valid;
+    valid = seoleaderValidateAcceptance() && valid;
     return valid;
   }
 
-  if (ercodingFormName) { 
-    ercodingFormName.querySelector('input').addEventListener('input', ercodingValidateName); 
-  
+  if (seoleaderFormName) {
+    seoleaderFormName.querySelector('input').addEventListener('input', seoleaderValidateName);
   }
 
-  if (ercodingFormSurname) { 
-    ercodingFormSurname.querySelector('input').addEventListener('input', ercodingValidateSurname); 
+  if (seoleaderFormSurname) {
+    seoleaderFormSurname.querySelector('input').addEventListener('input', seoleaderValidateSurname);
   }
 
-  if (ercodingFormEmail) { 
-    ercodingFormEmail.querySelector('input').addEventListener('input', ercodingValidateEmail); 
+  if (seoleaderFormEmail) {
+    seoleaderFormEmail.querySelector('input').addEventListener('input', seoleaderValidateEmail);
   }
 
-  if (ercodingFormPhone) { 
-    ercodingFormPhone.querySelector('input').addEventListener('input', ercodingValidatePhone); 
+  if (seoleaderFormPhone) {
+    seoleaderFormPhone.querySelector('input').addEventListener('input', seoleaderValidatePhone);
   }
 
-  if (ercodingFormTextarea) { 
-    ercodingFormTextarea.querySelector('textarea').addEventListener('input', ercodingValidateTextarea); 
+  if (seoleaderFormTextarea) {
+    seoleaderFormTextarea.querySelector('textarea').addEventListener('input', seoleaderValidateTextarea);
   }
 
-  if (ercodingFormAcceptance) { 
-    ercodingFormAcceptance.querySelector('input[type="checkbox"]').addEventListener('change', ercodingValidateAcceptance); 
+  if (seoleaderFormAcceptance) {
+    seoleaderFormAcceptance
+      .querySelector('input[type="checkbox"]')
+      .addEventListener('change', seoleaderValidateAcceptance);
   }
 
-  if (ercodingFormSubmit) {
-    ercodingFormSubmit.addEventListener('mouseenter', function() {
-      ercodingValidateAllFields();
+  if (seoleaderFormSubmit) {
+    seoleaderFormSubmit.addEventListener('mouseenter', function () {
+      seoleaderValidateAllFields();
     });
   }
 
-  ercodingForm.addEventListener('submit', function() {
-    ercodingValidateAllFields();
+  seoleaderForm.addEventListener('submit', function () {
+    seoleaderValidateAllFields();
   });
 });

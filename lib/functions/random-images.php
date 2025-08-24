@@ -1,6 +1,6 @@
 <?php
 
-function ercoding_random_images_config()
+function seoleader_random_images_config()
 {
   $config = [
     'default_category' => 'nature',
@@ -31,12 +31,12 @@ function ercoding_random_images_config()
   if (!isset($config['pexels_api_key']) && defined('PEXELS_API_KEY')) {
     $config['pexels_api_key'] = PEXELS_API_KEY;
   }
-  return apply_filters('ercoding_random_images_config', $config);
+  return apply_filters('seoleader_random_images_config', $config);
 }
 
-function ercoding_query_from_category($cat)
+function seoleader_query_from_category($cat)
 {
-  $cfg = ercoding_random_images_config();
+  $cfg = seoleader_random_images_config();
   $key = sanitize_title((string) $cat);
   if (isset($cfg['keywords'][$key])) {
     return $cfg['keywords'][$key];
@@ -57,13 +57,13 @@ function ercoding_query_from_category($cat)
   return $key;
 }
 
-function ercoding_resolve_size_dims($size)
+function seoleader_resolve_size_dims($size)
 {
   if (is_array($size)) {
     if (isset($size[0]) && isset($size[1])) {
       return [absint($size[0]), absint($size[1])];
     }
-    $cfg = ercoding_random_images_config();
+    $cfg = seoleader_random_images_config();
     return $cfg['default_size'];
   }
   if (is_string($size)) {
@@ -81,11 +81,11 @@ function ercoding_resolve_size_dims($size)
       return [$add[$size]['width'], $add[$size]['height']];
     }
   }
-  $cfg = ercoding_random_images_config();
+  $cfg = seoleader_random_images_config();
   return $cfg['default_size'];
 }
 
-function ercoding_is_attachment_like($v)
+function seoleader_is_attachment_like($v)
 {
   if (is_numeric($v)) {
     return true;
@@ -99,7 +99,7 @@ function ercoding_is_attachment_like($v)
   return false;
 }
 
-function ercoding_build_img_attrs($attrs)
+function seoleader_build_img_attrs($attrs)
 {
   $out = '';
   foreach ($attrs as $k => $v) {
@@ -111,22 +111,22 @@ function ercoding_build_img_attrs($attrs)
   return $out;
 }
 
-function ercoding_cache_key($cat, $w, $h, $seed)
+function seoleader_cache_key($cat, $w, $h, $seed)
 {
   return 'erc_img_' . md5(strtolower((string) $cat) . '|' . $w . '|' . $h . '|' . (string) $seed);
 }
 
-function ercoding_cache_dir()
+function seoleader_cache_dir()
 {
   $up = wp_get_upload_dir();
-  $dir = trailingslashit($up['basedir']) . 'ercoding-random';
+  $dir = trailingslashit($up['basedir']) . 'seoleader-random';
   if (!is_dir($dir)) {
     wp_mkdir_p($dir);
   }
   return $dir;
 }
 
-function ercoding_ext_from_ctype($ctype)
+function seoleader_ext_from_ctype($ctype)
 {
   $ctype = strtolower((string) $ctype);
   if (strpos($ctype, 'image/png') === 0) {
@@ -138,7 +138,7 @@ function ercoding_ext_from_ctype($ctype)
   return 'jpg';
 }
 
-function ercoding_cache_get($key)
+function seoleader_cache_get($key)
 {
   $meta = get_transient($key);
   if (!$meta || empty($meta['path']) || empty($meta['ctype'])) {
@@ -150,10 +150,10 @@ function ercoding_cache_get($key)
   return $meta;
 }
 
-function ercoding_cache_set($key, $ctype, $body, $ttl = 86400)
+function seoleader_cache_set($key, $ctype, $body, $ttl = 86400)
 {
-  $ext = ercoding_ext_from_ctype($ctype);
-  $path = trailingslashit(ercoding_cache_dir()) . $key . '.' . $ext;
+  $ext = seoleader_ext_from_ctype($ctype);
+  $path = trailingslashit(seoleader_cache_dir()) . $key . '.' . $ext;
   if (!file_exists($path)) {
     file_put_contents($path, $body);
   }
@@ -161,7 +161,7 @@ function ercoding_cache_set($key, $ctype, $body, $ttl = 86400)
   return ['path' => $path, 'ctype' => $ctype];
 }
 
-function ercoding_fetch($url, $headers = [])
+function seoleader_fetch($url, $headers = [])
 {
   $res = wp_remote_get($url, ['timeout' => 15, 'redirection' => 5, 'sslverify' => false, 'headers' => $headers]);
   if (is_wp_error($res)) {
@@ -176,9 +176,9 @@ function ercoding_fetch($url, $headers = [])
   return ['body' => $body, 'ctype' => $ctype ?: 'image/jpeg'];
 }
 
-function ercoding_fetch_from_pexels($query, $w, $h, $seed)
+function seoleader_fetch_from_pexels($query, $w, $h, $seed)
 {
-  $cfg = ercoding_random_images_config();
+  $cfg = seoleader_random_images_config();
   if (empty($cfg['pexels_api_key'])) {
     return false;
   }
@@ -221,14 +221,14 @@ function ercoding_fetch_from_pexels($query, $w, $h, $seed)
   if (!$src) {
     return false;
   }
-  $res = ercoding_fetch($src);
+  $res = seoleader_fetch($src);
   if ($res) {
     $res['provider'] = 'pexels';
   }
   return $res;
 }
 
-function ercoding_build_fallback_urls($query, $w, $h, $seed)
+function seoleader_build_fallback_urls($query, $w, $h, $seed)
 {
   $tags = preg_replace('/\s+/', ',', trim($query));
   $s = $seed ? $seed : wp_generate_password(8, false, false);
@@ -242,9 +242,9 @@ function ercoding_build_fallback_urls($query, $w, $h, $seed)
   return $urls;
 }
 
-function ercoding_random_image_proxy()
+function seoleader_random_image_proxy()
 {
-  $cfg = ercoding_random_images_config();
+  $cfg = seoleader_random_images_config();
   $cat = isset($_GET['cat']) ? sanitize_text_field(wp_unslash($_GET['cat'])) : '';
   $w = isset($_GET['w']) ? absint($_GET['w']) : 1200;
   $h = isset($_GET['h']) ? absint($_GET['h']) : 800;
@@ -253,26 +253,26 @@ function ercoding_random_image_proxy()
     $w = 1200;
     $h = 800;
   }
-  $key = ercoding_cache_key($cat ?: $cfg['default_category'], $w, $h, $seed);
-  $cached = ercoding_cache_get($key);
+  $key = seoleader_cache_key($cat ?: $cfg['default_category'], $w, $h, $seed);
+  $cached = seoleader_cache_get($key);
   if ($cached) {
     nocache_headers();
     header('Content-Type: ' . $cached['ctype']);
     header('Content-Length: ' . filesize($cached['path']));
     header('Cache-Control: public, max-age=86400');
-    header('X-Ercoding-Provider: cache');
+    header('X-seoleader-Provider: cache');
     readfile($cached['path']);
     wp_die();
   }
-  $q = ercoding_query_from_category($cat);
+  $q = seoleader_query_from_category($cat);
   $ok = false;
   if (!empty($cfg['pexels_api_key'])) {
-    $ok = ercoding_fetch_from_pexels($q, $w, $h, $seed);
+    $ok = seoleader_fetch_from_pexels($q, $w, $h, $seed);
   }
   if (!$ok) {
-    $fallbacks = ercoding_build_fallback_urls($q, $w, $h, $seed);
+    $fallbacks = seoleader_build_fallback_urls($q, $w, $h, $seed);
     foreach ($fallbacks as $u) {
-      $try = ercoding_fetch($u);
+      $try = seoleader_fetch($u);
       if ($try) {
         $try['provider'] = strpos($u, 'loremflickr.com') !== false ? 'loremflickr' : 'picsum';
         $ok = $try;
@@ -281,38 +281,38 @@ function ercoding_random_image_proxy()
     }
   }
   if (!$ok) {
-    $ok = ercoding_fetch_from_commons($q, $w, $h, $seed);
+    $ok = seoleader_fetch_from_commons($q, $w, $h, $seed);
   }
   if (!$ok) {
     status_header(502);
     wp_die();
   }
-  $meta = ercoding_cache_set($key, $ok['ctype'], $ok['body'], 86400);
+  $meta = seoleader_cache_set($key, $ok['ctype'], $ok['body'], 86400);
   nocache_headers();
   header('Content-Type: ' . $meta['ctype']);
   header('Content-Length: ' . strlen($ok['body']));
   header('Cache-Control: public, max-age=86400');
   if (!empty($ok['provider'])) {
-    header('X-Ercoding-Provider: ' . $ok['provider']);
+    header('X-seoleader-Provider: ' . $ok['provider']);
   }
   echo $ok['body'];
   wp_die();
 }
 
-add_action('wp_ajax_ercoding_random_image', 'ercoding_random_image_proxy');
-add_action('wp_ajax_nopriv_ercoding_random_image', 'ercoding_random_image_proxy');
+add_action('wp_ajax_seoleader_random_image', 'seoleader_random_image_proxy');
+add_action('wp_ajax_nopriv_seoleader_random_image', 'seoleader_random_image_proxy');
 
-function ercoding_get_image($source = null, $size = 'full', $attr = [])
+function seoleader_get_image($source = null, $size = 'full', $attr = [])
 {
   if (is_array($size) && !isset($size[0]) && !isset($size[1])) {
     $attr = $size;
     $size = 'full';
   }
-  if (!ercoding_is_attachment_like($source) && is_array($source) && isset($source[0]) && isset($source[1])) {
+  if (!seoleader_is_attachment_like($source) && is_array($source) && isset($source[0]) && isset($source[1])) {
     $size = $source;
     $source = null;
   }
-  if (ercoding_is_attachment_like($source)) {
+  if (seoleader_is_attachment_like($source)) {
     $id = is_numeric($source)
       ? absint($source)
       : (is_array($source)
@@ -320,14 +320,14 @@ function ercoding_get_image($source = null, $size = 'full', $attr = [])
         : 0);
     return wp_get_attachment_image($id, $size, false, $attr);
   }
-  $cfg = ercoding_random_images_config();
-  [$w, $h] = ercoding_resolve_size_dims($size);
+  $cfg = seoleader_random_images_config();
+  [$w, $h] = seoleader_resolve_size_dims($size);
   $cat = is_string($source) && $source !== '' ? $source : $cfg['default_category'];
   $seed = isset($attr['seed']) ? $attr['seed'] : '';
   unset($attr['seed']);
   $src = add_query_arg(
     [
-      'action' => 'ercoding_random_image',
+      'action' => 'seoleader_random_image',
       'cat' => $cat,
       'w' => $w,
       'h' => $h,
@@ -354,14 +354,14 @@ function ercoding_get_image($source = null, $size = 'full', $attr = [])
     $attr['class'] = '';
   }
   $attr['class'] = trim($attr['class'] . ' is-random-image');
-  return '<img src="' . esc_url($src) . '"' . ercoding_build_img_attrs($attr) . ' />';
+  return '<img src="' . esc_url($src) . '"' . seoleader_build_img_attrs($attr) . ' />';
 }
 
-function ercoding_fetch_from_commons($query, $w, $h, $seed)
+function seoleader_fetch_from_commons($query, $w, $h, $seed)
 {
   $q = trim($query);
   if ($q === '') {
-    $q = ercoding_random_images_config()['default_category'];
+    $q = seoleader_random_images_config()['default_category'];
   }
   $url = add_query_arg(
     [
@@ -400,7 +400,7 @@ function ercoding_fetch_from_commons($query, $w, $h, $seed)
   if (!$src) {
     return false;
   }
-  $out = ercoding_fetch($src);
+  $out = seoleader_fetch($src);
   if ($out) {
     $out['provider'] = 'commons';
   }

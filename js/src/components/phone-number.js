@@ -1,16 +1,16 @@
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll(".ercodingtheme-phone-number").forEach(function (ercodingEl) {
-    let ercodingPhoneText = ercodingEl.textContent.replace(/\D+/g, "");
-    
-    if (ercodingPhoneText.startsWith("48") && ercodingPhoneText.length === 11) {
-      ercodingPhoneText = `+${ercodingPhoneText}`;
-    } else if (!ercodingPhoneText.startsWith("+48") && ercodingPhoneText.length === 9) {
-      ercodingPhoneText = `+48${ercodingPhoneText}`;
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.seoleadertheme-phone-number').forEach(function (seoleaderEl) {
+    let seoleaderPhoneText = seoleaderEl.textContent.replace(/\D+/g, '');
+
+    if (seoleaderPhoneText.startsWith('48') && seoleaderPhoneText.length === 11) {
+      seoleaderPhoneText = `+${seoleaderPhoneText}`;
+    } else if (!seoleaderPhoneText.startsWith('+48') && seoleaderPhoneText.length === 9) {
+      seoleaderPhoneText = `+48${seoleaderPhoneText}`;
     }
 
-    let match = ercodingPhoneText.match(/^\+48(\d{3})(\d{3})(\d{3})$/);
+    let match = seoleaderPhoneText.match(/^\+48(\d{3})(\d{3})(\d{3})$/);
     if (match) {
-      ercodingEl.textContent = `+48 ${match[1]} ${match[2]} ${match[3]}`;
+      seoleaderEl.textContent = `+48 ${match[1]} ${match[2]} ${match[3]}`;
     }
   });
 });

@@ -12,6 +12,7 @@ require_once PAGE_THEME_DIR . 'lib/classes/svg-support.php';
 require_once PAGE_THEME_DIR . 'lib/functions/search.php';
 require_once PAGE_THEME_DIR . 'lib/functions/image-object-fit.php';
 require_once PAGE_THEME_DIR . 'lib/functions/random-images.php';
+require_once PAGE_THEME_DIR . 'lib/functions/submenu-icons.php';
 // require_once(PAGE_THEME_DIR . 'lib/functions/required-plugins.php');
 
 // if woocommerce is activated
@@ -26,7 +27,7 @@ if (function_exists('WC')) {
 }
 
 // Enable SVG support in WordPress
-add_filter('upload_mimes', 'ercoding_svg_support');
+add_filter('upload_mimes', 'seoleader_svg_support');
 /**
  * Adds SVG upload support
  *
@@ -35,14 +36,14 @@ add_filter('upload_mimes', 'ercoding_svg_support');
  * @param array $mimes Mime types.
  * @return array
  */
-function ercoding_svg_support($mimes)
+function seoleader_svg_support($mimes)
 {
   $mimes['svg'] = 'image/svg+xml';
   return $mimes;
 }
 
 // Enable SVG in admin.
-ercoding_SVG_Support::enable();
+seoleader_SVG_Support::enable();
 
 // Add theme supports
 add_theme_support('editor-styles');
@@ -97,7 +98,7 @@ add_action('wp_enqueue_scripts', function () {
   }
 
   wp_enqueue_script(
-    'ercodingtheme-main',
+    'seoleadertheme-main',
     get_stylesheet_directory_uri() . '/js/dist/main.js',
     ['jquery'],
     filemtime(get_stylesheet_directory() . '/js/dist/main.js'),
@@ -108,7 +109,7 @@ add_action('wp_enqueue_scripts', function () {
 
 add_action('enqueue_block_editor_assets', function () {
   wp_enqueue_script(
-    'ercodingtheme-admin',
+    'seoleadertheme-admin',
     get_stylesheet_directory_uri() . '/js/dist/editor.js',
     ['wp-data'],
     filemtime(get_stylesheet_directory() . '/js/dist/editor.js'),
@@ -119,7 +120,7 @@ add_action('enqueue_block_editor_assets', function () {
 add_action('admin_enqueue_scripts', function () {
   if (is_admin()) {
     wp_enqueue_style(
-      'ercodingtheme-admin',
+      'seoleadertheme-admin',
       get_stylesheet_directory_uri() . '/style-editor.css',
       [],
       filemtime(get_stylesheet_directory() . '/style-editor.css'),
@@ -137,9 +138,9 @@ add_action('wp_footer', function () {
 
 /* deregister unused styles for non logged in users */
 
-add_action('wp_print_styles', 'ercoding_remove_unused_styles_for_non_logged_in_users', 100);
+add_action('wp_print_styles', 'seoleader_remove_unused_styles_for_non_logged_in_users', 100);
 
-function ercoding_remove_unused_styles_for_non_logged_in_users()
+function seoleader_remove_unused_styles_for_non_logged_in_users()
 {
   if (!is_admin_bar_showing() && !is_customize_preview()) {
     // dashicons
@@ -164,8 +165,8 @@ add_filter('xmlrpc_enabled', '__return_false');
 // add sidebar
 add_action('widgets_init', function () {
   register_sidebar([
-    'id' => 'ercodingtheme-sidebar',
-    'name' => __('ercodingtheme Sidebar'),
+    'id' => 'seoleadertheme-sidebar',
+    'name' => __('seoleadertheme Sidebar'),
     'description' => __('This is a blog sidebar.'),
     'before_widget' => '<div class="sidebar__item">',
     'after_widget' => '</div>',
@@ -226,7 +227,7 @@ function restrict_blocks_page_access()
   $current_domain = $_SERVER['HTTP_HOST'];
   $current_url = $_SERVER['REQUEST_URI'];
 
-  if (strpos($current_url, 'blocks') !== false && strpos($current_domain, 'ercodingstarter') === false) {
+  if (strpos($current_url, 'blocks') !== false && strpos($current_domain, 'seoleaderstarter') === false) {
     wp_redirect(home_url());
     exit();
   }

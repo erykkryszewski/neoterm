@@ -53,7 +53,7 @@ $body_classes = get_body_class();
         <div class="top-bar__wrapper">
           <div class="top-bar__content top-bar__content--left">
             <a href="tel:<?php echo esc_html($global_phone_number); ?>"
-              class="top-bar__phone ercodingtheme-phone-number"><?php echo esc_html($global_phone_number); ?></a>
+              class="top-bar__phone seoleadertheme-phone-number"><?php echo esc_html($global_phone_number); ?></a>
             <a href="mailto:<?php echo esc_html($global_email); ?>"
               class="top-bar__email"><?php echo esc_html($global_email); ?></a>
           </div>

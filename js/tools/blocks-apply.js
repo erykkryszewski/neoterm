@@ -319,7 +319,7 @@ function filterBlocksPhp(blocksPhpPath, keep) {
     else {
       const title = slug.replace(/[\-\_]+/g, ' ').replace(/\b\w/g, (s) => s.toUpperCase());
       parts.push(
-        `'${slug}' => [ 'title' => __('${title}', 'ercodingtheme'), 'category' => 'ercodingtheme', 'align' => 'full' ],`,
+        `'${slug}' => [ 'title' => __('${title}', 'seoleadertheme'), 'category' => 'seoleadertheme', 'align' => 'full' ],`,
       );
     }
   });
