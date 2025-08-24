@@ -48,35 +48,6 @@ $body_classes = get_body_class();
   <header class="header <?php if (!is_front_page()) {
     echo 'header--subpage';
   } ?>">
-    <div class="top-bar">
-      <div class="container">
-        <div class="top-bar__wrapper">
-          <div class="top-bar__content top-bar__content--left">
-            <a href="tel:<?php echo esc_html($global_phone_number); ?>"
-              class="top-bar__phone seoleadertheme-phone-number"><?php echo esc_html($global_phone_number); ?></a>
-            <a href="mailto:<?php echo esc_html($global_email); ?>"
-              class="top-bar__email"><?php echo esc_html($global_email); ?></a>
-          </div>
-          <?php if (!empty($global_social_media)): ?>
-          <div class="top-bar__content top-bar__content--right">
-            <ul class="social-media top-bar__social-media <?php if (!is_front_page()) {
-              echo 'top-bar__social-media--subpage';
-            } ?>">
-              <?php foreach ($global_social_media as $key => $item): ?>
-              <li>
-                <a href="<?php echo esc_url_raw($item['link']); ?>" target="_blank">
-                  <?php if (!empty($item['icon'])) {
-                    echo wp_get_attachment_image($item['icon'], 'large', '', ['class' => '']);
-                  } ?>
-                </a>
-              </li>
-              <?php endforeach; ?>
-            </ul>
-          </div>
-          <?php endif; ?>
-        </div>
-      </div>
-    </div>
     <div class="container">
       <nav class="nav <?php if (!is_front_page()) {
         echo 'nav--subpage';
