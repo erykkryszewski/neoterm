@@ -10,7 +10,6 @@
     "faq",
     "icons",
     "iframe",
-    "list",
     "logos",
     "map",
     "offer",
@@ -27,6 +26,7 @@
     "two-columns-text",
     "two-images",
     "services",
+    "homepage-hero",
     "wyswig-content"
   ],
   "aliases": {

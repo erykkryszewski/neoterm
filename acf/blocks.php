@@ -1,137 +1,133 @@
 <?php
 return [
-  'blank-button' => [
+	'blank-button' => [
     'title' => __('Blank button', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'blank-image' => [
+	'blank-image' => [
     'title' => __('Blank image', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'blog-archive' => [
+	'blog-archive' => [
     'title' => __('Blog archive', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'border-divider' => [
+	'border-divider' => [
     'title' => __('Border divider', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'contact' => [
+	'contact' => [
     'title' => __('Contact', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'cta' => [
+	'cta' => [
     'title' => __('CTA', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'decorated-text' => [
+	'decorated-text' => [
     'title' => __('Decorated text', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'faq' => [
+	'faq' => [
     'title' => __('FAQ', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'icons' => [
+	'icons' => [
     'title' => __('Icons', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'iframe' => [
+	'iframe' => [
     'title' => __('Iframe', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'list' => [
-    'title' => __('List', 'seoleadertheme'),
-    'category' => 'seoleadertheme',
-    'align' => 'full',
-  ],
-  'logos' => [
+	'logos' => [
     'title' => __('Logos', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'map' => [
+	'map' => [
     'title' => __('Map', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'offer' => [
+	'offer' => [
     'title' => __('Offer', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'section-title' => [
+	'section-title' => [
     'title' => __('Section Title', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'shortcode' => [
+	'shortcode' => [
     'title' => __('Shortcode', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'subpage-hero' => [
+	'subpage-hero' => [
     'title' => __('Subpage hero', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'text-with-image' => [
+	'text-with-image' => [
     'title' => __('Text with image', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'thank-you' => [
+	'thank-you' => [
     'title' => __('Thank you', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'three-boxes' => [
+	'three-boxes' => [
     'title' => __('Three boxes', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'three-columns-content' => [
+	'three-columns-content' => [
     'title' => __('Three columns content', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'three-images' => [
+	'three-images' => [
     'title' => __('Three images', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'two-buttons' => [
+	'two-buttons' => [
     'title' => __('Two buttons', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'two-columns-list' => [
+	'two-columns-list' => [
     'title' => __('Two columns list', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'two-columns-text' => [
+	'two-columns-text' => [
     'title' => __('Two columns text', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'two-images' => [
+	'two-images' => [
     'title' => __('Two images', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
-  'services' => ['title' => __('Services', 'seoleadertheme'), 'category' => 'seoleadertheme', 'align' => 'full'],
-  'wyswig-content' => [
+	'services' => ['title' => __('Services', 'seoleadertheme'), 'category' => 'seoleadertheme', 'align' => 'full'],
+	'homepage-hero' => [ 'title' => __('Homepage Hero', 'seoleadertheme'), 'category' => 'seoleadertheme', 'align' => 'full' ],
+	'wyswig-content' => [
     'title' => __('Wyswig content', 'seoleadertheme'),
     'category' => 'seoleadertheme',
     'align' => 'full',

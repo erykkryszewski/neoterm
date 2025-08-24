@@ -69,7 +69,6 @@ import './blocks/decorated-text';
 import './blocks/faq';
 import './blocks/icons';
 import './blocks/iframe';
-import './blocks/list';
 import './blocks/logos';
 import './blocks/map';
 import './blocks/offer';
@@ -86,6 +85,7 @@ import './blocks/two-columns-list';
 import './blocks/two-columns-text';
 import './blocks/two-images';
 import './blocks/services';
+import './blocks/homepage-hero';
 import './blocks/wyswig-content';
 /* @blocks:end */
 
@@ -98,3 +98,4 @@ import './components/popup';
 import './components/animated-number';
 import './components/form';
 import './components/phone-number';
+

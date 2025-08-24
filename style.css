@@ -2008,7 +2008,7 @@ body.compensate-for-scrollbar {
 /*
  * Typography
  */
-h1, .h1, .list__number, .theme-blog__decorator, h1 > strong, h1 > b, h1 > span {
+h1, .h1, .theme-blog__decorator, h1 > strong, h1 > b, h1 > span {
   color: #030303;
   font-family: "Figtree", serif;
   font-size: 60px;
@@ -2018,7 +2018,7 @@ h1, .h1, .list__number, .theme-blog__decorator, h1 > strong, h1 > b, h1 > span {
 }
 
 @media (max-width: 767px) {
-  h1, .h1, .list__number, .theme-blog__decorator, h1 > strong, h1 > b, h1 > span {
+  h1, .h1, .theme-blog__decorator, h1 > strong, h1 > b, h1 > span {
     font-size: 58px;
   }
 }
@@ -2051,7 +2051,7 @@ h3, .h3, .footer__column h1, .footer__column h2, .footer__column h3, .footer__co
   }
 }
 
-h4, .h4, .text-with-image__subtitle, .three-boxes__content h1, .three-boxes__content h2, .three-boxes__content h3, .three-boxes__content h4, .three-boxes__content h5, h4 > strong, h4 > b, h4 > span {
+h4, .h4, .text-with-image__subtitle, .three-boxes__content h1, .three-boxes__content h2, .three-boxes__content h3, .three-boxes__content h4, .three-boxes__content h5, .homepage-hero__subtitle, h4 > strong, h4 > b, h4 > span {
   color: #030303;
   font-family: "Figtree", serif;
   font-size: 20px;
@@ -2060,7 +2060,7 @@ h4, .h4, .text-with-image__subtitle, .three-boxes__content h1, .three-boxes__con
 }
 
 @media (max-width: 1199px) {
-  h4, .h4, .text-with-image__subtitle, .three-boxes__content h1, .three-boxes__content h2, .three-boxes__content h3, .three-boxes__content h4, .three-boxes__content h5, h4 > strong, h4 > b, h4 > span {
+  h4, .h4, .text-with-image__subtitle, .three-boxes__content h1, .three-boxes__content h2, .three-boxes__content h3, .three-boxes__content h4, .three-boxes__content h5, .homepage-hero__subtitle, h4 > strong, h4 > b, h4 > span {
     font-size: 18px;
   }
 }
@@ -4319,79 +4319,6 @@ html::-webkit-scrollbar-thumb {
   opacity: 1;
 }
 
-.list {
-  width: 100%;
-  position: relative;
-}
-
-.list--background {
-  background: #f8f9fc;
-}
-
-.list--padding {
-  padding: 85px 0 95px;
-}
-
-.list__item {
-  width: 100%;
-  position: relative;
-  margin: 40px 0 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-@media (max-width: 767px) {
-  .list__item {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-}
-
-.list__item:first-child {
-  margin: 0;
-}
-
-.list__item p {
-  margin: 0;
-}
-
-.list__item--unordered::before {
-  content: '';
-  display: block;
-  background: url("./images/icon-checked.png") center/contain no-repeat;
-  width: 50px;
-  height: 50px;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
-  margin: 0 25px 0 0;
-  -webkit-filter: brightness(0);
-          filter: brightness(0);
-}
-
-@media (max-width: 767px) {
-  .list__item--unordered::before {
-    margin: 0 0 10px;
-  }
-}
-
-.list__title {
-  margin: 0 0 15px;
-}
-
-.list__number {
-  line-height: 1;
-  margin: -4px 50px 0 0;
-}
-
-@media (max-width: 767px) {
-  .list__number {
-    margin: 0 0 10px;
-  }
-}
-
 .logos {
   width: 100%;
   position: relative;
@@ -5154,6 +5081,84 @@ html::-webkit-scrollbar-thumb {
 .services {
   position: relative;
   width: 100%;
+}
+
+.homepage-hero {
+  width: 100%;
+  text-align: left;
+  position: relative;
+}
+
+.homepage-hero--background {
+  background: #f8f9fc;
+}
+
+.homepage-hero--padding {
+  padding: 80px 0 85px;
+}
+
+.homepage-hero__row {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.homepage-hero__row--reverse {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.homepage-hero__picture {
+  width: 100%;
+  height: 440px;
+  border-radius: 15px;
+}
+
+@media (max-width: 767px) {
+  .homepage-hero__picture {
+    margin: 30px 0 0;
+    height: 380px;
+  }
+}
+
+.homepage-hero__picture img {
+  -o-object-position: center left;
+     object-position: center left;
+  border-radius: 15px;
+}
+
+.homepage-hero__picture--reverse {
+  /* temporary styles */
+}
+
+.homepage-hero__picture--reverse img {
+  -o-object-position: left bottom;
+     object-position: left bottom;
+}
+
+.homepage-hero__picture--big {
+  height: 520px;
+}
+
+@media (max-width: 767px) {
+  .homepage-hero__picture--big {
+    height: 440px;
+  }
+}
+
+.homepage-hero__title {
+  color: #132a3a;
+}
+
+.homepage-hero__subtitle {
+  margin: 10px 0 0;
+  color: #132a3a;
+}
+
+.homepage-hero__button {
+  margin: 30px 0 0;
 }
 
 .wyswig-content {
