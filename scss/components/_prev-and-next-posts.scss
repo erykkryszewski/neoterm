@@ -93,12 +93,12 @@
     margin: 0 0 15px 0;
 
     a {
-      color: $dark;
+      color: $black;
       font-size: 15px;
       position: relative;
 
       &:hover {
-        color: $dark;
+        color: $black;
       }
 
       &::before {
@@ -200,7 +200,7 @@
       padding: 0 5px 0 0;
       margin: 10px 0px 0 0;
       line-height: 1;
-      color: $dark;
+      color: $black;
       font-size: 13px;
 
       &::after {
@@ -211,7 +211,7 @@
         content: '';
         width: 1px;
         height: 100%;
-        background: $dark;
+        background: $black;
       }
 
       &:last-of-type {
@@ -230,7 +230,7 @@
 
   &__title {
     font-size: 16px;
-    color: $dark;
+    color: $black;
     font-weight: 500;
     margin: 5px 0 0;
     text-align: left;
@@ -238,7 +238,7 @@
     min-height: 38px;
 
     &:hover {
-      color: $dark;
+      color: $black;
     }
 
     @media (min-width: 500px) and (max-width: 699px) {

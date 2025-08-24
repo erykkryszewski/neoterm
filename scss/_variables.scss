@@ -4,21 +4,20 @@
 $white: #ffffff;
 $black: #000000;
 
-$dark: #252525;
-$gray: #919191;
-$light-gray: #cecece;
-$very-light-gray: #f8f9fc;
+$gray: #1e2026;
+$light-gray: rgba(232, 237, 238, 0.5);
+$very-light-gray: #f5f5f5;
 
-$theme-color: #132a3a;
-$theme-color2: #03686b;
-$text-color: #030303;
+$theme-color: #3530ea;
+$text-color: #4e4e4e;
 
-$border-color: #929292;
-$input-color: #313131;
+$border-color: #686868;
+$placeholder-color: #c3c7cb;
+$input-color: #4e4e4e;
 
 $error-color: #d42c2c;
 
-$font-primary: "Figtree", serif;
+$font-primary: 'Figtree', serif;
 
 $bold: 700;
 $semi-bold: 600;
@@ -27,4 +26,3 @@ $regular: 400;
 $light: 300;
 
 $theme-border-radius: 15px;
-

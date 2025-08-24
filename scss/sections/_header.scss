@@ -11,7 +11,7 @@
   background: $white;
 
   &--fixed {
-    box-shadow: 0px 0px 19px -10px rgba($dark, 0.7);
+    box-shadow: 0px 0px 19px -10px rgba($black, 0.7);
     background: $white;
     min-height: 70px;
     top: -45px;
@@ -22,10 +22,10 @@
   }
 
   // &--open {
-  //   background: rgba($dark, 0.85);
+  //   background: rgba($black, 0.85);
 
   //   @media(max-width: 991px) {
-  //     background: $dark;
+  //     background: $black;
   //   }
   // }
 }

@@ -156,7 +156,7 @@
           height: 2px;
           left: 5px;
           bottom: 0px;
-          background: $theme-color2;
+          background: $theme-color;
           display: block;
           position: absolute;
           transition: all 300ms ease;
@@ -169,7 +169,7 @@
         }
 
         &:hover {
-          color: $theme-color2;
+          color: $theme-color;
 
           &::before {
             transform: scale(1, 1);
@@ -239,7 +239,7 @@
             transition: all 300ms ease;
 
             &:hover {
-              background: $theme-color2;
+              background: $theme-color;
             }
 
             @media (max-width: 1199px) {

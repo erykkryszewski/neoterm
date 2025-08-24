@@ -1,12 +1,16 @@
+// importants are necessary to override plugin styles and browser defaults
+
 .inputs {
   border: 1px solid $border-color !important;
-  padding: 13px !important;
+  padding: 10px !important;
   font-size: 15px !important;
   color: $input-color !important;
   display: block;
-  border-radius: $theme-border-radius !important;
+  border-radius: 5px !important;
   font-weight: 400 !important;
   width: 100%;
+  min-height: 50px;
+  letter-spacing: 0.25px !important;
 
   &::placeholder {
     font-size: 15px !important;
@@ -16,6 +20,12 @@
   }
 }
 
-input[type="text"], input[type="number"], input[type="email"], input[type="password"], input[type="tel"], select, textarea {
+input[type='text'],
+input[type='number'],
+input[type='email'],
+input[type='password'],
+input[type='tel'],
+select,
+textarea {
   @extend .inputs;
 }

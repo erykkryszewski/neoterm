@@ -1,6 +1,6 @@
 .bottom-bar {
   width: 100%;
-  background: $dark;
+  background: $black;
   padding: 0;
 
   &__wrapper {
@@ -11,7 +11,7 @@
     flex-wrap: wrap;
     padding: 15px 0;
 
-    @media(max-width: 767px) {
+    @media (max-width: 767px) {
       justify-content: center;
       flex-direction: column;
     }
