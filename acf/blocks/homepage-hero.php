@@ -4,7 +4,6 @@ $section_id = get_field('section_id');
 $background = get_field('background');
 $content = get_field('content');
 $image = get_field('image');
-$direction = get_field('direction');
 $button = get_field('button');
 ?>
 

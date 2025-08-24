@@ -3,14 +3,12 @@ $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 $section_id = get_field('section_id');
 $background = get_field('background');
 $title = get_field('title');
-$subtitle = get_field('subtitle');
 $text = get_field('text');
+$labels = get_field('labels');
 $image = get_field('image');
 $image_class = get_field('image_class');
-$image_size = get_field('image_size');
 $direction = get_field('direction');
 $button = get_field('button');
-$button_full_width = get_field('button_full_width');
 ?>
 
 <div class="text-with-image <?php if ('true' == $background) {
@@ -27,12 +25,22 @@ $button_full_width = get_field('button_full_width');
         <?php if (!empty($title)): ?>
         <h2 class="text-with-image__title"><?php echo apply_filters('the_title', $title); ?></h2>
         <?php endif; ?>
-        <?php if (!empty($subtitle)): ?>
-        <h3 class="text-with-image__subtitle"><?php echo apply_filters('the_title', $subtitle); ?></h3>
-        <?php endif; ?>
         <div>
           <?php echo apply_filters('acf_the_content', str_replace('&nbsp;', ' ', $text)); ?>
         </div>
+        <?php if (!empty($labels)): ?>
+        <ul class="text-with-image__labels">
+          <?php foreach ($labels as $item): ?>
+          <li class="text-with-image__label">
+            <?php if (!empty($item['link'])): ?>
+            <a href="<?php echo esc_html($item['link']['url']); ?>"><?php echo esc_html($item['link']['title']); ?></a>
+            <?php else: ?>
+            <?php echo esc_html($item['text']); ?>
+            <?php endif; ?>
+          </li>
+          <?php endforeach; ?>
+        </ul>
+        <?php endif; ?>
         <?php if (!empty($button)): ?>
         <a href="<?php echo esc_html($button['url']); ?>" class="button text-with-image__button <?php if (
   'true' == $button_full_width
@@ -45,17 +53,12 @@ $button_full_width = get_field('button_full_width');
       <div class="col-12 col-md-6">
         <div class="text-with-image__picture <?php if ('reverse' == $direction) {
           echo 'text-with-image__picture--reverse';
-        } ?> <?php if ('big' == $image_size) {
-   echo 'text-with-image__picture--big';
- } ?>">
-
-
+        } ?>">
 
           <?php echo seoleader_get_image('programmer', 'large', [
             'class' => 'object-fit-cover',
             'seed' => 'programmer1',
           ]); ?>
-
 
         </div>
       </div>
