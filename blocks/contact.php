@@ -4,7 +4,7 @@ $background = get_field('background');
 $section_id = get_field('section_id');
 
 $text = get_field('text');
-$form_id = get_field('form_id');
+$shortcode = get_field('form_id');
 $image = get_field('image');
 
 $global_phone_number = get_field('global_phone_number', 'options');
@@ -13,7 +13,7 @@ $global_social_media = get_field('global_social_media', 'options');
 $global_opening_hours = get_field('global_opening_hours', 'options');
 ?>
 
-<?php if (!empty($form_id)): ?>
+<?php if (!empty($shortcode)): ?>
 <div class="contact <?php if ($background == 'true') {
   echo 'contact--background';
 } ?>">
@@ -34,7 +34,7 @@ $global_opening_hours = get_field('global_opening_hours', 'options');
           <?php echo apply_filters('acf_the_content', str_replace('&nbsp;', ' ', $text)); ?>
           <?php endif; ?>
           <?php if (!empty($global_phone_number)): ?>
-          <a class="contact__phone ercodingtheme-phone-number"
+          <a class="contact__phone seoleadertheme-phone-number"
             href="tel:<?php echo esc_html($global_phone_number); ?>">Tel:
             <?php echo esc_html($global_phone_number); ?></a>
           <?php endif; ?>
@@ -43,12 +43,12 @@ $global_opening_hours = get_field('global_opening_hours', 'options');
             <?php echo esc_html($global_email); ?></a>
           <?php endif; ?>
           <!-- <?php if (!empty($global_opening_hours)): ?>
-              <h4 class="contact__subtitle"><?php esc_html_e('Godziny otwarcia:', 'ercodingtheme'); ?></h4>
+              <h4 class="contact__subtitle"><?php esc_html_e('Godziny otwarcia:', 'seoleadertheme'); ?></h4>
               <div class="opening-hours contact__opening-hours">
                 <?php echo apply_filters('acf_the_content', $global_opening_hours); ?>
               </div>
             <?php endif; ?> -->
-          <h4 class="contact__subtitle"><?php esc_html_e('Obserwuj nas:', 'ercodingtheme'); ?></h4>
+          <h4 class="contact__subtitle"><?php esc_html_e('Obserwuj nas:', 'seoleadertheme'); ?></h4>
           <?php if (!empty($global_social_media)): ?>
           <div class="social-media contact__social-media">
             <?php foreach ($global_social_media as $key => $item): ?>
@@ -63,8 +63,8 @@ $global_opening_hours = get_field('global_opening_hours', 'options');
         </div>
       </div>
       <div class="col-lg-6 col-xl-7">
-        <div class="contact__form ercoding-form">
-          <?php echo gravity_form($form_id, false, false, false, '', false, 11); ?>
+        <div class="contact__form">
+          <?php echo do_shortcode($shortcode); ?>
         </div>
       </div>
     </div>

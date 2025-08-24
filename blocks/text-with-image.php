@@ -51,7 +51,7 @@ $button_full_width = get_field('button_full_width');
 
 
 
-          <?php echo ercoding_get_image('programmer', 'large', [
+          <?php echo seoleader_get_image('programmer', 'large', [
             'class' => 'object-fit-cover',
             'seed' => 'programmer1',
           ]); ?>
