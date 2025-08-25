@@ -50,6 +50,12 @@ $footer_attribute = get_field('footer_attribute', 'options');
           <?php echo wp_get_attachment_image($footer_logo, 'full', false, ['class' => '']); ?>
           <?php endif; ?>
         </a>
+        <?php else: ?>
+        <?php if ($footer_logo): ?>
+        <div class="footer__logo">
+          <?php echo wp_get_attachment_image($footer_logo, 'full', false, ['class' => '']); ?>
+        </div>
+        <?php endif; ?>
         <?php endif; ?>
 
         <?php if ($global_phone_number): ?>
