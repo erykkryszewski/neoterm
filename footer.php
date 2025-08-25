@@ -76,7 +76,7 @@ $footer_attribute = get_field('footer_attribute', 'options');
 
     <?php if (!empty($footer_summary)): ?>
     <div class="footer__summary">
-      <span><?php echo apply_filters('the_title', $footer_summary); ?></span>
+      <?php echo apply_filters('the_title', $footer_summary); ?>
     </div>
     <?php endif; ?>
     <?php if (!empty($footer_attribute)): ?>
