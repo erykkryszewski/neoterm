@@ -1,4 +1,63 @@
-.services{
-	position:relative;
-	width:100%;
+.services {
+  position: relative;
+  width: 100%;
+  background: $black;
+  padding: 77px 163px 33px;
+
+  &__wrapper {
+    width: 100%;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p,
+    span {
+      color: $white;
+    }
+  }
+
+  &__boxes {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  &__box {
+    background: $gray;
+    padding: 16px 24px;
+    border-radius: 5px;
+    width: calc(50% - 10px);
+
+    @media (max-width: 767px) {
+      padding: 16px 0;
+      background: transparent;
+    }
+  }
+
+  &__box-icon {
+    background: $white;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img,
+    svg {
+      max-width: 20px;
+      filter: brightness(0);
+    }
+  }
+
+  &__box-title {
+    margin: 38px 0 0;
+
+    @media (max-width: 767px) {
+      margin: 16px 0 0;
+    }
+  }
 }

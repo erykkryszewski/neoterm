@@ -51,6 +51,32 @@
                     "parent_repeater": "field_656b8224c11f7"
                 }
             ]
+        },
+        {
+            "key": "field_68acc1482302d",
+            "label": "Speed",
+            "name": "speed",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "50": "Slow",
+                "100": "Medium",
+                "150": "Fast"
+            },
+            "default_value": 100,
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "layout": "vertical",
+            "save_other_choice": 0
         }
     ],
     "location": [
@@ -71,5 +97,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1756071492
+    "modified": 1756152173
 }

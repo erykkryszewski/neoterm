@@ -1108,14 +1108,15 @@
   display: block;
   content: '';
   background-color: #ffffff;
-  background-image: url("./images/arrow-right-icon.svg");
-  background-size: contain;
+  background-image: url("./images/arrow-icon.svg");
+  background-size: 12px 12px;
   background-repeat: no-repeat;
   background-position: center;
   -ms-flex-negative: 0;
       flex-shrink: 0;
   width: 30px;
   height: 30px;
+  border-radius: 2px;
 }
 
 .editor-styles-wrapper .button--arrow-mobile-light {
@@ -1138,14 +1139,15 @@
   display: block;
   content: '';
   background-color: #ffffff;
-  background-image: url("./images/arrow-right-icon.svg");
-  background-size: contain;
+  background-image: url("./images/arrow-icon.svg");
+  background-size: 12px 12px;
   background-repeat: no-repeat;
   background-position: center;
   -ms-flex-negative: 0;
       flex-shrink: 0;
   width: 30px;
   height: 30px;
+  border-radius: 2px;
 }
 
 @media (max-width: 767px) {

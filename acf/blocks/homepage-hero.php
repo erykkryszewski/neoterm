@@ -11,7 +11,7 @@ $button = get_field('button');
   <?php if (!empty($section_id)): ?>
   <div class="section-id" id="<?php echo esc_html($section_id); ?>"></div>
   <?php endif; ?>
-  <div class="container">
+  <div class="container-fluid container-fluid--padding">
     <div class="row homepage-hero__row">
       <div class="col-12 col-md-6">
         <div class="homepage-hero__content">
@@ -19,7 +19,7 @@ $button = get_field('button');
           <?php echo apply_filters('acf_the_content', str_replace('&nbsp;', ' ', $content)); ?>
           <?php endif; ?>
           <?php if (!empty($button)): ?>
-          <a href="<?php echo esc_html($button['url']); ?>" class="button homepage-hero__button"
+          <a href="<?php echo esc_html($button['url']); ?>" class="button button--arrow homepage-hero__button"
             target="<?php echo esc_html($button['target']); ?>"><?php echo esc_html($button['title']); ?></a>
           <?php endif; ?>
         </div>

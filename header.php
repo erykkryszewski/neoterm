@@ -48,7 +48,7 @@ $body_classes = get_body_class();
   <header class="header <?php if (!is_front_page()) {
     echo 'header--subpage';
   } ?>">
-    <div class="container">
+    <div class="container-fluid container-fluid--padding">
       <nav class="nav <?php if (!is_front_page()) {
         echo 'nav--subpage';
       } ?>">

@@ -1,7 +1,7 @@
 <?php
 $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 $section_id = get_field('section_id');
-$title = get_field('title');
+$text = get_field('text');
 $boxes = get_field('boxes'); // icon, title, text
 
 $slider = get_field('slider');
@@ -14,15 +14,15 @@ $slider = get_field('slider');
   <div class="container">
     <div class="services__wrapper">
       <div class="row">
-        <?php if (!empty($title)): ?>
+        <?php if (!empty($text)): ?>
         <div class="col-lg-4">
           <div class="services__column services__column--left">
-            <h2 class="services__title"><?php echo apply_filters('the_title', $title); ?></h2>
+            <h2 class="services__title"><?php echo apply_filters('the_title', $text); ?></h2>
           </div>
         </div>
         <?php endif; ?>
         <?php if (!empty($boxes)): ?>
-        <div class="col-lg-8 <?php if (empty($title)) {
+        <div class="col-lg-8 <?php if (empty($text)) {
           echo 'col-lg-12';
         } ?>">
           <div class="services__column services__column--right">
@@ -42,8 +42,8 @@ $slider = get_field('slider');
                   <?php echo apply_filters('acf_the_content', $item['text']); ?>
                 </div>
                 <?php endif; ?>
-                <?php endforeach; ?>
               </div>
+              <?php endforeach; ?>
             </div>
           </div>
           <?php endif; ?>
@@ -71,3 +71,4 @@ $slider = get_field('slider');
       </div>
     </div>
   </div>
+</div>
