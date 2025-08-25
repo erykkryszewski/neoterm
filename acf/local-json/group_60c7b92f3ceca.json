@@ -88,7 +88,7 @@
             "label": "Form text",
             "name": "form_text",
             "aria-label": "",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -98,10 +98,10 @@
                 "id": ""
             },
             "default_value": "",
-            "maxlength": "",
-            "rows": 4,
-            "placeholder": "",
-            "new_lines": "wpautop"
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         },
         {
             "key": "field_60c7bb54d9ea3",
@@ -142,5 +142,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1756121806
+    "modified": 1756143709
 }

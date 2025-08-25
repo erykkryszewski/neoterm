@@ -18,8 +18,6 @@ $faq = get_field('faq');
     <div class="faq__wrapper">
       <?php foreach ($faq as $key => $item): ?>
       <div class="faq__item">
-        <div class="faq__number"> <?php echo wp_get_attachment_image($item['icon'], 'medium', '', ['class' => '']); ?>
-        </div>
         <div class="faq__content">
           <h3 class="faq__question"><?php echo apply_filters('the_title', $item['question']); ?></h3>
           <div class="faq__answer">

@@ -12,9 +12,7 @@ $button = get_field('button');
   <div class="section-id" id="<?php echo esc_html($section_id); ?>"></div>
   <?php endif; ?>
   <div class="container">
-    <div class="row homepage-hero__row <?php if ('reverse' == $direction) {
-      echo 'homepage-hero__row--reverse';
-    } ?>">
+    <div class="row homepage-hero__row">
       <div class="col-12 col-md-6">
         <div class="homepage-hero__content">
           <?php if (!empty($content)): ?>
@@ -29,10 +27,7 @@ $button = get_field('button');
       <?php if (!empty($image)): ?>
       <div class="col-12 col-md-6">
         <div class="homepage-hero__picture">
-          <?php echo seoleader_get_image('programmer', 'large', [
-            'class' => 'object-fit-cover',
-            'seed' => 'programmer1',
-          ]); ?>
+          <?php echo wp_get_attachment_image($image, 'full', '', ['class' => 'object-fit-cover']); ?>
         </div>
       </div>
       <?php endif; ?>

@@ -24,12 +24,12 @@
         },
         {
             "key": "field_6657a6c9a6d0a",
-            "label": "Subtitle",
-            "name": "subtitle",
+            "label": "Decoration text",
+            "name": "decoration_text",
             "aria-label": "",
-            "type": "textarea",
+            "type": "text",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -38,9 +38,9 @@
             },
             "default_value": "",
             "maxlength": "",
-            "rows": 1,
             "placeholder": "",
-            "new_lines": "br"
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_6657a6dba6d0b",
@@ -106,5 +106,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1717020394
+    "modified": 1756143388
 }

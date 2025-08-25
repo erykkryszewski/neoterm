@@ -42,11 +42,8 @@ $button = get_field('button');
         </ul>
         <?php endif; ?>
         <?php if (!empty($button)): ?>
-        <a href="<?php echo esc_html($button['url']); ?>" class="arrow-link text-with-image__link <?php if (
-  'true' == $button_full_width
-) {
-  echo 'button--full-width';
-} ?>" target="<?php echo esc_html($button['target']); ?>"><?php echo esc_html($button['title']); ?></a>
+        <a href="<?php echo esc_html($button['url']); ?>" class="arrow-link text-with-image__link"
+          target="<?php echo esc_html($button['target']); ?>"><?php echo esc_html($button['title']); ?></a>
         <?php endif; ?>
       </div>
       <?php if (!empty($image)): ?>
@@ -55,10 +52,7 @@ $button = get_field('button');
           echo 'text-with-image__picture--reverse';
         } ?>">
 
-          <?php echo seoleader_get_image('programmer', 'large', [
-            'class' => 'object-fit-cover',
-            'seed' => 'programmer1',
-          ]); ?>
+          <?php echo wp_get_attachment_image($image, 'full', '', ['class' => 'object-fit-cover']); ?>
 
         </div>
       </div>
