@@ -227,7 +227,7 @@ function restrict_blocks_page_access()
   $current_domain = $_SERVER['HTTP_HOST'];
   $current_url = $_SERVER['REQUEST_URI'];
 
-  if (strpos($current_url, 'blocks') !== false && strpos($current_domain, 'seoleaderstarter') === false) {
+  if (strpos($current_url, 'blocks') !== false && strpos($current_domain, 'seoleadertheme') === false) {
     wp_redirect(home_url());
     exit();
   }
