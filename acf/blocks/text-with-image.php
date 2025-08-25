@@ -42,7 +42,7 @@ $button = get_field('button');
         </ul>
         <?php endif; ?>
         <?php if (!empty($button)): ?>
-        <a href="<?php echo esc_html($button['url']); ?>" class="button text-with-image__button <?php if (
+        <a href="<?php echo esc_html($button['url']); ?>" class="arrow-link text-with-image__link <?php if (
   'true' == $button_full_width
 ) {
   echo 'button--full-width';

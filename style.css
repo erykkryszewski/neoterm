@@ -4000,6 +4000,10 @@ html::-webkit-scrollbar-thumb {
   font-weight: 700;
 }
 
+.arrow-link {
+  width: 100%;
+}
+
 /* @blocks:start */
 .blank-button {
   width: 100%;
