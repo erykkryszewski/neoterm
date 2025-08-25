@@ -19,7 +19,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const initTrack = async (track) => {
     const viewport = track.closest('.logos__viewport') || track.parentElement;
-    if (!viewport) return;
+    const container = track.closest('.logos');
+    if (!viewport || !container) return;
 
     const baseHTML = track.dataset.base || track.innerHTML;
     track.dataset.base = baseHTML;
@@ -29,7 +30,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const cs = getComputedStyle(track);
     const gap = parseFloat(cs.columnGap || cs.gap || '0') || 0;
-
     const widthOf = (el) => el.getBoundingClientRect().width;
     const measureTotal = () => {
       const kids = Array.from(track.children);
@@ -38,27 +38,41 @@ window.addEventListener('DOMContentLoaded', () => {
     };
 
     const vw = viewport.getBoundingClientRect().width;
+
     while (measureTotal() < vw * 2) {
       track.insertAdjacentHTML('beforeend', baseHTML);
     }
 
     let widths = Array.from(track.children, widthOf);
 
-    // animation
-    const speed = parseFloat(track.getAttribute('data-speed') || '140');
+    const baseSpeed = parseFloat(track.getAttribute('data-speed') || '140'); // px/s
     let x = 0;
     let head = 0;
     let last = performance.now();
+    let paused = false;
+
+    // hover → pausss
+    const onEnter = () => {
+      paused = true;
+      container.classList.add('is-paused');
+    };
+    const onLeave = () => {
+      paused = false;
+      container.classList.remove('is-paused');
+    };
+    container.addEventListener('mouseenter', onEnter);
+    container.addEventListener('mouseleave', onLeave);
 
     if (track._raf) cancelAnimationFrame(track._raf);
 
     const step = (now) => {
-      const dt = Math.min((now - last) / 1000, 1 / 30);
+      const dt = Math.min((now - last) / 1000, 1 / 30); // clamp ~33ms
       last = now;
-      x -= speed * dt;
+
+      const v = paused ? 0 : baseSpeed;
+      x -= v * dt;
 
       let w = widths[head] + gap;
-
       while (-x >= w) {
         track.appendChild(track.firstElementChild);
         x += w;
@@ -71,7 +85,6 @@ window.addEventListener('DOMContentLoaded', () => {
     };
 
     track._raf = requestAnimationFrame(step);
-
     let t;
     const onResize = () => {
       cancelAnimationFrame(track._raf);

@@ -60,4 +60,110 @@
       margin: 16px 0 0;
     }
   }
+
+  &__slider {
+    max-width: 1156px;
+    margin: 0 0 0 5px;
+    --fade: 120px;
+    background: $black;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    padding: 8px 0;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 var(--fade),
+      #000 calc(100% - var(--fade)),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 var(--fade),
+      #000 calc(100% - var(--fade)),
+      transparent 100%
+    );
+
+    @media (max-width: 1399px) {
+      --fade: 96px;
+    }
+    @media (max-width: 1199px) {
+      --fade: 80px;
+    }
+    @media (max-width: 991px) {
+      --fade: 64px;
+    }
+    @media (max-width: 767px) {
+      --fade: 48px;
+    }
+  }
+
+  &__track {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    white-space: nowrap;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+
+    @media (max-width: 1399px) {
+      gap: 36px;
+    }
+    @media (max-width: 1199px) {
+      gap: 32px;
+    }
+    @media (max-width: 991px) {
+      gap: 28px;
+    }
+    @media (max-width: 767px) {
+      gap: 24px;
+    }
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    line-height: 1;
+    color: #fff;
+    white-space: nowrap;
+
+    p {
+      margin: 0;
+    }
+
+    @media (max-width: 991px) {
+      font-size: 14px;
+    }
+    @media (max-width: 767px) {
+      font-size: 13px;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    @media (max-width: 991px) {
+      width: 15px;
+      height: 15px;
+    }
+    @media (max-width: 767px) {
+      width: 14px;
+      height: 14px;
+    }
+  }
 }
