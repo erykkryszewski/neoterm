@@ -3574,7 +3574,7 @@ html::-webkit-scrollbar-thumb {
   height: 28px;
   -ms-flex-negative: 0;
       flex-shrink: 0;
-  color: #5b5fc7;
+  color: #3530ea;
 }
 
 .faq__toggle::before, .faq__toggle::after {
@@ -3583,7 +3583,7 @@ html::-webkit-scrollbar-thumb {
   top: 50%;
   left: 50%;
   width: 18px;
-  height: 2px;
+  height: 2.5px;
   background: currentColor;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -4061,6 +4061,34 @@ html::-webkit-scrollbar-thumb {
 .section-title__wrapper--centered p {
   text-align: center;
   margin: 0 auto !important;
+}
+
+.section-title__decoration-text {
+  padding: 5px 15px;
+  margin: 0 0 8px;
+  border-radius: 5px;
+  background: #f5f5f5;
+  color: #000000;
+  font-size: 15px;
+  letter-spacing: 0.25px;
+  font-weight: 500;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  gap: 8px;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.section-title__decoration-text::before {
+  display: block;
+  content: '';
+  background: #3530ea;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
 }
 
 .shortcode {

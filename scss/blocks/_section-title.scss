@@ -28,4 +28,28 @@
       }
     }
   }
+
+  &__decoration-text {
+    padding: 5px 15px;
+    margin: 0 0 8px;
+    border-radius: 5px;
+    background: $very-light-gray;
+    color: $black;
+    font-size: 15px;
+    letter-spacing: 0.25px;
+    font-weight: 500;
+    display: inline-flex;
+    gap: 8px;
+    display: inline-flex;
+    align-items: center;
+
+    &::before {
+      display: block;
+      content: '';
+      background: $theme-color;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+  }
 }
