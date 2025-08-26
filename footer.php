@@ -59,35 +59,44 @@ $footer_attribute = get_field('footer_attribute', 'options');
         <?php endif; ?>
 
         <?php if ($global_phone_number): ?>
-        <span class="footer__info-text"><?php esc_html_e('Zadzwoń do nas:', 'seoleadertheme'); ?></span>
+        <span class="footer__info-text footer__info-text--phone"><?php esc_html_e(
+          'Zadzwoń do nas:',
+          'seoleadertheme',
+        ); ?></span>
         <a href="tel:<?php echo esc_html($global_phone_number); ?>"
           class="footer__phone seoleadertheme-phone-number"><?php echo esc_html($global_phone_number); ?></a>
         <?php endif; ?>
 
         <?php if ($global_address): ?>
-        <span class="footer__info-text"><?php esc_html_e('Adres:', 'seoleadertheme'); ?></span>
+        <span
+          class="footer__info-text footer__info-text--address"><?php esc_html_e('Adres:', 'seoleadertheme'); ?></span>
         <div class="footer__address">
           <?php echo apply_filters('the_title', $global_address); ?>
         </div>
         <?php endif; ?>
 
         <?php if ($global_opening_hours): ?>
-        <span class="footer__info-text"><?php esc_html_e('Godziny Otwarcia::', 'seoleadertheme'); ?></span>
+        <span class="footer__info-text footer__info-text--opening-hours"><?php esc_html_e(
+          'Godziny Otwarcia:',
+          'seoleadertheme',
+        ); ?></span>
         <div class="footer__opening-hours">
           <?php echo apply_filters('the_title', $global_opening_hours); ?>
         </div>
         <?php endif; ?>
+        <a href="/kontakt/"
+          class="button button--arrow footer__button"><?php esc_html_e('Kontakt', 'seoleadertheme'); ?></a>
       </div>
     </div>
 
     <?php if (!empty($footer_summary)): ?>
-    <div class="footer__summary">
+    <h3 class="footer__summary">
       <?php echo apply_filters('the_title', $footer_summary); ?>
-    </div>
+    </h3>
     <?php endif; ?>
     <?php if (!empty($footer_attribute)): ?>
     <div class="footer__attribute">
-      <a href="<?php echo esc_html($footer_attribute['url']); ?>"><?php echo esc_html(
+      <a href="<?php echo esc_html($footer_attribute['url']); ?>" target="_blank"><?php echo esc_html(
   $footer_attribute['title'],
 ); ?></a>
     </div>

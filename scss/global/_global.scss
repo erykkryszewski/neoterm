@@ -242,6 +242,7 @@ ol > li {
 
   &--padding {
     padding: 0 30px;
+    max-width: 1800px;
 
     @media (max-width: 991px) {
       padding: 0 15px;

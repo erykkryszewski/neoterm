@@ -1,78 +1,143 @@
 .footer {
-  background: $very-light-gray;
+  background: $black;
   width: 100%;
-  margin: 70px 0 0;
-
-  &--homepage {
-    margin: 0;
-  }
+  padding: 85px 0 63px;
 
   &__wrapper {
-    padding: 90px 0 80px;
-  }
-
-  &__logo {
-    display: inline-block;
-
-    img, svg {
-      max-width: 200px;
-      height: auto;
-    }
-  }
-
-  &__phone, &__email {
-    display: block;
-    font-weight: 400;
-    font-size: 16px;
-  }
-
-  &__phone {
-    margin: 0 0 5px;
-  }
-
-  &__address {
-    span {
-      display: block;
-      font-size: 16px;
-      color: $black;
-      font-weight: 500;
-      margin: 15px 0 0;
-    }
-
-    p {
-      margin: 0;
-      font-size: 16px;
-    }
-  }
-
-  &__subtitle {
-    @media(max-width: 767px) {
-      margin: 25px auto 0;
-    }
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    display: flex;
+    gap: 64px;
+    padding: 0 0 24px;
   }
 
   &__column {
     width: 100%;
-    
-    h1, h2, h3, h4 {
-      @extend .h3;
-      margin: 3px 0 0;
+    position: relative;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @extend .h5;
+      margin: 0 0 16px;
+      color: $white;
     }
 
-    ul {
-      width: 100%;
-      margin: 20px 0 0;
+    ul,
+    ol {
+      margin: 0 0 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
 
-      li {
+      li,
+      li a {
+        @extend .paragraph;
+        display: inline-block;
         margin: 8px 0 0;
-        list-style: none;
+        color: #c3c7cb;
 
-        a {
-          color: $black;
-          font-size: 16px;
-          line-height: 1.5;
-          max-width: 200px;
+        &:first-child {
+          margin: 8px 0 0;
         }
+      }
+    }
+
+    &--second {
+      padding: 0 64px 0 48px;
+
+      &::before {
+        position: absolute;
+        left: 0;
+        bottom: -19px;
+        height: calc(100% + 19px);
+        width: 1px;
+        background: rgba(255, 255, 255, 0.25);
+        display: block;
+        content: '';
+      }
+    }
+
+    &--third {
+      padding: 0 64px;
+
+      &::after {
+        position: absolute;
+        right: 0;
+        bottom: -19px;
+        height: calc(100% + 19px);
+        width: 1px;
+        background: rgba(255, 255, 255, 0.25);
+        display: block;
+        content: '';
+      }
+    }
+  }
+
+  &__logo {
+    max-width: 161px;
+  }
+
+  &__info-text {
+    display: block;
+    color: $white;
+
+    &--phone {
+      margin: 64px 0 8px;
+    }
+
+    &--address {
+      margin: 32px 0 8px;
+    }
+
+    &--opening-hours {
+      margin: 32px 0 8px;
+    }
+  }
+
+  &__phone,
+  &__address,
+  &__opening-hours {
+    display: block;
+    @extend .h4;
+    color: $white;
+    max-width: 272px;
+  }
+
+  &__button {
+    margin: 32px 0 0;
+  }
+
+  &__summary {
+    width: 100%;
+    max-width: 950px;
+    padding: 64px 0;
+    @extend .h1;
+    color: $white;
+  }
+
+  &__attribute {
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+
+    a {
+      color: $white;
+      text-decoration: underline;
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+
+      &::after {
+        content: '';
+        display: block;
+        background: url('./images/victory-sign.svg') center/15px 15px no-repeat;
+        width: 15px;
+        height: 15px;
       }
     }
   }
