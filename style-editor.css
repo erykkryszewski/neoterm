@@ -1481,6 +1481,8 @@
   .editor-styles-wrapper h1 > b,
   .editor-styles-wrapper h1 > span {
     font-size: 26px;
+    line-height: 115%;
+    font-weight: 500;
   }
 }
 

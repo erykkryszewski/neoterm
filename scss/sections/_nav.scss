@@ -10,7 +10,7 @@
 
   @media (max-width: 991px) {
     padding: 10px 0;
-    min-height: 65px;
+    gap: 8px;
   }
 
   &--fixed {
@@ -23,8 +23,10 @@
     position: relative;
     transition: all 250ms ease;
 
-    @media (max-width: 991px) {
+    @media (max-width: 767px) {
       position: static;
+      width: auto;
+      max-width: 104px;
     }
 
     img,
@@ -253,6 +255,12 @@
       &.active {
         animation: pulse 700ms forwards ease-in-out;
       }
+    }
+  }
+
+  &__button {
+    @media (max-width: 767px) {
+      width: auto;
     }
   }
 }

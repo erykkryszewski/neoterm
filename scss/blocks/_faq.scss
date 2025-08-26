@@ -3,6 +3,10 @@
   max-width: 100vw;
   position: relative;
 
+  @media (max-width: 767px) {
+    padding: 0 10px;
+  }
+
   &--background {
     background: $very-light-gray;
   }

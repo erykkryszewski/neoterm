@@ -3,6 +3,10 @@
   text-align: left;
   position: relative;
 
+  @media (max-width: 767px) {
+    padding: 0 10px;
+  }
+
   &--background {
     background: $very-light-gray;
   }
@@ -16,6 +20,10 @@
 
     &--reverse {
       flex-direction: row-reverse;
+
+      @media (max-width: 767px) {
+        flex-direction: column-reverse;
+      }
     }
   }
 

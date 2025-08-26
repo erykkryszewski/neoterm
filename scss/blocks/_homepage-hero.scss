@@ -15,9 +15,20 @@
   &__content {
     padding: 32px;
 
+    @media (max-width: 767px) {
+      padding: 0;
+    }
+
     p {
       font-size: 21px;
       font-weight: 500;
+
+      @media (max-width: 767px) {
+        font-size: 17px;
+        line-height: 105%;
+        font-weight: 400;
+        margin: 16px 0 0;
+      }
 
       em {
         font-size: 17px;
@@ -25,6 +36,12 @@
         line-height: 105%;
         color: #7d7d7d;
         font-style: normal;
+
+        @media (max-width: 767px) {
+          font-size: 15px;
+          line-height: 115%;
+          letter-spacing: 0.25px;
+        }
       }
     }
   }
@@ -41,6 +58,11 @@
 
   &__button {
     margin: 30px 0 0;
+
+    @media (max-width: 767px) {
+      width: auto;
+      margin: 16px 0 0;
+    }
   }
 
   &__picture {
