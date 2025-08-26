@@ -21,33 +21,38 @@ $button = get_field('button');
     <div class="row text-with-image__row <?php if ('reverse' == $direction) {
       echo 'text-with-image__row--reverse';
     } ?>">
-      <div class="col-12 col-md-6">
-        <?php if (!empty($title)): ?>
-        <h2 class="text-with-image__title"><?php echo apply_filters('the_title', $title); ?></h2>
-        <?php endif; ?>
-        <div>
-          <?php echo apply_filters('acf_the_content', str_replace('&nbsp;', ' ', $text)); ?>
+      <div class="col-12 col-md-6 col-lg-7">
+        <div class="text-with-image__content <?php if ('reverse' == $direction) {
+          echo 'text-with-image__content--reverse';
+        } ?>">
+          <?php if (!empty($title)): ?>
+          <h3 class="text-with-image__title"><?php echo apply_filters('the_title', $title); ?></h3>
+          <?php endif; ?>
+          <div>
+            <?php echo apply_filters('acf_the_content', str_replace('&nbsp;', ' ', $text)); ?>
+          </div>
+          <?php if (!empty($labels)): ?>
+          <ul class="text-with-image__labels">
+            <?php foreach ($labels as $item): ?>
+            <li class="text-with-image__label">
+              <?php if (!empty($item['link'])): ?>
+              <a
+                href="<?php echo esc_html($item['link']['url']); ?>"><?php echo esc_html($item['link']['title']); ?></a>
+              <?php else: ?>
+              <?php echo esc_html($item['text']); ?>
+              <?php endif; ?>
+            </li>
+            <?php endforeach; ?>
+          </ul>
+          <?php endif; ?>
+          <?php if (!empty($button)): ?>
+          <a href="<?php echo esc_html($button['url']); ?>" class="arrow-link text-with-image__link"
+            target="<?php echo esc_html($button['target']); ?>"><?php echo esc_html($button['title']); ?></a>
+          <?php endif; ?>
         </div>
-        <?php if (!empty($labels)): ?>
-        <ul class="text-with-image__labels">
-          <?php foreach ($labels as $item): ?>
-          <li class="text-with-image__label">
-            <?php if (!empty($item['link'])): ?>
-            <a href="<?php echo esc_html($item['link']['url']); ?>"><?php echo esc_html($item['link']['title']); ?></a>
-            <?php else: ?>
-            <?php echo esc_html($item['text']); ?>
-            <?php endif; ?>
-          </li>
-          <?php endforeach; ?>
-        </ul>
-        <?php endif; ?>
-        <?php if (!empty($button)): ?>
-        <a href="<?php echo esc_html($button['url']); ?>" class="arrow-link text-with-image__link"
-          target="<?php echo esc_html($button['target']); ?>"><?php echo esc_html($button['title']); ?></a>
-        <?php endif; ?>
       </div>
       <?php if (!empty($image)): ?>
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6 col-lg-5">
         <div class="text-with-image__picture <?php if ('reverse' == $direction) {
           echo 'text-with-image__picture--reverse';
         } ?>">

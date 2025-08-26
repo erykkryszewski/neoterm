@@ -1,3 +1,22 @@
 .arrow-link {
-  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 2%;
+  font-weight: 500;
+  color: $theme-color;
+
+  &::after {
+    display: block;
+    content: '';
+    background-image: url('./images/arrow-icon.svg');
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+  }
 }

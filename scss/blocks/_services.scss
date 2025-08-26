@@ -30,10 +30,12 @@
     padding: 16px 24px;
     border-radius: 5px;
     width: calc(50% - 10px);
+    max-width: 330px;
 
     @media (max-width: 767px) {
       padding: 16px 0;
       background: transparent;
+      max-width: 100%;
     }
   }
 
@@ -63,12 +65,12 @@
 
   &__slider {
     max-width: 1156px;
-    margin: 0 0 0 5px;
+    margin: 54px 0 0 5px;
     --fade: 120px;
     background: $black;
     position: relative;
     overflow: hidden;
-    color: #fff;
+    color: $white;
     padding: 8px 0;
     -webkit-mask-image: linear-gradient(
       to right,
@@ -107,15 +109,6 @@
     will-change: transform;
     transform: translate3d(0, 0, 0);
 
-    @media (max-width: 1399px) {
-      gap: 36px;
-    }
-    @media (max-width: 1199px) {
-      gap: 32px;
-    }
-    @media (max-width: 991px) {
-      gap: 28px;
-    }
     @media (max-width: 767px) {
       gap: 24px;
     }
@@ -124,21 +117,15 @@
   &__item {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    font-size: 15px;
-    line-height: 1;
-    color: #fff;
+    gap: 8px;
+    font-size: 17px;
+    line-height: 105%;
+    color: $white;
     white-space: nowrap;
+    padding: 15px 0;
 
     p {
       margin: 0;
-    }
-
-    @media (max-width: 991px) {
-      font-size: 14px;
-    }
-    @media (max-width: 767px) {
-      font-size: 13px;
     }
   }
 

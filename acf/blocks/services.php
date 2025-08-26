@@ -15,14 +15,14 @@ $slider = get_field('slider');
     <div class="services__wrapper">
       <div class="row">
         <?php if (!empty($text)): ?>
-        <div class="col-lg-4">
+        <div class="col-lg-5">
           <div class="services__column services__column--left">
             <h2 class="services__title"><?php echo apply_filters('the_title', $text); ?></h2>
           </div>
         </div>
         <?php endif; ?>
         <?php if (!empty($boxes)): ?>
-        <div class="col-lg-8 <?php if (empty($text)) {
+        <div class="col-lg-7 <?php if (empty($text)) {
           echo 'col-lg-12';
         } ?>">
           <div class="services__column services__column--right">
