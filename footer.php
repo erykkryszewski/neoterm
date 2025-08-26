@@ -85,7 +85,8 @@ $footer_attribute = get_field('footer_attribute', 'options');
         </div>
         <?php endif; ?>
         <a href="/kontakt/"
-          class="button button--arrow footer__button"><?php esc_html_e('Kontakt', 'seoleadertheme'); ?></a>
+          class="button button--arrow footer__button"><?php esc_html_e('Kontakt', 'seoleadertheme'); ?><span
+            class="animation"></span></a>
       </div>
     </div>
 

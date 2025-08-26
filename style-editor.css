@@ -1065,14 +1065,13 @@
   gap: 10px;
   background: #3530ea;
   color: #ffffff;
-  -webkit-transition: all 300ms ease;
-  transition: all 300ms ease;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
   white-space: nowrap;
   -ms-flex-negative: 0;
       flex-shrink: 0;
   text-align: center;
   position: relative;
-  overflow: hidden;
 }
 
 @media (max-width: 767px) {
@@ -1104,19 +1103,57 @@
           justify-content: space-between;
 }
 
-.editor-styles-wrapper .button--arrow::after {
+.editor-styles-wrapper .button--arrow::before {
   display: block;
   content: '';
   background-color: #ffffff;
-  background-image: url("./images/arrow-icon.svg");
-  background-size: 12px 12px;
-  background-repeat: no-repeat;
-  background-position: center;
   -ms-flex-negative: 0;
       flex-shrink: 0;
   width: 30px;
   height: 30px;
   border-radius: 2px;
+  position: relative;
+  z-index: 1;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+
+.editor-styles-wrapper .button--arrow::after {
+  display: block;
+  content: '';
+  background-image: url("./images/arrow-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  right: 13px;
+  z-index: 2;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+}
+
+.editor-styles-wrapper .button--arrow span.animation {
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+  width: 0px;
+}
+
+.editor-styles-wrapper .button--arrow:hover span.animation {
+  width: 20px;
+}
+
+.editor-styles-wrapper .button--arrow:hover::after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
 
 .editor-styles-wrapper .button--arrow-mobile-light {
@@ -1155,6 +1192,38 @@
     background-color: #3530ea;
     background-image: url("./images/arrow-icon-white.svg");
   }
+}
+
+.editor-styles-wrapper .button--arrow-mobile-light span.animation {
+  display: block;
+  width: 100%;
+  height: calc(100% + 2px);
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -1px;
+  bottom: 0;
+  z-index: -1;
+  background: #3530ea;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+  border-radius: 5px;
+}
+
+@media (max-width: 767px) {
+  .editor-styles-wrapper .button--arrow-mobile-light span.animation {
+    display: none;
+  }
+}
+
+.editor-styles-wrapper .button--arrow-mobile-light:hover span.animation {
+  right: -20px;
+}
+
+.editor-styles-wrapper .button--arrow-mobile-light:hover::after {
+  right: -20px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
 
 .editor-styles-wrapper .button--w-100 {

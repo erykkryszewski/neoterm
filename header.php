@@ -95,32 +95,18 @@ $body_classes = get_body_class();
           </div>
           <?php endif; ?>
           <?php if (!empty($header_button)): ?>
-          <a href="<?php echo esc_html($header_button['url']); ?>" class="button nav__button <?php if (
+          <a href="<?php echo esc_url($header_button['url']); ?>" class="button nav__button <?php if (
   !is_front_page()
 ) {
   echo 'nav__button--subpage';
-} ?>" target="<?php echo esc_html($header_button['target']); ?>">
-
-            <?php if (!empty($header_button_before_icon)): ?>
-            <span class="button__icon button__icon--before">
-              <?php echo wp_get_attachment_image($header_button_before_icon, 'full', '', [
-                'loading' => 'eager',
-                'decoding' => 'async',
-              ]); ?>
-            </span>
-            <?php endif; ?>
+} ?>"
+            target="<?php echo !empty($header_button['target']) ? esc_attr($header_button['target']) : '_self'; ?>"
+            <?php if (!empty($header_button['target']) && $header_button['target'] === '_blank') { ?>rel="noopener"
+            <?php } ?>>
             <?php echo esc_html($header_button['title']); ?>
-            <?php if (!empty($header_button_after_icon)): ?>
-            <span class="button__icon button__icon--after">
-              <?php echo wp_get_attachment_image($header_button_after_icon, 'full', '', [
-                'loading' => 'eager',
-                'decoding' => 'async',
-              ]); ?>
-            </span>
-            <?php endif; ?>
-
           </a>
           <?php endif; ?>
+
           <div class="hamburger nav__hamburger <?php if (!is_front_page()) {
             echo 'nav__hamburger--subpage';
           } ?>">

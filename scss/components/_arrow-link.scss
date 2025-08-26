@@ -18,5 +18,16 @@
     flex-shrink: 0;
     width: 18px;
     height: 18px;
+    position: relative;
+    transition: all 400ms ease;
+    right: 0;
+  }
+
+  &:hover {
+    color: $theme-color;
+
+    &::after {
+      right: -8px;
+    }
   }
 }

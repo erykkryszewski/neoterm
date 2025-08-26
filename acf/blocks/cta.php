@@ -60,7 +60,7 @@ $form_shortcode = get_field('form_shortcode');
             <?php if (!empty($form_shortcode)): ?>
             <div class="cta__form">
               <?php echo do_shortcode($form_shortcode); ?>
-              <button class="button button--arrow" id="cf7-form-submit">Wyślij</button>
+              <button class="button button--arrow" id="cf7-form-submit">Wyślij <span class="animation"></span></button>
             </div>
             <?php endif; ?>
           </div>

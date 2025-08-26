@@ -20,7 +20,8 @@ $button = get_field('button');
           <?php endif; ?>
           <?php if (!empty($button)): ?>
           <a href="<?php echo esc_html($button['url']); ?>" class="button button--arrow homepage-hero__button"
-            target="<?php echo esc_html($button['target']); ?>"><?php echo esc_html($button['title']); ?></a>
+            target="<?php echo esc_html($button['target']); ?>"><?php echo esc_html($button['title']); ?>
+            <span class="animation"></span></a>
           <?php endif; ?>
         </div>
       </div>
