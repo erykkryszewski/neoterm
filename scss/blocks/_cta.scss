@@ -4,12 +4,17 @@
 
   @media (max-width: 767px) {
     padding: 0 10px;
+    background: $very-light-gray;
   }
 
   &__wrapper {
     background: $very-light-gray;
     padding: 32px;
     border-radius: 10px;
+
+    @media (max-width: 767px) {
+      padding: 32px 0;
+    }
   }
 
   &__column {
@@ -17,10 +22,18 @@
 
     &--left {
       padding: 0 17px 0 0;
+
+      @media (max-width: 767px) {
+        padding: 0;
+      }
     }
 
     &--right {
       padding: 0 0 0 17px;
+
+      @media (max-width: 767px) {
+        padding: 0;
+      }
     }
   }
 
@@ -59,6 +72,12 @@
     margin: 32px 0 0;
   }
 
+  .button--arrow {
+    @media (max-width: 767px) {
+      margin: 8px 0 0;
+    }
+  }
+
   &__form-text {
     margin: 0 0 23.5px;
 
@@ -66,10 +85,18 @@
       @extend .h4;
       margin: 0;
 
+      @media (max-width: 767px) {
+        margin: 32px 0 0;
+      }
+
       * {
         color: #686868;
         font-weight: 400;
         font-style: normal !important; //override em styles etc
+
+        @media (max-width: 767px) {
+          display: block;
+        }
       }
     }
   }
@@ -101,6 +128,12 @@
 
       &:nth-of-type(2) {
         max-width: 368px;
+      }
+
+      &:last-of-type {
+        @media (max-width: 767px) {
+          display: none;
+        }
       }
     }
 

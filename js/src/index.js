@@ -92,10 +92,10 @@ import './blocks/wyswig-content';
 import './sections/header';
 import './sections/navigation';
 import './sections/main';
+import './sections/footer';
 
 import './components/spacer';
 import './components/popup';
 import './components/animated-number';
 import './components/form';
 import './components/phone-number';
-

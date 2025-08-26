@@ -58,22 +58,36 @@ $footer_attribute = get_field('footer_attribute', 'options');
         <?php endif; ?>
         <?php endif; ?>
 
-        <?php if ($global_phone_number): ?>
-        <span class="footer__info-text footer__info-text--phone"><?php esc_html_e(
-          'Zadzwoń do nas:',
-          'seoleadertheme',
-        ); ?></span>
-        <a href="tel:<?php echo esc_html($global_phone_number); ?>"
-          class="footer__phone seoleadertheme-phone-number"><?php echo esc_html($global_phone_number); ?></a>
+        <?php if (!empty($footer_summary)): ?>
+        <h3 class="footer__summary mobile-only ">
+          <?php echo apply_filters('the_title', $footer_summary); ?>
+        </h3>
         <?php endif; ?>
 
-        <?php if ($global_address): ?>
-        <span
-          class="footer__info-text footer__info-text--address"><?php esc_html_e('Adres:', 'seoleadertheme'); ?></span>
-        <div class="footer__address">
-          <?php echo apply_filters('the_title', $global_address); ?>
+        <div class="footer__contact-info">
+          <div>
+            <?php if ($global_phone_number): ?>
+            <span class="footer__info-text footer__info-text--phone"><?php esc_html_e(
+              'Zadzwoń do nas:',
+              'seoleadertheme',
+            ); ?></span>
+            <a href="tel:<?php echo esc_html($global_phone_number); ?>"
+              class="footer__phone seoleadertheme-phone-number"><?php echo esc_html($global_phone_number); ?></a>
+            <?php endif; ?>
+          </div>
+          <div>
+            <?php if ($global_address): ?>
+            <span
+              class="footer__info-text footer__info-text--address"><?php esc_html_e(
+                'Adres:',
+                'seoleadertheme',
+              ); ?></span>
+            <div class="footer__address">
+              <?php echo apply_filters('the_title', $global_address); ?>
+            </div>
+            <?php endif; ?>
+          </div>
         </div>
-        <?php endif; ?>
 
         <?php if ($global_opening_hours): ?>
         <span class="footer__info-text footer__info-text--opening-hours"><?php esc_html_e(
@@ -84,14 +98,15 @@ $footer_attribute = get_field('footer_attribute', 'options');
           <?php echo apply_filters('the_title', $global_opening_hours); ?>
         </div>
         <?php endif; ?>
-        <a href="/kontakt/"
-          class="button button--arrow footer__button"><?php esc_html_e('Kontakt', 'seoleadertheme'); ?><span
-            class="animation"></span></a>
+        <a href="/kontakt/" class="button button--arrow-mobile-light footer__button"><?php esc_html_e(
+          'Kontakt',
+          'seoleadertheme',
+        ); ?><span class="animation"></span></a>
       </div>
     </div>
 
     <?php if (!empty($footer_summary)): ?>
-    <h3 class="footer__summary">
+    <h3 class="footer__summary desktop-only">
       <?php echo apply_filters('the_title', $footer_summary); ?>
     </h3>
     <?php endif; ?>
