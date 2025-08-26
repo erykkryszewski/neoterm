@@ -13,6 +13,7 @@ require_once PAGE_THEME_DIR . 'lib/functions/search.php';
 require_once PAGE_THEME_DIR . 'lib/functions/image-object-fit.php';
 require_once PAGE_THEME_DIR . 'lib/functions/random-images.php';
 require_once PAGE_THEME_DIR . 'lib/functions/submenu-icons.php';
+require_once PAGE_THEME_DIR . 'lib/functions/forms-validation.php';
 // require_once(PAGE_THEME_DIR . 'lib/functions/required-plugins.php');
 
 // if woocommerce is activated

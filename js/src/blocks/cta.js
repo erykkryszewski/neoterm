@@ -2,53 +2,29 @@ import $ from 'jquery';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-$(document).ready(function () {
-  gsap.registerPlugin(ScrollTrigger);
-
-  const cta = $('.cta__wrapper');
-  const bg = $('.cta__background');
-
-  gsap.set(cta.children(), { clearProps: 'transform,opacity,filter' });
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: cta,
-      start: 'top 85%',
-      once: true,
-    },
-  });
-
-  tl.from(
-    bg,
-    {
-      scale: 1.08,
-      yPercent: 12,
-      filter: 'blur(10px)',
-      duration: 1.1,
-      ease: 'power2.out',
-    },
-    0,
-  )
-    .from(
-      cta.children(),
-      {
-        y: 40,
-        autoAlpha: 0,
-        filter: 'blur(6px)',
-        duration: 0.9,
-        ease: 'power3.out',
-        stagger: 0.12,
+document.addEventListener('DOMContentLoaded', function () {
+  const wrappers = document.querySelectorAll('.cta__form');
+  wrappers.forEach(function (wrapper) {
+    const form = wrapper.querySelector('form.wpcf7-form');
+    const customBtn = wrapper.querySelector('#cf7-form-submit') || wrapper.querySelector('.button--arrow');
+    const realSubmit = form ? form.querySelector('input.wpcf7-submit[type="submit"]') : null;
+    if (!form || !customBtn || !realSubmit) return;
+    customBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      customBtn.disabled = true;
+      if (typeof form.requestSubmit === 'function') {
+        form.requestSubmit(realSubmit);
+      } else {
+        realSubmit.click();
+      }
+    });
+    const enable = function (ev) {
+      if (ev.target === form) customBtn.disabled = false;
+    };
+    ['wpcf7invalid', 'wpcf7mailsent', 'wpcf7mailfailed', 'wpcf7spam', 'wpcf7submit', 'wpcf7reset'].forEach(
+      function (evt) {
+        document.addEventListener(evt, enable, false);
       },
-      0.06,
-    )
-    .fromTo(
-      cta.find('.cta__button'),
-      { scale: 0.98 },
-      {
-        scale: 1,
-        duration: 0.22,
-        ease: 'power1.out',
-      },
-      '-=0.35',
     );
+  });
 });

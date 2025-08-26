@@ -1158,6 +1158,10 @@
 }
 
 .editor-styles-wrapper .button--w-100 {
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
 }
 

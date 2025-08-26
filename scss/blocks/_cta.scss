@@ -1,98 +1,118 @@
 .cta {
   width: 100%;
-  text-align: center;
-  background-color: $theme-color;
   position: relative;
 
-  &--background {
+  &__wrapper {
     background: $very-light-gray;
+    padding: 32px;
+    border-radius: 10px;
   }
 
-  &--subpage {
-    margin: 0 0 -70px;
-  }
-
-  &__background {
+  &__column {
     width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    overflow: hidden;
 
-    img {
-      transition: all 350ms ease;
-      object-position: bottom right;
+    &--left {
+      padding: 0 17px 0 0;
     }
 
-    &--overlay {
-      &::before {
-        content: '';
-        display: block;
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        background: rgba($black, 0.85);
+    &--right {
+      padding: 0 0 0 17px;
+    }
+  }
+
+  &__box {
+    padding: 47px 32px;
+    background: $white;
+    border-radius: 10px;
+  }
+
+  &__intro {
+    margin: 0;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    max-width: 36px;
+    max-height: 36px;
+    width: 100%;
+  }
+
+  &__title {
+    @extend .h3;
+  }
+
+  p {
+    margin: 16px 0 0;
+    color: $text-color;
+    font-weight: 500;
+    line-height: 105%;
+    max-width: 366px;
+  }
+
+  &__button {
+    margin: 32px 0 0;
+  }
+
+  &__form-text {
+    margin: 0 0 23.5px;
+
+    p {
+      @extend .h4;
+      margin: 0;
+
+      * {
+        color: #686868;
+        font-weight: 400;
+        font-style: normal !important; //override em styles etc
       }
     }
   }
 
-  &__wrapper {
-    padding: 130px 0;
-    position: relative;
-    z-index: 2;
-  }
+  &__form {
+    // override cf7 styles
 
-  &__subtitle {
-    margin: 10px 0 0;
-  }
+    p {
+      width: 100%;
+      margin: 0;
+      font-size: 10px;
+      letter-spacing: 0;
+      color: $black;
+      max-width: 100%;
 
-  &__title,
-  &__subtitle,
-  p {
-    color: $white;
-  }
+      br {
+        display: none;
+      }
 
-  p {
-    max-width: 600px;
-    margin: 20px auto 0;
-    color: $white;
+      label {
+        font-size: 13px;
+        margin: 0 0 5px;
+        display: block;
+      }
 
-    a {
-      color: $white;
+      input {
+        background: transparent !important;
+      }
+
+      &:nth-of-type(2) {
+        max-width: 368px;
+      }
     }
-  }
 
-  &__button {
-    margin: 35px 0 0;
-    background: $white;
-    color: $theme-color;
-    border: 1px solid $white;
-
-    &:hover {
-      background: $white;
-      color: $theme-color;
-      border: 1px solid $white;
+    input[type='submit'] {
+      display: none;
     }
-  }
 
-  &--started {
-    img {
-      animation: ctaAnimation 8s ease-out forwards;
+    #contact-field {
+      margin: 0 0 23px;
+      width: 100%;
     }
-  }
 
-  /* overwrite mailchimp newsletter form only in this section */
-
-  .mailchimp-newsletter__form {
-    justify-content: center;
+    .wpcf7-list-item {
+      margin: 0;
+      padding: 0;
+    }
   }
 }
 

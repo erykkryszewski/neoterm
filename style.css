@@ -1212,6 +1212,7 @@ h2 > span {
 
 h3,
 .h3,
+.cta__title,
 .footer__column h1,
 .footer__column h2,
 .footer__column h3,
@@ -1231,6 +1232,7 @@ h3 > span {
 @media (max-width: 767px) {
   h3,
   .h3,
+  .cta__title,
   .footer__column h1,
   .footer__column h2,
   .footer__column h3,
@@ -1245,6 +1247,7 @@ h3 > span {
 
 h4,
 .h4,
+.cta__form-text p,
 .three-boxes__content h1,
 .three-boxes__content h2,
 .three-boxes__content h3,
@@ -1265,6 +1268,7 @@ h4 > span {
 @media (max-width: 767px) {
   h4,
   .h4,
+  .cta__form-text p,
   .three-boxes__content h1,
   .three-boxes__content h2,
   .three-boxes__content h3,
@@ -1917,6 +1921,10 @@ ol > li {
 }
 
 .button--w-100 {
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
 }
 
@@ -3364,99 +3372,114 @@ html::-webkit-scrollbar-thumb {
 
 .cta {
   width: 100%;
-  text-align: center;
-  background-color: #3530ea;
   position: relative;
-  /* overwrite mailchimp newsletter form only in this section */
-}
-
-.cta--background {
-  background: #f5f5f5;
-}
-
-.cta--subpage {
-  margin: 0 0 -70px;
-}
-
-.cta__background {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  overflow: hidden;
-}
-
-.cta__background img {
-  -webkit-transition: all 350ms ease;
-  transition: all 350ms ease;
-  -o-object-position: bottom right;
-     object-position: bottom right;
-}
-
-.cta__background--overlay::before {
-  content: '';
-  display: block;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  background: rgba(0, 0, 0, 0.85);
 }
 
 .cta__wrapper {
-  padding: 130px 0;
-  position: relative;
-  z-index: 2;
+  background: #f5f5f5;
+  padding: 32px;
+  border-radius: 10px;
 }
 
-.cta__subtitle {
-  margin: 10px 0 0;
+.cta__column {
+  width: 100%;
 }
 
-.cta__title, .cta__subtitle,
+.cta__column--left {
+  padding: 0 17px 0 0;
+}
+
+.cta__column--right {
+  padding: 0 0 0 17px;
+}
+
+.cta__box {
+  padding: 47px 32px;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.cta__intro {
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 16px;
+}
+
+.cta__icon {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  max-width: 36px;
+  max-height: 36px;
+  width: 100%;
+}
+
 .cta p {
-  color: #ffffff;
-}
-
-.cta p {
-  max-width: 600px;
-  margin: 20px auto 0;
-  color: #ffffff;
-}
-
-.cta p a {
-  color: #ffffff;
+  margin: 16px 0 0;
+  color: #4e4e4e;
+  font-weight: 500;
+  line-height: 105%;
+  max-width: 366px;
 }
 
 .cta__button {
-  margin: 35px 0 0;
-  background: #ffffff;
-  color: #3530ea;
-  border: 1px solid #ffffff;
+  margin: 32px 0 0;
 }
 
-.cta__button:hover {
-  background: #ffffff;
-  color: #3530ea;
-  border: 1px solid #ffffff;
+.cta__form-text {
+  margin: 0 0 23.5px;
 }
 
-.cta--started img {
-  -webkit-animation: ctaAnimation 8s ease-out forwards;
-          animation: ctaAnimation 8s ease-out forwards;
+.cta__form-text p {
+  margin: 0;
 }
 
-.cta .mailchimp-newsletter__form {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.cta__form-text p * {
+  color: #686868;
+  font-weight: 400;
+  font-style: normal !important;
+}
+
+.cta__form p {
+  width: 100%;
+  margin: 0;
+  font-size: 10px;
+  letter-spacing: 0;
+  color: #000000;
+  max-width: 100%;
+}
+
+.cta__form p br {
+  display: none;
+}
+
+.cta__form p label {
+  font-size: 13px;
+  margin: 0 0 5px;
+  display: block;
+}
+
+.cta__form p input {
+  background: transparent !important;
+}
+
+.cta__form p:nth-of-type(2) {
+  max-width: 368px;
+}
+
+.cta__form input[type='submit'] {
+  display: none;
+}
+
+.cta__form #contact-field {
+  margin: 0 0 23px;
+  width: 100%;
+}
+
+.cta__form .wpcf7-list-item {
+  margin: 0;
+  padding: 0;
 }
 
 @-webkit-keyframes ctaAnimation {

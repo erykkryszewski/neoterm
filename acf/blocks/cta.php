@@ -45,7 +45,7 @@ $form_shortcode = get_field('form_shortcode');
               <?php endif; ?>
               <?php if (!empty($button)): ?>
               <a href="<?php echo esc_html($button['url']); ?>"
-                class="button button--phone cta__button"><?php echo esc_html($button['title']); ?></a>
+                class="button button--phone button--w-100 cta__button"><?php echo esc_html($button['title']); ?></a>
               <?php endif; ?>
             </div>
           </div>
@@ -60,6 +60,7 @@ $form_shortcode = get_field('form_shortcode');
             <?php if (!empty($form_shortcode)): ?>
             <div class="cta__form">
               <?php echo do_shortcode($form_shortcode); ?>
+              <button class="button button--arrow" id="cf7-form-submit">Wyślij</button>
             </div>
             <?php endif; ?>
           </div>
