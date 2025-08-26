@@ -7,6 +7,11 @@
       height: 10px !important;
     }
   }
+  &--mobile-15 {
+    @media (max-width: 767px) {
+      height: 15px !important;
+    }
+  }
   &--mobile-20 {
     @media (max-width: 767px) {
       height: 20px !important;

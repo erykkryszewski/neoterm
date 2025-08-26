@@ -26,6 +26,11 @@
       text-align: center;
       max-width: 100%;
 
+      @media (max-width: 767px) {
+        text-align: left;
+        max-width: 249px;
+      }
+
       p {
         text-align: center;
         margin: 0 auto !important;
@@ -46,6 +51,11 @@
     gap: 8px;
     display: inline-flex;
     align-items: center;
+
+    @media (max-width: 767px) {
+      text-align: left;
+      align-items: flex-start;
+    }
 
     &::before {
       display: block;
