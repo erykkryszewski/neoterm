@@ -304,6 +304,22 @@
             "return_format": "array"
         },
         {
+            "key": "field_68b4633b54532",
+            "label": "Navigation button mobile",
+            "name": "navigation_button_mobile",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
             "key": "field_600d97492d53f",
             "label": "Footer",
             "name": "",
@@ -476,5 +492,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1756124646
+    "modified": 1756652366
 }

@@ -57,4 +57,16 @@ $('document').ready(function () {
       $('.nav__hamburger').removeClass('nav__hamburger--open');
     }
   });
+
+  // additional button stuff
+
+  if (window.matchMedia('(max-width: 1199px)').matches) {
+    const navMobileButton = $('a.nav__button.mobile-only.display-none');
+    setTimeout(function () {
+      if (!navMobileButton.length) return;
+      const $submenu = $('.nav .sub-menu').first();
+      if (!$submenu.length) return;
+      navMobileButton.removeClass('display-none').appendTo($submenu);
+    }, 1000);
+  }
 });

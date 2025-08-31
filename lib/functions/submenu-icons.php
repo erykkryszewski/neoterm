@@ -42,34 +42,34 @@ add_action('admin_enqueue_scripts', function ($hook) {
   wp_add_inline_script(
     'menu-item-icons-admin',
     "
-        jQuery(function($){
-            $(document).on('click', '.upload-menu-item-icon', function(e){
-                e.preventDefault();
-                var wrap    = $(this).closest('p.description-wide');
-                var input   = wrap.find('input.menu-item-icon');
-                var preview = wrap.find('.menu-item-icon-preview');
-                var frame   = wp.media({
-                    title: 'Wybierz ikonę',
-                    library: { type: ['image'] },
-                    button: { text: 'Użyj tej ikony' },
-                    multiple: false
-                });
-                frame.on('select', function(){
-                    var att   = frame.state().get('selection').first().toJSON();
-                    var url   = att.sizes && att.sizes.thumbnail ? att.sizes.thumbnail.url : att.url;
-                    input.val(att.id).trigger('change');
-                    preview.html('<img src=\"'+url+'\" style=\"max-width:40px;height:auto;\"/>');
-                });
-                frame.open();
-            });
-            $(document).on('click', '.remove-menu-item-icon', function(e){
-                e.preventDefault();
-                var wrap = $(this).closest('p.description-wide');
-                wrap.find('input.menu-item-icon').val('').trigger('change');
-                wrap.find('.menu-item-icon-preview').empty();
-            });
-        });
-    ",
+		jQuery(function($){
+			$(document).on('click', '.upload-menu-item-icon', function(e){
+				e.preventDefault();
+				var wrap    = $(this).closest('p.description-wide');
+				var input   = wrap.find('input.menu-item-icon');
+				var preview = wrap.find('.menu-item-icon-preview');
+				var frame   = wp.media({
+					title: 'Wybierz ikonę',
+					library: { type: ['image'] },
+					button: { text: 'Użyj tej ikony' },
+					multiple: false
+				});
+				frame.on('select', function(){
+					var att   = frame.state().get('selection').first().toJSON();
+					var url   = att.sizes && att.sizes.thumbnail ? att.sizes.thumbnail.url : att.url;
+					input.val(att.id).trigger('change');
+					preview.html('<img src=\"'+url+'\" style=\"max-width:40px;height:auto;\"/>');
+				});
+				frame.open();
+			});
+			$(document).on('click', '.remove-menu-item-icon', function(e){
+				e.preventDefault();
+				var wrap = $(this).closest('p.description-wide');
+				wrap.find('input.menu-item-icon').val('').trigger('change');
+				wrap.find('.menu-item-icon-preview').empty();
+			});
+		});
+		",
   );
 });
 
@@ -77,11 +77,22 @@ add_filter(
   'nav_menu_item_title',
   function ($title, $item, $args, $depth) {
     $icon_id = (int) get_post_meta($item->ID, '_menu_item_icon', true);
-    if ($icon_id) {
-      $icon = wp_get_attachment_image($icon_id, 'thumbnail', false, ['class' => 'menu-icon']);
-      $title = $icon . ' ' . $title;
+    $img = $icon_id
+      ? wp_get_attachment_image($icon_id, 'thumbnail', false, [
+        'class' => 'menu-icon',
+        'decoding' => 'async',
+        'loading' => 'lazy',
+      ])
+      : '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" width="1" height="1" class="menu-icon menu-icon--placeholder" alt="">';
+    $desc = trim((string) $item->description);
+    $out = $img;
+    $out .= '<div class="menu-text">';
+    $out .= '<h5 class="menu-title">' . esc_html($title) . '</h5>';
+    if ($desc !== '') {
+      $out .= '<p class="menu-desc">' . esc_html($desc) . '</p>';
     }
-    return $title;
+    $out .= '</div>';
+    return $out;
   },
   10,
   4,

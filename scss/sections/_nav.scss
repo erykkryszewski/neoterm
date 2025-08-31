@@ -86,9 +86,9 @@
       top: calc(100% - 2px);
       display: none;
       z-index: 10;
-      left: -15px;
-      width: calc(100% + 30px);
-      padding: 25px 0 30px;
+      left: 0;
+      width: 100%;
+      padding: 0;
     }
 
     > li {
@@ -97,7 +97,7 @@
 
       @media (max-width: 1199px) {
         width: 100%;
-        text-align: center;
+        text-align: left;
         margin: 0;
       }
 
@@ -106,24 +106,33 @@
       }
 
       > a {
-        font-size: 16px;
-        letter-spacing: 2%;
-        color: $black;
-        font-weight: 500;
         padding: 12.5px 10px;
         transition: all 300ms ease;
         display: inline-flex;
         align-items: center;
 
+        @media (max-width: 1199px) {
+          text-align: left;
+        }
+
+        * {
+          font-size: 16px;
+          letter-spacing: 2%;
+          color: $black;
+          font-weight: 500;
+          text-transform: initial;
+
+          @media (max-width: 1199px) {
+            font-size: 21px;
+          }
+        }
+
         &:hover {
           color: $theme-color;
 
-          &::before {
-            transform: scale(1, 1);
-          }
           + ul.sub-menu {
             @media (min-width: 1200px) {
-              transform: scale(1);
+              transform: translateX(50%) scale(1, 1);
             }
           }
         }
@@ -138,70 +147,100 @@
 
       &.menu-item-has-children {
         > a {
-          gap: 6px;
-
           &::after {
             content: '';
             display: block;
             background: url('./images/dash-icon.svg') center/contain no-repeat;
             width: 8px;
             height: 12px;
+
+            @media (max-width: 1199px) {
+              margin: 0 0 0 6px;
+            }
           }
 
           @media (min-width: 1200px) {
-            padding: 5px 5px 43px;
-            margin: 9px 0 -38px;
+            padding: 5px 5px 30px;
+            margin: 9px 0 -20px;
+            gap: 6px;
           }
         }
       }
 
       > ul.sub-menu {
-        display: block;
-        min-width: 320px;
+        display: none;
+        width: 100%;
+        padding: 20px 0;
+        text-align: left;
 
         @media (min-width: 1200px) {
           transform-origin: top;
-          transform: scale(1, 0);
+          transform: translateX(50%) scale(1, 0);
           transition: all 350ms ease;
           position: absolute;
-          top: 66px;
+          top: 55px;
           background: $white;
           padding: 0;
-          left: 5px;
+          right: 50%;
+          left: auto;
           z-index: 10;
+          box-shadow: 0px 2px 20px 0px #00000026;
+          display: flex;
+          gap: 20px;
+          flex-wrap: wrap;
+          min-width: 670px;
+          max-width: 670px;
+          padding: 20px;
+          border-radius: 10px;
         }
 
-        @media (max-width: 1199px) {
-          padding: 12px 0 20px;
-          background: $white;
-          display: none;
-        }
+        > li {
+          width: 100%;
+          text-align: left;
 
-        li {
-          a {
-            padding: 0;
-            color: $text-color;
-            text-transform: initial;
-            font-size: 14px;
-            font-weight: 500;
-            display: block;
+          @media (min-width: 1200px) {
+            width: calc(50% - 10px);
+          }
+
+          > a {
             padding: 8px 15px;
-            line-height: 1;
-            transition: all 300ms ease;
-
-            &:hover {
-              background: $theme-color;
-            }
+            @extend .h5;
+            font-weight: 500;
+            display: flex;
+            gap: 11px;
+            align-items: flex-start;
+            justify-content: flex-start;
+            text-align: left;
 
             @media (max-width: 1199px) {
-              font-size: 15px;
+              font-size: 21px;
+              padding: 12px 0;
+            }
+
+            img {
+              display: block;
+              height: auto;
+              margin: 2px 0 0;
+            }
+
+            p {
+              @extend .paragraph;
+              margin: 4px 0 0;
+              color: #686868;
+              font-size: 13px;
+
+              &:first-of-type {
+                margin: 4px 0 0;
+              }
             }
           }
         }
 
         /* submenu other styles */
         &:hover {
-          transform: scale(1);
+          @media (min-width: 1200px) {
+            transform: translateX(50%) scale(1, 1);
+          }
         }
 
         &--fixed {
@@ -261,6 +300,14 @@
   &__button {
     @media (max-width: 767px) {
       width: auto;
+    }
+
+    &--shop {
+      width: 100%;
+      margin: 32px 0 0;
+      text-align: center;
+      display: flex;
+      justify-content: center;
     }
   }
 }
