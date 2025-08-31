@@ -1887,6 +1887,7 @@ ol > li {
 @media (max-width: 767px) {
   .button {
     width: 100%;
+    padding: 8px 10px;
   }
 }
 
@@ -2046,41 +2047,36 @@ ol > li {
 
 .hamburger {
   display: none;
-  width: 30px;
-  height: 29px;
+  width: 34px;
+  height: 34px;
   position: relative;
   -webkit-transform: rotate(0deg);
           transform: rotate(0deg);
   -webkit-transition: 0.5s ease-in-out;
   transition: 0.5s ease-in-out;
-  background: none;
   border: none !important;
   cursor: pointer;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+  background: #f5f5f5;
+  border-radius: 5px;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1199px) {
   .hamburger {
     display: block;
-  }
-}
-
-@media (max-width: 369px) {
-  .hamburger {
-    width: 25px;
   }
 }
 
 .hamburger span {
   display: block;
   position: absolute;
-  height: 4px;
-  width: 100%;
+  height: 1px;
+  width: calc(100% - 19px);
   background: #3530ea;
   border-radius: 15px;
   opacity: 1;
-  left: 0;
+  left: 9.5px;
   -webkit-transform: rotate(0deg);
           transform: rotate(0deg);
   -webkit-transition: 0.25s ease-in-out;
@@ -2088,15 +2084,15 @@ ol > li {
 }
 
 .hamburger span:nth-child(1) {
-  top: 0px;
+  top: 14px;
 }
 
 .hamburger span:nth-child(2), .hamburger span:nth-child(3) {
-  top: 12px;
+  top: 17px;
 }
 
 .hamburger span:nth-child(4) {
-  top: 24px;
+  top: 20px;
 }
 
 .hamburger.active span:nth-child(1) {
@@ -5579,6 +5575,16 @@ body.admin-bar .header--fixed {
   .nav__menu > li > ul.sub-menu > li > a {
     font-size: 21px;
     padding: 12px 0;
+  }
+}
+
+.nav__menu > li > ul.sub-menu > li > a.button {
+  padding: 10px 15px;
+}
+
+@media (max-width: 1199px) {
+  .nav__menu > li > ul.sub-menu > li > a.button {
+    padding: 6px 10px;
   }
 }
 

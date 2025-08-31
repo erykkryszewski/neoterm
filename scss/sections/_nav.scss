@@ -217,6 +217,14 @@
               padding: 12px 0;
             }
 
+            &.button {
+              padding: 10px 15px;
+
+              @media (max-width: 1199px) {
+                padding: 6px 10px;
+              }
+            }
+
             img {
               display: block;
               height: auto;
