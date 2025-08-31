@@ -1,3 +1,7 @@
+import $ from 'jquery';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 window.addEventListener('DOMContentLoaded', () => {
   const sliders = document.querySelectorAll('.services__slider');
   if (!sliders.length) return;
@@ -75,4 +79,35 @@ window.addEventListener('DOMContentLoaded', () => {
   };
 
   sliders.forEach(init);
+
+  //gsap animation
+
+  const servicesSections = document.querySelectorAll('.services');
+  if (servicesSections.length) {
+    servicesSections.forEach((sec) => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sec,
+          start: 'top 75%',
+          once: true,
+        },
+      });
+      const title = sec.querySelector('.services__title');
+      const boxes = sec.querySelectorAll('.services__box');
+      if (title) tl.from(title, { y: 20, autoAlpha: 0, duration: 0.6, ease: 'power2.out' });
+      if (boxes.length)
+        tl.from(boxes, { y: 24, autoAlpha: 0, duration: 0.6, ease: 'power2.out', stagger: 0.08 }, '-=0.2');
+
+      const slider = sec.querySelector('.services__slider');
+      if (slider) {
+        gsap.from(slider, {
+          scrollTrigger: { trigger: slider, start: 'top 80%', once: true },
+          y: 20,
+          autoAlpha: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+        });
+      }
+    });
+  }
 });
