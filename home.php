@@ -32,9 +32,64 @@ $global_logo = get_field('global_logo', 'options');
   <div class="theme-blog theme-blog--subpage">
     <div class="container-fluid container-fluid--padding">
       <div class="theme-blog__container">
+
+
         <div class="theme-blog__sidebar">
-          <h4>Tu filtracja</h4>
+          <?php
+          $default_cat = (int) get_option('default_category');
+          $terms = get_terms([
+            'taxonomy' => 'category',
+            'hide_empty' => true,
+            'orderby' => 'name',
+            'order' => 'ASC',
+            'exclude' => [$default_cat],
+          ]);
+
+          $total_count = (int) wp_count_posts('post')->publish;
+          $search_query = get_search_query();
+          $blog_root_id = (int) get_option('page_for_posts');
+          $all_url = $blog_root_id ? get_permalink($blog_root_id) : home_url('/');
+          $is_all_active = !is_category() && !is_search();
+          ?>
+          <div class="blog-filter">
+            <form class="blog-filter__search" role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>">
+              <input class="blog-filter__search-input" type="search" name="s"
+                placeholder="<?php esc_attr_e('Wyszukaj', 'seoleadertheme'); ?>"
+                value="<?php echo esc_attr($search_query); ?>">
+              <input type="hidden" name="post_type" value="post">
+              <button class="blog-filter__search-submit" type="submit"
+                aria-label="<?php esc_attr_e('Szukaj', 'seoleadertheme'); ?>"></button>
+            </form>
+            <nav class="blog-filter__nav" aria-label="<?php esc_attr_e('Filtr kategorii', 'seoleadertheme'); ?>">
+              <ul class="blog-filter__list">
+                <li class="blog-filter__item">
+                  <a class="blog-filter__link <?php echo $is_all_active ? 'blog-filter__link--active' : ''; ?>"
+                    href="<?php echo esc_url($all_url); ?>">
+                    <span class="blog-filter__label"><?php esc_html_e('Wszystko', 'seoleadertheme'); ?></span>
+                    <span class="blog-filter__count"><?php echo (int) $total_count; ?></span>
+                  </a>
+                </li>
+                <?php if (!is_wp_error($terms) && !empty($terms)): ?>
+                <?php foreach ($terms as $term): ?>
+                <?php
+                $active = is_category($term->term_id);
+                $link = get_term_link($term);
+                ?>
+                <li class="blog-filter__item">
+                  <a class="blog-filter__link <?php echo $active ? 'blog-filter__link--active' : ''; ?>"
+                    href="<?php echo esc_url($link); ?>">
+                    <span class="blog-filter__label"><?php echo esc_html($term->name); ?></span>
+                    <span class="blog-filter__count"><?php echo (int) $term->count; ?></span>
+                  </a>
+                </li>
+                <?php endforeach; ?>
+                <?php endif; ?>
+              </ul>
+            </nav>
+          </div>
         </div>
+
+
         <div class="theme-blog__wrapper">
 
           <?php if (!empty($blog_archive_title) && !empty($blog_archive_text)): ?>

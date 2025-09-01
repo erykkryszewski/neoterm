@@ -6058,6 +6058,22 @@ body.admin-bar .header--fixed {
   width: 100%;
 }
 
+.theme-blog .theme-blog__image {
+  position: relative;
+}
+
+.theme-blog .theme-blog__image .cover {
+  position: absolute;
+  inset: 0;
+  display: block;
+  z-index: 1;
+}
+
+.theme-blog .theme-blog__sidebar {
+  position: relative;
+  z-index: 2;
+}
+
 .single-blog-post {
   padding: 60px 0 0;
   overflow: hidden;

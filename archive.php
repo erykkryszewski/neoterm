@@ -3,121 +3,156 @@
 get_header();
 global $post;
 
-// Get the current page number
-$current_blog_page = get_query_var('paged') ? get_query_var('paged') : 1;
+$post = get_post();
+$page_id = $post->ID;
+
+$blog_page = filter_input(INPUT_GET, 'blog-page', FILTER_SANITIZE_NUMBER_INT);
+$current_blog_page = $blog_page ? $blog_page : 1;
+
+$blog_posts_number = get_field('blog_posts_number', 'options');
+$blog_archive_title = get_field('blog_archive_title', 'options');
+$blog_archive_text = get_field('blog_archive_text', 'options');
 
 $args = [
-  'post_type' => 'kursy',
   'post_status' => 'publish',
-  'posts_per_page' => 12,
+  'posts_per_page' => $blog_posts_number,
   'orderby' => 'title',
   'paged' => $current_blog_page,
 ];
 
 $global_logo = get_field('global_logo', 'options');
-$archive_title = get_the_archive_title();
-$title_parts = explode(':', $archive_title);
-$page_title = wp_strip_all_tags(end($title_parts));
-
-$query = new WP_Query($args);
 ?>
 
 <main id="main" class="main <?php if (!is_front_page()) {
   echo 'main--subpage';
 } ?>">
-  <div class="subpage-hero">
-    <div class="subpage-hero__background subpage-hero__background--plain"></div>
-    <div class="container">
-      <div class="subpage-hero__wrapper">
-        <h1 class="subpage-hero__title"><?php echo apply_filters('the_title', $page_title); ?></h1>
-      </div>
-    </div>
-  </div>
-  <div class="spacer" style="height: 90px"></div>
-  <div class="section-title">
-    <div class="container">
-      <div class="section-title__wrapper section-title__wrapper--decorated">
-        <h2>Lorem ipsum dolor sit amet.</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil voluptas amet reiciendis consequuntur praesentium est laudantium iure veniam voluptatem maxime! </p>
-      </div>
-    </div>
-  </div>
-  <?php if ($query->have_posts()): ?>
-    <div class="theme-blog theme-blog--courses">
-      <div class="container">
-        <div class="theme-blog__wrapper theme-blog__wrapper--courses">
-          <div class="row">
-            <?php while ($query->have_posts()):
-              $query->the_post(); ?>
-              <div class="col-12 col-md-6 col-lg-4 theme-blog__column theme-blog__column--courses">
-                <div class="theme-blog__item theme-blog__item--courses">
-                  <div class="theme-blog__image theme-blog__image--courses">
-                    <a href="<?php the_permalink(); ?>" class="cover"></a>
-                    <?php echo wp_get_attachment_image(get_post_thumbnail_id(), 'full', '', [
-                      'class' => 'object-fit-contain',
-                    ]); ?>
-                  </div>
-                  <div class="theme-blog__content theme-blog__content--courses">
-                    <div>
-                      <a href="<?php the_permalink(); ?>" class="theme-blog__title"><?php the_title(); ?></a>
-                      <?php
-                      $excerpt = get_the_excerpt();
-                      $content = get_the_content();
 
-                      if (!empty($excerpt)) {
-                        echo '<p>' . mb_substr($excerpt, 0, 150) . (mb_strlen($excerpt) > 150 ? '...' : '') . '</p>';
-                      } elseif (empty($excerpt) && !empty($content)) {
-                        $contentText = strip_tags($content);
-                        echo '<p>' .
-                          mb_substr($contentText, 0, 150) .
-                          (mb_strlen($contentText) > 150 ? '...' : '') .
-                          '</p>';
-                      }
-                      ?>
-                    </div>
-                      <a href="<?php the_permalink(); ?>" class="theme-blog__button button"><?php _e(
+  <!-- max 12 items -->
+  <?php if (have_posts()): ?>
+  <div class="theme-blog theme-blog--subpage">
+    <div class="container-fluid container-fluid--padding">
+      <div class="theme-blog__container">
+
+
+        <div class="theme-blog__sidebar">
+          <?php
+          $default_cat = (int) get_option('default_category');
+          $terms = get_terms([
+            'taxonomy' => 'category',
+            'hide_empty' => true,
+            'orderby' => 'name',
+            'order' => 'ASC',
+            'exclude' => [$default_cat],
+          ]);
+
+          $total_count = (int) wp_count_posts('post')->publish;
+          $search_query = get_search_query();
+          $blog_root_id = (int) get_option('page_for_posts');
+          $all_url = $blog_root_id ? get_permalink($blog_root_id) : home_url('/');
+          $is_all_active = !is_category() && !is_search();
+          ?>
+          <div class="blog-filter">
+            <form class="blog-filter__search" role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>">
+              <input class="blog-filter__search-input" type="search" name="s"
+                placeholder="<?php esc_attr_e('Wyszukaj', 'seoleadertheme'); ?>"
+                value="<?php echo esc_attr($search_query); ?>">
+              <input type="hidden" name="post_type" value="post">
+              <button class="blog-filter__search-submit" type="submit"
+                aria-label="<?php esc_attr_e('Szukaj', 'seoleadertheme'); ?>"></button>
+            </form>
+            <nav class="blog-filter__nav" aria-label="<?php esc_attr_e('Filtr kategorii', 'seoleadertheme'); ?>">
+              <ul class="blog-filter__list">
+                <li class="blog-filter__item">
+                  <a class="blog-filter__link <?php echo $is_all_active ? 'blog-filter__link--active' : ''; ?>"
+                    href="<?php echo esc_url($all_url); ?>">
+                    <span class="blog-filter__label"><?php esc_html_e('Wszystko', 'seoleadertheme'); ?></span>
+                    <span class="blog-filter__count"><?php echo (int) $total_count; ?></span>
+                  </a>
+                </li>
+                <?php if (!is_wp_error($terms) && !empty($terms)): ?>
+                <?php foreach ($terms as $term): ?>
+                <?php
+                $active = is_category($term->term_id);
+                $link = get_term_link($term);
+                ?>
+                <li class="blog-filter__item">
+                  <a class="blog-filter__link <?php echo $active ? 'blog-filter__link--active' : ''; ?>"
+                    href="<?php echo esc_url($link); ?>">
+                    <span class="blog-filter__label"><?php echo esc_html($term->name); ?></span>
+                    <span class="blog-filter__count"><?php echo (int) $term->count; ?></span>
+                  </a>
+                </li>
+                <?php endforeach; ?>
+                <?php endif; ?>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+
+        <div class="theme-blog__wrapper">
+
+          <?php if (!empty($blog_archive_title) && !empty($blog_archive_text)): ?>
+          <div class="theme-blog__intro">
+            <h1 class="theme-blog__section-title"><?php echo esc_html($blog_archive_title); ?></h1>
+            <?php echo apply_filters('acf_the_content', $blog_archive_text); ?>
+          </div>
+          <?php endif; ?>
+
+          <?php while (have_posts()): ?>
+          <?php the_post(); ?>
+          <div class="theme-blog__column">
+            <div class="theme-blog__item">
+              <div class="theme-blog__image">
+                <a href="<?php the_permalink(); ?>" class="cover"></a>
+                <?php echo wp_get_attachment_image(get_post_thumbnail_id(), 'full', '', [
+                  'class' => 'object-fit-cover',
+                ]); ?>
+              </div>
+              <div class="theme-blog__content">
+                <div>
+                  <a href="<?php the_permalink(); ?>" class="theme-blog__title"><?php the_title(); ?></a>
+                  <p>
+                    <?php
+                    $excerpt = get_the_excerpt();
+                    if (empty($excerpt)) {
+                      echo substr(get_content_excerpt(), 0, 150) . '...';
+                    } else {
+                      echo substr($excerpt, 0, 150) . '...';
+                    }
+                    ?>
+                  </p>
+                </div>
+                <a href="<?php the_permalink(); ?>" class="theme-blog__button button"><?php _e(
   'Czytaj więcej',
   'seoleadertheme',
 ); ?></a>
-                  </div>
-                </div>
               </div>
-            <?php
-            endwhile; ?>
+            </div>
           </div>
-        </div>
-        <div class="pagination mt-5">
-          <?php echo paginate_links([
-            'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
-            'current' => max(1, get_query_var('paged')),
-            'format' => '?paged=%#%',
-            'total' => $query->max_num_pages, // Use max_num_pages from the custom query
-            'show_all' => false,
-            'type' => 'list',
-            'end_size' => 2,
-            'mid_size' => 1,
-            'prev_next' => true,
-            'prev_text' => '',
-            'next_text' => '',
-            'add_args' => false,
-            'add_fragment' => '',
-          ]); ?>
-        </div>
-        <?php wp_reset_postdata(); ?>
-      </div>
-    </div>
-  <?php endif; ?>
-  <div class="spacer spacer--small" style="height: 40px"></div>
-  <div class="cta">
-    <div class="container">
-      <div class="cta__wrapper">
-        <h2 class="cta__title">Zapoznaj się z naszą ofertą!</h2>
-        <p></p>
-        <div>
-          <a href="/kontakt/" class="cta__button button">Skontaktuj się</a>
+          <?php endwhile; ?>
         </div>
       </div>
+      <div class="pagination mt-5">
+        <?php echo paginate_links([
+          'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
+          'current' => max(1, get_query_var('paged')),
+          'format' => '?paged=%#%',
+          'show_all' => false,
+          'type' => 'list',
+          'end_size' => 2,
+          'mid_size' => 1,
+          'prev_next' => true,
+          'prev_text' => '',
+          'next_text' => '',
+          'add_args' => false,
+          'add_fragment' => '',
+        ]); ?>
+      </div>
+      <?php wp_reset_postdata(); ?>
+      <?php wp_reset_query(); ?>
     </div>
   </div>
+  <?php endif; ?>
 </main>
 <?php get_footer(); ?>

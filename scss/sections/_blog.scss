@@ -15,4 +15,20 @@
   &__wrapper {
     width: 100%;
   }
+
+  .theme-blog__image {
+    position: relative;
+  }
+
+  .theme-blog__image .cover {
+    position: absolute;
+    inset: 0;
+    display: block;
+    z-index: 1;
+  }
+
+  .theme-blog__sidebar {
+    position: relative;
+    z-index: 2;
+  }
 }

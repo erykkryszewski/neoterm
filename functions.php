@@ -258,6 +258,12 @@ add_action('admin_footer-index.php', function () {
   echo '<style>#dashboard-widgets-wrap,#welcome-panel,.notice,.update-nag,#screen-meta,#screen-meta-links{display:none!important}.erc-msg{margin:10px 0 0;text-align:left;font-size:17px;font-weight:400}</style><script>document.addEventListener("DOMContentLoaded",function(){var h=document.querySelector(".wrap h1");if(h){var d=document.createElement("div");d.className="erc-msg";d.textContent="Finally there is no mess here 😊";h.insertAdjacentElement("afterend",d);}});</script>';
 });
 
+add_action('pre_get_posts', function ($q) {
+  if ($q->is_search() && $q->is_main_query() && !is_admin()) {
+    $q->set('post_type', 'post');
+  }
+});
+
 // function display_server_info()
 // {
 //   echo '<div style="background: #f5f5f5; padding: 20px; margin: 20px; border: 1px solid #ddd;">';
