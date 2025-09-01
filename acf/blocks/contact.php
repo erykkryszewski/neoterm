@@ -3,69 +3,98 @@ $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 $background = get_field('background');
 $section_id = get_field('section_id');
 
+$title = get_field('title');
 $text = get_field('text');
-$form_id = get_field('form_id');
+$form_shortcode = get_field('form_shortcode');
 $image = get_field('image');
 
 $global_phone_number = get_field('global_phone_number', 'options');
 $global_email = get_field('global_email', 'options');
-$global_social_media = get_field('global_social_media', 'options');
+$global_address = get_field('global_address', 'options');
 $global_opening_hours = get_field('global_opening_hours', 'options');
 ?>
 
-<?php if (!empty($form_id)): ?>
-<div class="contact <?php if ($background == 'true') {
-  echo 'contact--background';
-} ?>">
+<?php if (!empty($form_shortcode)): ?>
+<div class="contact">
   <?php if (!empty($section_id)): ?>
   <div class="section-id" id="<?php echo esc_html($section_id); ?>"></div>
   <?php endif; ?>
   <div class="container">
-    <div class="row">
-      <div class="col-lg-6 col-xl-5">
-        <div class="contact__details">
-          <?php if (!empty($image)): ?>
-          <div class="contact__image">
-            <?php echo wp_get_attachment_image($image, 'full', '', ['class' => 'object-fit-cover']); ?>
-            <div class="contact__image-decorator"></div>
-          </div>
+    <div class="contact__wrapper">
+      <div class="contact__column contact__column--left">
+        <div class="contact__intro">
+
+          <?php if (!empty($title)): ?>
+          <h1><?php echo apply_filters('the_title', str_replace('&nbsp;', ' ', $title)); ?></h1>
           <?php endif; ?>
+
           <?php if (!empty($text)): ?>
           <?php echo apply_filters('acf_the_content', str_replace('&nbsp;', ' ', $text)); ?>
           <?php endif; ?>
-          <?php if (!empty($global_phone_number)): ?>
-          <a class="contact__phone seoleadertheme-phone-number"
-            href="tel:<?php echo esc_html($global_phone_number); ?>">Tel:
-            <?php echo esc_html($global_phone_number); ?></a>
-          <?php endif; ?>
-          <?php if (!empty($global_email)): ?>
-          <a class="contact__email" href="mailto:<?php echo esc_html($global_email); ?>">Mail:
-            <?php echo esc_html($global_email); ?></a>
-          <?php endif; ?>
-          <!-- <?php if (!empty($global_opening_hours)): ?>
-              <h4 class="contact__subtitle"><?php esc_html_e('Godziny otwarcia:', 'seoleadertheme'); ?></h4>
-              <div class="opening-hours contact__opening-hours">
-                <?php echo apply_filters('acf_the_content', $global_opening_hours); ?>
+
+          <div class="contact__details">
+
+            <?php if ($global_address): ?>
+            <div>
+              <span class="footer__info-text footer__info-text--address"><?php esc_html_e(
+                'Adres:',
+                'seoleadertheme',
+              ); ?></span>
+              <div class="footer__address">
+                <?php echo apply_filters('the_title', $global_address); ?>
               </div>
-            <?php endif; ?> -->
-          <h4 class="contact__subtitle"><?php esc_html_e('Obserwuj nas:', 'seoleadertheme'); ?></h4>
-          <?php if (!empty($global_social_media)): ?>
-          <div class="social-media contact__social-media">
-            <?php foreach ($global_social_media as $key => $item): ?>
-            <a href="<?php echo esc_url_raw($item['link']); ?>" target="_blank">
-              <?php if (!empty($item['icon'])): ?>
-              <?php echo wp_get_attachment_image($item['icon'], 'full', '', ['class' => 'object-fit-contain']); ?>
-              <?php endif; ?>
-            </a>
-            <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
+
+            <?php if ($global_opening_hours): ?>
+            <div>
+              <span class="footer__info-text footer__info-text--opening-hours"><?php esc_html_e(
+                'Godziny Otwarcia:',
+                'seoleadertheme',
+              ); ?></span>
+              <div class="footer__opening-hours">
+                <?php echo apply_filters('the_title', $global_opening_hours); ?>
+              </div>
+            </div>
+            <?php endif; ?>
+
+
+            <?php if ($global_phone_number): ?>
+            <div>
+              <span class="footer__info-text footer__info-text--phone"><?php esc_html_e(
+                'Zadzwoń do nas:',
+                'seoleadertheme',
+              ); ?></span>
+              <a href="tel:<?php echo esc_html($global_phone_number); ?>"
+                class="footer__phone seoleadertheme-phone-number"><?php echo esc_html($global_phone_number); ?></a>
+            </div>
+            <?php endif; ?>
+
+
+            <?php if ($global_email): ?>
+            <div>
+              <span class="footer__info-text footer__info-text--phone"><?php esc_html_e(
+                'Email',
+                'seoleadertheme',
+              ); ?></span>
+              <a href="mailto:<?php echo esc_html($global_email); ?>"
+                class="footer__email seoleadertheme-email-number"><?php echo esc_html($global_email); ?></a>
+            </div>
+            <?php endif; ?>
+
+
+
+
           </div>
-          <?php endif; ?>
         </div>
       </div>
-      <div class="col-lg-6 col-xl-7">
-        <div class="contact__form seoleader-form">
-          <?php echo gravity_form($form_id, false, false, false, '', false, 11); ?>
+      <div class="contact__column contact__column--right">
+        <?php if (!empty($form_shortcode)): ?>
+        <div class="contact__form">
+          <?php echo do_shortcode($form_shortcode); ?>
+          <button class="button button--arrow" id="cf7-form-submit">Wyślij <span class="animation"></span></button>
         </div>
+        <?php endif; ?>
       </div>
     </div>
   </div>

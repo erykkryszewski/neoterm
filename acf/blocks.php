@@ -120,6 +120,11 @@ return [
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
+  'seo-tags' => [
+    'title' => __('Seo tags', 'seoleadertheme'),
+    'category' => 'seoleadertheme',
+    'align' => 'full',
+  ],
   'two-images' => [
     'title' => __('Two images', 'seoleadertheme'),
     'category' => 'seoleadertheme',
