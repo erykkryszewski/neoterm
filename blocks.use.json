@@ -27,7 +27,8 @@
     "two-images",
     "services",
     "homepage-hero",
-    "wyswig-content"
+    "wyswig-content",
+    "single-image-text"
   ],
   "aliases": {
     "scss": {
