@@ -472,6 +472,63 @@
                 "id": ""
             },
             "return_format": "array"
+        },
+        {
+            "key": "field_68b5f0b86cca1",
+            "label": "Blog archive",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_68b5f0c16cca2",
+            "label": "Blog archive title",
+            "name": "blog_archive_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_68b5f0cc6cca3",
+            "label": "Blog archive text",
+            "name": "blog_archive_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 3,
+            "placeholder": "",
+            "new_lines": ""
         }
     ],
     "location": [
@@ -492,5 +549,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1756652366
+    "modified": 1756754141
 }

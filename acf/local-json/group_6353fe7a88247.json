@@ -4,8 +4,8 @@
     "fields": [
         {
             "key": "field_6353fe7a338d6",
-            "label": "Boxes",
-            "name": "boxes",
+            "label": "Numbers item",
+            "name": "numbers_item",
             "aria-label": "",
             "type": "repeater",
             "instructions": "",
@@ -25,37 +25,11 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_6353fecd338d7",
-                    "label": "Image",
-                    "name": "image",
+                    "key": "field_68b5ea81b0c93",
+                    "label": "Number",
+                    "name": "number",
                     "aria-label": "",
-                    "type": "image",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "id",
-                    "library": "all",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": "",
-                    "preview_size": "medium",
-                    "parent_repeater": "field_6353fe7a338d6"
-                },
-                {
-                    "key": "field_6353fef1338d8",
-                    "label": "Content",
-                    "name": "content",
-                    "aria-label": "",
-                    "type": "wysiwyg",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -65,27 +39,31 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "tabs": "all",
-                    "toolbar": "full",
-                    "media_upload": 1,
-                    "delay": 0,
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
                     "parent_repeater": "field_6353fe7a338d6"
                 },
                 {
-                    "key": "field_6353ff15338d9",
-                    "label": "Link",
-                    "name": "link",
+                    "key": "field_6353fef1338d8",
+                    "label": "Title",
+                    "name": "title",
                     "aria-label": "",
-                    "type": "link",
+                    "type": "text",
                     "instructions": "",
-                    "required": 1,
+                    "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
                     "parent_repeater": "field_6353fe7a338d6"
                 }
             ]
@@ -109,5 +87,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1737316805
+    "modified": 1756752747
 }

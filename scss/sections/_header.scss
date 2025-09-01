@@ -7,20 +7,7 @@
   top: 0;
   transition: all 150ms ease;
   min-height: 91px;
-  /* temporary styles */
   background: $white;
-
-  &--fixed {
-    // box-shadow: 0px 0px 19px -10px rgba($black, 0.7);
-  }
-
-  // &--open {
-  //   background: rgba($black, 0.85);
-
-  //   @media(max-width: 991px) {
-  //     background: $black;
-  //   }
-  // }
 }
 
 body.admin-bar {
