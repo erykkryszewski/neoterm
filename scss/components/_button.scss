@@ -37,6 +37,11 @@
       width: 18px;
       height: 18px;
     }
+
+    @media (max-width: 1199px) {
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   &--arrow {

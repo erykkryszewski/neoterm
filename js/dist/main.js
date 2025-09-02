@@ -227,7 +227,7 @@ eval("function _typeof(o) { \"@babel/helpers - typeof\"; return _typeof = \"func
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("document.addEventListener('DOMContentLoaded', function () {});\n\n//# sourceURL=webpack:///./js/src/blocks/map.js?");
+eval("document.addEventListener('DOMContentLoaded', function () {\n  var mediaQuery = window.matchMedia('(max-width: 1199px)');\n  var mapElement = document.querySelector('.map');\n  var contactLeftColumn = document.querySelector('.contact__column--left');\n  if (!mapElement || !contactLeftColumn) {\n    return; // stop if elements are missing\n  }\n  var originalParent = mapElement.parentElement;\n  var originalNextSibling = mapElement.nextSibling;\n  function moveMapElement() {\n    if (mediaQuery.matches) {\n      if (!contactLeftColumn.contains(mapElement)) {\n        contactLeftColumn.appendChild(mapElement);\n      }\n    } else {\n      if (originalParent && mapElement.parentElement !== originalParent) {\n        originalParent.insertBefore(mapElement, originalNextSibling);\n      }\n    }\n  }\n  moveMapElement();\n  if (mediaQuery.addEventListener) {\n    mediaQuery.addEventListener('change', moveMapElement);\n  } else {\n    // fallback for older browsers\n    mediaQuery.addListener(moveMapElement);\n  }\n});\n\n//# sourceURL=webpack:///./js/src/blocks/map.js?");
 
 /***/ }),
 

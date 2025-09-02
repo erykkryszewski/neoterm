@@ -1097,6 +1097,17 @@
   height: 18px;
 }
 
+@media (max-width: 1199px) {
+  .editor-styles-wrapper .button--phone {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
 .editor-styles-wrapper .button--arrow {
   padding: 5px 5px 5px 10px;
   -webkit-box-pack: justify;

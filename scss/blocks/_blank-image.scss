@@ -4,11 +4,8 @@
   position: relative;
   border-radius: 5px;
 
-  &--background {
-    background: $very-light-gray;
-  }
-
   @media (max-width: 1199px) {
+    padding: 0 10px;
     height: 430px !important;
   }
 

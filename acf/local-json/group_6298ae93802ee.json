@@ -66,6 +66,26 @@
                     "parent_repeater": "field_6298aeb6e57eb"
                 }
             ]
+        },
+        {
+            "key": "field_68b7339d3e526",
+            "label": "Title inside",
+            "name": "title_inside",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Jak tytuł jest tutaj dodany to FAQ ma 2 kolumny tak jak podstrona kontakt na figmie, a jak to jest puste to wtedy tak jak home",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -86,5 +106,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1756143454
+    "modified": 1756836832
 }

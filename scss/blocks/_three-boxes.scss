@@ -1,6 +1,10 @@
 .numbers {
   position: relative;
 
+  @media (max-width: 1199px) {
+    padding: 0 10px;
+  }
+
   &__content {
     width: 100%;
     text-align: center;

@@ -25,11 +25,18 @@ $global_opening_hours = get_field('global_opening_hours', 'options');
         <div class="contact__intro">
 
           <?php if (!empty($title)): ?>
-          <h1><?php echo apply_filters('the_title', str_replace('&nbsp;', ' ', $title)); ?></h1>
+          <h1 class="contact__title"><?php echo apply_filters('the_title', str_replace('&nbsp;', ' ', $title)); ?></h1>
           <?php endif; ?>
 
           <?php if (!empty($text)): ?>
           <?php echo apply_filters('acf_the_content', str_replace('&nbsp;', ' ', $text)); ?>
+          <?php endif; ?>
+
+          <?php if ($global_phone_number): ?>
+          <a href="tel:<?php echo esc_html($global_phone_number); ?>"
+            class="button button--phone mobile-only contact__phone-button seoleadertheme-phone-number"><?php echo esc_html(
+              $global_phone_number,
+            ); ?></a>
           <?php endif; ?>
 
           <div class="contact__details">
