@@ -53,7 +53,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // hover → pausss
     const onEnter = () => {
-      paused = true;
+      paused = false; // true adds pause on hover
       container.classList.add('is-paused');
     };
     const onLeave = () => {
