@@ -1,7 +1,3 @@
-import $ from 'jquery';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
 document.addEventListener('DOMContentLoaded', function () {
   const wrappers = document.querySelectorAll('.cta__form');
   wrappers.forEach(function (wrapper) {

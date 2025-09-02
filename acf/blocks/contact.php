@@ -36,11 +36,11 @@ $global_opening_hours = get_field('global_opening_hours', 'options');
 
             <?php if ($global_address): ?>
             <div>
-              <span class="footer__info-text footer__info-text--address"><?php esc_html_e(
+              <span class="contact__info-text contact__info-text--address"><?php esc_html_e(
                 'Adres:',
                 'seoleadertheme',
               ); ?></span>
-              <div class="footer__address">
+              <div class="contact__address">
                 <?php echo apply_filters('the_title', $global_address); ?>
               </div>
             </div>
@@ -48,11 +48,11 @@ $global_opening_hours = get_field('global_opening_hours', 'options');
 
             <?php if ($global_opening_hours): ?>
             <div>
-              <span class="footer__info-text footer__info-text--opening-hours"><?php esc_html_e(
+              <span class="contact__info-text contact__info-text--opening-hours"><?php esc_html_e(
                 'Godziny Otwarcia:',
                 'seoleadertheme',
               ); ?></span>
-              <div class="footer__opening-hours">
+              <div class="contact__opening-hours">
                 <?php echo apply_filters('the_title', $global_opening_hours); ?>
               </div>
             </div>
@@ -61,24 +61,24 @@ $global_opening_hours = get_field('global_opening_hours', 'options');
 
             <?php if ($global_phone_number): ?>
             <div>
-              <span class="footer__info-text footer__info-text--phone"><?php esc_html_e(
+              <span class="contact__info-text contact__info-text--phone"><?php esc_html_e(
                 'Zadzwoń do nas:',
                 'seoleadertheme',
               ); ?></span>
               <a href="tel:<?php echo esc_html($global_phone_number); ?>"
-                class="footer__phone seoleadertheme-phone-number"><?php echo esc_html($global_phone_number); ?></a>
+                class="contact__phone seoleadertheme-phone-number"><?php echo esc_html($global_phone_number); ?></a>
             </div>
             <?php endif; ?>
 
 
             <?php if ($global_email): ?>
             <div>
-              <span class="footer__info-text footer__info-text--phone"><?php esc_html_e(
+              <span class="contact__info-text contact__info-text--phone"><?php esc_html_e(
                 'Email',
                 'seoleadertheme',
               ); ?></span>
               <a href="mailto:<?php echo esc_html($global_email); ?>"
-                class="footer__email seoleadertheme-email-number"><?php echo esc_html($global_email); ?></a>
+                class="contact__email seoleadertheme-email-number"><?php echo esc_html($global_email); ?></a>
             </div>
             <?php endif; ?>
 
