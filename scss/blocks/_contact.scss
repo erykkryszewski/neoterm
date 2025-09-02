@@ -81,11 +81,13 @@
     @extend .h4;
     color: $theme-color;
     font-weight: 500;
+    margin: 0 0 8px;
 
     @media (max-width: 1199px) {
       font-size: 17px;
       line-height: 1.05;
       letter-spacing: 0;
+      font-weight: 400;
     }
 
     &--phone {
