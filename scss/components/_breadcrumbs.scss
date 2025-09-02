@@ -1,0 +1,17 @@
+.nt-breadcrumbs {
+  width: 100%;
+  margin: 0 0 32px;
+
+  &__items {
+    width: 100%;
+
+    a,
+    span {
+      @extend .paragraph;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 400;
+      color: #4e4e4e;
+    }
+  }
+}

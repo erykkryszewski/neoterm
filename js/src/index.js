@@ -93,6 +93,7 @@ import './sections/header';
 import './sections/navigation';
 import './sections/main';
 import './sections/footer';
+import './sections/single';
 
 import './components/spacer';
 import './components/popup';

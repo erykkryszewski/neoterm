@@ -5,8 +5,9 @@
   font-size: 16px;
   line-height: 100%;
   letter-spacing: 2%;
-  font-weight: 500;
+  font-weight: 500 !important; // override all plugin styles in content
   color: $theme-color;
+  text-decoration: none;
 
   &::after {
     display: block;

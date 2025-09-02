@@ -1,23 +1,78 @@
 .single-blog-post {
-  &__wrapper {
+  width: 100%;
+
+  @media (max-width: 1199px) {
+    padding: 0 10px;
+  }
+
+  // separate component, maybe it should be in components
+  .post-hero {
     width: 100%;
+    background: $very-light-gray;
+
+    &__wrapper {
+      display: flex;
+      gap: 40px;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 0 0 32px;
+
+      div {
+        width: 100%;
+      }
+
+      h1 {
+        font-weight: 600;
+      }
+
+      p {
+        margin: 16px 0 0;
+        color: #4e4e4e;
+      }
+    }
+  }
+
+  &__wrapper {
     display: flex;
-    gap: 30px;
+    width: 100%;
+    gap: 125px;
   }
 
   &__content {
+    padding: 0 0 50px;
+
     > .default-block.container,
     .container {
-      margin: 25px 0 0;
+      margin: 32px 0 0;
+
+      p {
+        color: #4e4e4e;
+        &:first-of-type {
+          margin: 0;
+        }
+      }
     }
 
-    h2 {
+    h2,
+    h3,
+    h4,
+    h5 {
       margin: 0;
+      color: $black;
+    }
+
+    // change for seo so you can use proper title structure but styles look better and letters are smaller
+    h2 {
+      @extend .h3;
+    }
+
+    h3 {
+      @extend .h4;
     }
 
     ul,
     ol {
-      margin: 20px 0 0;
+      margin: 32px 0 0;
 
       .default-block.container,
       .container {
@@ -30,16 +85,19 @@
         display: block;
         padding: 0 0 0 18px;
         position: relative;
+        color: #4e4e4e;
 
         &::before {
           display: block;
           margin: 0;
           position: absolute;
           left: 0;
+          color: #4e4e4e;
         }
 
         strong {
           width: auto;
+          color: #4e4e4e;
         }
       }
     }
@@ -50,6 +108,7 @@
           content: '•';
           font-size: 23px;
           top: -4px;
+          color: #4e4e4e;
         }
       }
     }
@@ -64,5 +123,61 @@
         }
       }
     }
+  }
+
+  &__tags {
+    * {
+      color: #4e4e4e;
+      font-size: 17px;
+      line-height: 1.05;
+      font-weight: 400;
+
+      strong {
+        font-weight: 600;
+        color: #4e4e4e;
+        font-size: 17px;
+        line-height: 1.05;
+      }
+    }
+  }
+
+  &__sidebar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 335px;
+    margin: 30px 0 0;
+  }
+
+  &__similar-post {
+    border-radius: 10px;
+    background: $very-light-gray;
+    padding: 16px;
+
+    h3 {
+      font-size: 17px;
+      line-height: 1.05;
+      font-weight: 500;
+      color: $black;
+    }
+
+    p {
+      font-size: 15px;
+      color: #121f30;
+      letter-spacing: 0.25px;
+      font-weight: 400;
+      margin: 10px 0 0;
+    }
+
+    a {
+      margin: 15px 0 0;
+    }
+  }
+
+  // other blocks styles
+
+  .blank-image {
+    margin: 32px 0;
   }
 }
