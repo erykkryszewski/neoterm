@@ -11,6 +11,8 @@
     background: $very-light-gray;
     padding: 32px;
     border-radius: 10px;
+    max-width: 914px;
+    margin: 0 auto;
 
     @media (max-width: 991px) {
       padding: 32px 0;

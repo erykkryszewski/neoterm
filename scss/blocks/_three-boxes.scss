@@ -1,10 +1,5 @@
 .numbers {
   position: relative;
-  background: $theme-color;
-
-  &--background {
-    background: $very-light-gray;
-  }
 
   &__content {
     width: 100%;
@@ -15,9 +10,11 @@
 
   &__wrapper {
     width: 100%;
+    max-width: 683px;
+    margin: 0 auto;
     display: flex;
+    gap: 20px;
     justify-content: space-between;
-    padding: 30px 0;
     align-items: center;
     position: relative;
     z-index: 1;
@@ -40,68 +37,23 @@
   }
 
   &__item {
-    padding: 15px;
-    text-align: center;
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    @media (max-width: 991px) {
-      padding: 5px;
-    }
-
-    @media (max-width: 767px) {
-      width: 33.33%;
-    }
-
-    @media (max-width: 500px) {
-      width: 100%;
-    }
-
-    a {
-      display: block;
-      width: 100%;
-      height: 100%;
-      max-width: 190px;
-      padding: 15px;
-    }
-  }
-
-  &__icon {
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 20px;
-
-    img {
-      max-width: 100%;
-      height: auto;
-      filter: brightness(0) invert(1);
-    }
+    width: 100%;
+    padding: 16px;
+    background: $very-light-gray;
+    border-radius: 10px;
   }
 
   &__digit {
-    @extend .h1;
-    color: $white;
+    @extend .h2;
     position: relative;
     display: inline-block;
     width: auto;
     opacity: 0;
     transition: all 350ms ease;
-
-    @media (max-width: 991px) {
-      font-size: 45px;
-    }
   }
 
   &__title {
-    @extend .h3;
-    color: $white;
-    margin: 25px 0 0;
-
-    @media (max-width: 991px) {
-      font-size: 14px;
-    }
+    @extend .h4;
+    margin: 16px 0 0;
   }
 }

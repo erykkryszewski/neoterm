@@ -1,17 +1,68 @@
 .subpage-hero {
   width: 100%;
   position: relative;
+  margin: 153px 0 0;
+
+  @media (max-width: 1199px) {
+    margin: 20px 0 0;
+  }
+
+  .row {
+    position: static;
+  }
 
   &__wrapper {
     position: relative;
     z-index: 2;
 
-    @media (max-width: 767px) {
-      padding: 50px 0;
+    @media (max-width: 1199px) {
+      padding: 0 0 62px;
     }
   }
 
+  &__column {
+    position: static;
+  }
+
   &__title {
-    color: $text-color;
+    font-size: 36px;
+    font-weight: 400;
+    color: $black;
+    max-width: 543px;
+
+    @media (max-width: 1199px) {
+      font-size: 26px;
+      font-weight: 500;
+      line-height: 1.15;
+      max-width: 100%;
+    }
+  }
+
+  p {
+    font-size: 21px;
+
+    &:first-of-type {
+      margin: 0;
+
+      @media (max-width: 1199px) {
+        margin: 20px 0 0;
+      }
+    }
+
+    @media (max-width: 1199px) {
+      font-size: 17px;
+      line-height: 1.05;
+      margin: 20px 0 0;
+    }
+  }
+
+  &__button {
+    margin: 32px 0 0;
+
+    @media (max-width: 1199px) {
+      position: absolute;
+      bottom: 0;
+      z-index: 1;
+    }
   }
 }

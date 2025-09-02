@@ -6,10 +6,11 @@ $title = get_field('title');
 $decoration_text = get_field('decoration_text');
 $text = get_field('text');
 $centered = get_field('centered');
+$size = get_field('size');
 ?>
 
-<div class="section-title <?php if ($background == 'true') {
-  echo 'section-title--background';
+<div class="section-title <?php if ($size == 'small') {
+  echo 'section-title--small';
 } ?>" id="section-<?php echo esc_html($section_id); ?>">
   <?php if (!empty($section_id)): ?>
   <div class="section-id <?php if ($background == 'true') {

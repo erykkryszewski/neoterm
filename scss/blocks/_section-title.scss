@@ -66,4 +66,15 @@
       border-radius: 50%;
     }
   }
+
+  &--small {
+    h2 {
+      @extend .h2;
+    }
+
+    .section-title__wrapper {
+      max-width: 683px;
+      margin: 0 auto;
+    }
+  }
 }
