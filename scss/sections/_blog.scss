@@ -10,25 +10,126 @@
   &__sidebar {
     width: 100%;
     max-width: 329px;
+    position: relative;
+    z-index: 2;
   }
 
   &__wrapper {
     width: 100%;
   }
 
-  .theme-blog__image {
-    position: relative;
+  &__intro {
+    padding: 0 0 32px;
+    border-bottom: 1px solid #e6e6e2;
+    margin: 0 0 32px;
   }
 
-  .theme-blog__image .cover {
-    position: absolute;
-    inset: 0;
-    display: block;
-    z-index: 1;
+  &__items {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
   }
 
-  .theme-blog__sidebar {
+  &__column {
+    width: calc(33% - 9.1px);
+
+    &--big {
+      width: calc(66% + 2px);
+    }
+  }
+
+  &__item {
+    width: 100%;
+    background: $very-light-gray;
+    border-radius: 10px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+    align-items: flex-start;
+    gap: 32px;
+
+    > div {
+      width: 100%;
+    }
+
+    &--big {
+      flex-direction: row;
+
+      > div {
+        &:first-child {
+          max-width: 213px;
+        }
+      }
+    }
+  }
+
+  &__tags {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin: 0 0 8px;
+
+    a {
+      font-size: 13px;
+      line-height: 100%;
+      letter-spacing: 0;
+      font-weight: 400;
+      color: $theme-color;
+      text-decoration: none;
+    }
+  }
+
+  &__title {
+    @extend .h4;
+    font-weight: 500;
+    color: $black;
+
+    &:hover {
+      color: $black;
+    }
+
+    &--big {
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 1.15;
+      letter-spacing: 0px;
+    }
+  }
+
+  &__image {
     position: relative;
-    z-index: 2;
+    width: 100%;
+    height: 170px;
+    border-radius: 5px;
+
+    img {
+      border-radius: 5px;
+    }
+
+    &--big {
+      height: 324px;
+    }
+  }
+
+  &__date {
+    display: inline-flex;
+    gap: 8px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: $black;
+    font-size: 13px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    align-items: center;
+    margin: 16px 0 0;
+
+    &::before {
+      width: 16px;
+      height: 16px;
+      background: url('./images/blog-calendar-icon.svg') center/contain no-repeat;
+      display: block;
+      content: '';
+    }
   }
 }
