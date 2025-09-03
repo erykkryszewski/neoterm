@@ -3036,7 +3036,6 @@ html::-webkit-scrollbar-thumb {
 .woocommerce-pagination {
   width: 100%;
   text-align: center;
-  margin: 140px 0 0;
 }
 
 .pagination ul,
@@ -6305,11 +6304,13 @@ body.admin-bar .header--fixed {
 
 .theme-blog {
   width: 100%;
+  margin: 0 0 100px;
 }
 
 @media (max-width: 1199px) {
   .theme-blog {
     padding: 0;
+    margin: 0 0 80px;
   }
 }
 

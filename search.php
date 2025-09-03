@@ -1,9 +1,5 @@
 <?php
 get_header();
-global $post;
-
-$post = get_post();
-$page_id = $post->ID;
 
 $blog_page = filter_input(INPUT_GET, 'blog-page', FILTER_SANITIZE_NUMBER_INT);
 $current_blog_page = $blog_page ? $blog_page : 1;
@@ -33,8 +29,6 @@ $global_logo = get_field('global_logo', 'options');
 <main id="main" class="main <?php if (!is_front_page()) {
   echo 'main--subpage';
 } ?>">
-
-  <?php if (have_posts()): ?>
 
   <div class="theme-blog theme-blog--subpage">
     <div class="container-fluid container-fluid--padding">
@@ -97,16 +91,14 @@ $global_logo = get_field('global_logo', 'options');
               aria-label="<?php esc_attr_e('Filtr kategorii', 'seoleadertheme'); ?>"
               onchange="if(this.value){window.location.href=this.value;}">
               <option value="" selected disabled><?php esc_html_e('Kategorie', 'seoleadertheme'); ?></option>
-              <option value="<?php echo esc_url($all_url); ?>">
-                <?php esc_html_e('Wszystko', 'seoleadertheme'); ?> (<?php echo (int) $total_count; ?>)
-              </option>
+              <option value="<?php echo esc_url($all_url); ?>"><?php esc_html_e('Wszystko', 'seoleadertheme'); ?>
+                (<?php echo (int) $total_count; ?>)</option>
               <?php if (!is_wp_error($terms) && !empty($terms)): ?>
               <?php foreach ($terms as $term): ?>
               <?php $link = get_term_link($term); ?>
               <?php if (!is_wp_error($link)): ?>
-              <option value="<?php echo esc_url($link); ?>">
-                <?php echo esc_html($term->name); ?> (<?php echo (int) $term->count; ?>)
-              </option>
+              <option value="<?php echo esc_url($link); ?>"><?php echo esc_html($term->name); ?>
+                (<?php echo (int) $term->count; ?>)</option>
               <?php endif; ?>
               <?php endforeach; ?>
               <?php endif; ?>
@@ -116,19 +108,17 @@ $global_logo = get_field('global_logo', 'options');
 
         <div class="theme-blog__wrapper">
           <div class="theme-blog__items">
+            <?php if (have_posts()): ?>
             <?php while (have_posts()):
               the_post(); ?>
             <?php
             $permalink = get_permalink();
             $tags = get_the_tags();
             $is_first = $wp_query->current_post === 0;
+            $has_thumb = has_post_thumbnail();
             ?>
-            <div class="theme-blog__column <?php echo $is_first && has_post_thumbnail()
-              ? 'theme-blog__column--big'
-              : ''; ?>">
-              <div class="theme-blog__item <?php echo $is_first && has_post_thumbnail()
-                ? 'theme-blog__item--big'
-                : ''; ?>">
+            <div class="theme-blog__column <?php echo $is_first && $has_thumb ? 'theme-blog__column--big' : ''; ?>">
+              <div class="theme-blog__item <?php echo $is_first && $has_thumb ? 'theme-blog__item--big' : ''; ?>">
                 <div>
                   <?php if ($tags): ?>
                   <div class="theme-blog__tags">
@@ -141,16 +131,14 @@ $global_logo = get_field('global_logo', 'options');
                   <?php endif; ?>
                   <?php if (!empty($permalink)): ?>
                   <a href="<?php echo esc_url($permalink); ?>" class="theme-blog__title <?php echo $is_first &&
-has_post_thumbnail()
+$has_thumb
   ? 'theme-blog__title--big'
   : ''; ?>"><?php the_title(); ?></a>
                   <?php endif; ?>
                 </div>
                 <div>
-                  <?php if (!empty(get_post_thumbnail_id())): ?>
-                  <div class="theme-blog__image <?php echo $is_first && has_post_thumbnail()
-                    ? 'theme-blog__image--big'
-                    : ''; ?>">
+                  <?php if ($has_thumb): ?>
+                  <div class="theme-blog__image <?php echo $is_first && $has_thumb ? 'theme-blog__image--big' : ''; ?>">
                     <?php if (!empty($permalink)): ?>
                     <a href="<?php echo esc_url($permalink); ?>" class="cover"></a>
                     <?php endif; ?>
@@ -165,11 +153,17 @@ has_post_thumbnail()
             </div>
             <?php
             endwhile; ?>
+            <?php else: ?>
+            <p><?php esc_html_e('Brak wyników.', 'seoleadertheme'); ?></p>
+            <?php endif; ?>
           </div>
         </div>
 
       </div>
 
+      <?php
+      global $wp_query;
+      if ($wp_query->found_posts && $wp_query->max_num_pages > 1): ?>
       <div class="pagination mt-5">
         <?php echo paginate_links([
           'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
@@ -186,30 +180,12 @@ has_post_thumbnail()
           'add_fragment' => '',
         ]); ?>
       </div>
+      <?php endif;
+      ?>
       <?php wp_reset_postdata(); ?>
       <?php wp_reset_query(); ?>
     </div>
   </div>
-
-  <?php else: ?>
-
-  <div class="theme-blog theme-blog--subpage">
-    <div class="container-fluid container-fluid--padding">
-      <div class="theme-blog__container">
-        <div class="theme-blog__empty-column desktop-only"></div>
-        <div class="theme-blog__intro">
-          <h1 class="theme-blog__section-title"><?php esc_html_e('Baza wiedzy', 'seoleadertheme'); ?></h1>
-        </div>
-      </div>
-      <div class="theme-blog__container">
-        <div class="theme-blog__wrapper">
-          <p><?php esc_html_e('Brak wyników.', 'seoleadertheme'); ?></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <?php endif; ?>
 
 </main>
 <?php get_footer(); ?>
