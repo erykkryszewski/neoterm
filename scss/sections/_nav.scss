@@ -79,7 +79,6 @@
     }
 
     @media (max-width: 1199px) {
-      flex-direction: column;
       background: $white;
       color: $text-color;
       position: absolute;
@@ -89,8 +88,9 @@
       left: -20px;
       width: 100%;
       padding: 0;
-      height: calc(100dvh - 118px);
-      min-height: calc(100dvh - 118px);
+      height: calc(100dvh - 74px);
+      min-height: calc(100dvh - 74px);
+      max-height: calc(100dvh - 74px);
       width: calc(100% + 40px);
       padding: 0 20px;
     }
@@ -172,13 +172,12 @@
       }
 
       > ul.sub-menu {
-        display: none;
+        display: block;
         width: 100%;
-        padding: 20px 0;
+        padding: 10px 0;
         text-align: left;
-        display: flex;
-        flex-direction: column;
-        gap: 0;
+        display: none;
+        // min-height: 309px;
 
         @media (min-width: 1200px) {
           transform-origin: top;
@@ -199,6 +198,7 @@
           max-width: 670px;
           padding: 20px;
           border-radius: 10px;
+          min-height: initial;
         }
 
         > li {
@@ -323,12 +323,14 @@
     }
 
     &--shop {
-      width: 100%;
-      margin-top: auto;
-      margin-bottom: 20px;
-      text-align: center;
-      justify-content: center;
       display: none;
+      width: 100%;
+      position: absolute;
+      bottom: 20px;
+      right: 50%;
+      transform: translateX(50%);
+      max-width: calc(100% - 40px);
+      text-align: center;
     }
   }
 }
