@@ -101,9 +101,9 @@ $body_classes = get_body_class();
           <?php if (!empty($navigation_button_mobile)): ?>
           <a href="<?php echo esc_url(
             $navigation_button_mobile['url'],
-          ); ?>" class="button nav__button nav__button--shop mobile-only display-none <?php if (!is_front_page()) {
-  echo 'nav__button--subpage';
-} ?>" target="<?php echo !empty($navigation_button_mobile['target'])
+          ); ?>" class="button nav__button nav__button--shop" target="<?php echo !empty(
+  $navigation_button_mobile['target']
+)
   ? esc_attr($navigation_button_mobile['target'])
   : '_self'; ?>" <?php if (
   !empty($navigation_button_mobile['target']) &&

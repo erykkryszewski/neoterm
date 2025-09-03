@@ -86,9 +86,12 @@
       top: calc(100% - 2px);
       display: none;
       z-index: 10;
-      left: 0;
+      left: -20px;
       width: 100%;
       padding: 0;
+      height: calc(100vh - 118px);
+      width: calc(100% + 40px);
+      padding: 0 20px;
     }
 
     > li {
@@ -314,8 +317,8 @@
       width: 100%;
       margin: 32px 0 0;
       text-align: center;
-      display: flex;
       justify-content: center;
+      display: none;
     }
   }
 }
