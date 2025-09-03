@@ -6258,7 +6258,6 @@ body.admin-bar .header--fixed {
   padding: 0 0 32px;
   border-bottom: 1px solid #e6e6e2;
   margin: 0 0 32px;
-  max-width: 850px;
 }
 
 .theme-blog__intro p {
@@ -6268,6 +6267,7 @@ body.admin-bar .header--fixed {
   line-height: 1.1;
   letter-spacing: 0.25px;
   margin: 16px 0 0;
+  max-width: 850px;
 }
 
 .theme-blog__intro p:first-of-type {

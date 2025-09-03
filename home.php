@@ -29,6 +29,7 @@ $global_logo = get_field('global_logo', 'options');
 
   <!-- max 12 items -->
   <?php if (have_posts()): ?>
+
   <div class="theme-blog theme-blog--subpage">
     <div class="container-fluid container-fluid--padding">
       <div class="theme-blog__container">
@@ -117,10 +118,15 @@ $global_logo = get_field('global_logo', 'options');
             ?>
 
 
-            <div class="theme-blog__column <?php echo $is_first ? 'theme-blog__column--big' : ''; ?>">
-              <div class="theme-blog__item <?php echo $is_first ? 'theme-blog__item--big' : ''; ?>">
-                <?php if ($tags): ?>
+            <div class="theme-blog__column <?php echo $is_first && has_post_thumbnail()
+              ? 'theme-blog__column--big'
+              : ''; ?>">
+
+              <div class="theme-blog__item <?php echo $is_first && has_post_thumbnail()
+                ? 'theme-blog__item--big'
+                : ''; ?>">
                 <div>
+                  <?php if ($tags): ?>
                   <div class="theme-blog__tags">
                     <?php foreach ($tags as $tag): ?>
                     <a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>">#<?php echo esc_html(
@@ -130,14 +136,17 @@ $global_logo = get_field('global_logo', 'options');
                   </div>
                   <?php endif; ?>
                   <?php if (!empty($permalink)): ?>
-                  <a href="<?php echo esc_url($permalink); ?>" class="theme-blog__title <?php echo $is_first
+                  <a href="<?php echo esc_url($permalink); ?>" class="theme-blog__title <?php echo $is_first &&
+has_post_thumbnail()
   ? 'theme-blog__title--big'
   : ''; ?>"><?php the_title(); ?></a>
                   <?php endif; ?>
                 </div>
                 <div>
                   <?php if (!empty(get_post_thumbnail_id())): ?>
-                  <div class="theme-blog__image <?php echo $is_first ? 'theme-blog__image--big' : ''; ?>">
+                  <div class="theme-blog__image <?php echo $is_first && has_post_thumbnail()
+                    ? 'theme-blog__image--big'
+                    : ''; ?>">
                     <?php if (!empty($permalink)): ?>
                     <a href="<?php echo esc_url($permalink); ?>" class="cover"></a>
                     <?php endif; ?>
@@ -149,74 +158,8 @@ $global_logo = get_field('global_logo', 'options');
                   <div class="theme-blog__date"><?php echo esc_html(get_the_date()); ?></div>
                 </div>
               </div>
+
             </div>
-
-
-            <div class="theme-blog__column">
-              <div class="theme-blog__item">
-                <?php if ($tags): ?>
-                <div>
-                  <div class="theme-blog__tags">
-                    <?php foreach ($tags as $tag): ?>
-                    <a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>">#<?php echo esc_html(
-  $tag->name,
-); ?></a>
-                    <?php endforeach; ?>
-                  </div>
-                  <?php endif; ?>
-                  <?php if (!empty($permalink)): ?>
-                  <a href="<?php echo esc_url($permalink); ?>" class="theme-blog__title"><?php the_title(); ?></a>
-                  <?php endif; ?>
-                </div>
-                <div>
-                  <?php if (!empty(get_post_thumbnail_id())): ?>
-                  <div class="theme-blog__image">
-                    <?php if (!empty($permalink)): ?>
-                    <a href="<?php echo esc_url($permalink); ?>" class="cover"></a>
-                    <?php endif; ?>
-                    <?php echo wp_get_attachment_image(get_post_thumbnail_id(), 'full', false, [
-                      'class' => 'object-fit-cover',
-                    ]); ?>
-                  </div>
-                  <?php endif; ?>
-                  <div class="theme-blog__date"><?php echo esc_html(get_the_date()); ?></div>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="theme-blog__column">
-              <div class="theme-blog__item">
-                <?php if ($tags): ?>
-                <div>
-                  <div class="theme-blog__tags">
-                    <?php foreach ($tags as $tag): ?>
-                    <a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>">#<?php echo esc_html(
-  $tag->name,
-); ?></a>
-                    <?php endforeach; ?>
-                  </div>
-                  <?php endif; ?>
-                  <?php if (!empty($permalink)): ?>
-                  <a href="<?php echo esc_url($permalink); ?>" class="theme-blog__title"><?php the_title(); ?></a>
-                  <?php endif; ?>
-                </div>
-                <div>
-                  <?php if (!empty(get_post_thumbnail_id())): ?>
-                  <div class="theme-blog__image">
-                    <?php if (!empty($permalink)): ?>
-                    <a href="<?php echo esc_url($permalink); ?>" class="cover"></a>
-                    <?php endif; ?>
-                    <?php echo wp_get_attachment_image(get_post_thumbnail_id(), 'full', false, [
-                      'class' => 'object-fit-cover',
-                    ]); ?>
-                  </div>
-                  <?php endif; ?>
-                  <div class="theme-blog__date"><?php echo esc_html(get_the_date()); ?></div>
-                </div>
-              </div>
-            </div>
-
 
 
             <?php
@@ -225,7 +168,14 @@ $global_logo = get_field('global_logo', 'options');
           </div>
 
         </div>
+
+
+
+
       </div>
+
+
+
       <div class="pagination mt-5">
         <?php echo paginate_links([
           'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
