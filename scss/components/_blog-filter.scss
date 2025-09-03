@@ -7,16 +7,78 @@
 
   &__search-icon {
     position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
+    top: 11px;
+    left: 16px;
     background: none;
     border: none;
     padding: 0;
     cursor: pointer;
   }
 
+  // importants to override the default inputs styles and other browsers
+  &__search-input,
+  &__select {
+    font-size: 17px !important;
+    font-weight: 500 !important;
+    line-height: 1.05 !important;
+    border-radius: 5px !important;
+    max-height: 40px !important;
+    outline: none !important;
+    offset: none !important;
+
+    @media (max-width: 1199px) {
+      width: 100%;
+      max-height: 50px !important;
+    }
+  }
+
   &__search-input {
-    padding: 0 0 0 40px;
+    padding: 11px 11px 11px 47px !important;
+    color: $border-color !important;
+    background: $very-light-gray !important;
+    border: 1px solid $very-light-gray !important;
+  }
+
+  &__select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('./images/dash-icon.svg');
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 8px 12px;
+    padding-right: 20px;
+    border: 1px solid $placeholder-color;
+    padding: 11px !important;
+    width: 100%;
+    margin: 16px 0 0;
+    font-weight: 400 !important;
+    margin: -3px 0 0;
+
+    option {
+      font-size: 17px !important;
+      font-weight: 400 !important;
+      line-height: 1.05 !important;
+      border-radius: 5px !important;
+      max-height: 40px !important;
+    }
+  }
+
+  &__link {
+    border: 1px solid $placeholder-color;
+    background: transparent;
+    color: $black;
+    margin: 16px 0 0;
+
+    &:hover,
+    &--active {
+      background: $theme-color;
+      border: 1px solid $theme-color;
+      color: $white;
+    }
+  }
+
+  &__count {
+    color: $border-color;
   }
 }

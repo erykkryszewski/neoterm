@@ -1,10 +1,23 @@
 .theme-blog {
   width: 100%;
 
+  @media (max-width: 1199px) {
+    padding: 0;
+  }
+
   &__container {
     width: 100%;
     display: flex;
     gap: 20px;
+
+    @media (max-width: 1199px) {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__empty-column {
+    width: 100%;
+    max-width: 329px;
   }
 
   &__sidebar {
@@ -12,6 +25,10 @@
     max-width: 329px;
     position: relative;
     z-index: 2;
+
+    @media (max-width: 1199px) {
+      max-width: 100%;
+    }
   }
 
   &__wrapper {
@@ -47,8 +64,16 @@
   &__column {
     width: calc(33% - 9.1px);
 
+    @media (max-width: 1199px) {
+      width: 100%;
+    }
+
     &--big {
       width: calc(66% + 2px);
+
+      @media (max-width: 1199px) {
+        width: 100%;
+      }
     }
   }
 
@@ -64,17 +89,33 @@
     align-items: flex-start;
     gap: 32px;
 
+    @media (max-width: 1199px) {
+      margin: 12px 0 0;
+      height: auto;
+    }
+
     > div {
       width: 100%;
     }
 
     &--big {
-      flex-direction: row;
+      @media (min-width: 1200px) {
+        flex-direction: row;
+      }
 
       > div {
         &:first-child {
           max-width: 213px;
+          @media (max-width: 1199px) {
+            max-width: 100%;
+          }
         }
+      }
+    }
+
+    &:first-child {
+      @media (max-width: 1199px) {
+        margin: 12px 0 0;
       }
     }
   }
@@ -105,10 +146,12 @@
     }
 
     &--big {
-      font-weight: 500;
-      font-size: 26px;
-      line-height: 1.15;
-      letter-spacing: 0px;
+      @media (min-width: 1200px) {
+        font-weight: 500;
+        font-size: 26px;
+        line-height: 1.15;
+        letter-spacing: 0px;
+      }
     }
   }
 
@@ -118,12 +161,28 @@
     height: 170px;
     border-radius: 5px;
 
+    @media (max-width: 1199px) {
+      height: 300px;
+    }
+
+    @media (max-width: 767px) {
+      height: 170px;
+    }
+
     img {
       border-radius: 5px;
     }
 
     &--big {
       height: 324px;
+
+      @media (max-width: 1199px) {
+        height: 300px;
+      }
+
+      @media (max-width: 767px) {
+        height: 170px;
+      }
     }
   }
 

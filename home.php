@@ -33,6 +33,15 @@ $global_logo = get_field('global_logo', 'options');
   <div class="theme-blog theme-blog--subpage">
     <div class="container-fluid container-fluid--padding">
       <div class="theme-blog__container">
+        <div class="theme-blog__empty-column desktop-only"></div>
+        <?php if (!empty($blog_archive_title) && !empty($blog_archive_text)): ?>
+        <div class="theme-blog__intro">
+          <h1 class="theme-blog__section-title"><?php echo esc_html($blog_archive_title); ?></h1>
+          <?php echo apply_filters('acf_the_content', $blog_archive_text); ?>
+        </div>
+        <?php endif; ?>
+      </div>
+      <div class="theme-blog__container">
 
 
         <div class="theme-blog__sidebar">
@@ -66,10 +75,11 @@ $global_logo = get_field('global_logo', 'options');
                 aria-label="<?php esc_attr_e('Szukaj', 'seoleadertheme'); ?>"></button>
             </form>
 
-            <nav class="blog-filter__nav" aria-label="<?php esc_attr_e('Filtr kategorii', 'seoleadertheme'); ?>">
+            <nav class="blog-filter__nav blog-filter__nav--desktop desktop-only"
+              aria-label="<?php esc_attr_e('Filtr kategorii', 'seoleadertheme'); ?>">
               <ul class="blog-filter__list">
                 <li class="blog-filter__item">
-                  <a class="blog-filter__link <?php echo $is_all_active ? 'blog-filter__link--active' : ''; ?>"
+                  <a class="button blog-filter__link <?php echo $is_all_active ? 'blog-filter__link--active' : ''; ?>"
                     href="<?php echo esc_url($all_url); ?>">
                     <span class="blog-filter__label"><?php esc_html_e('Wszystko', 'seoleadertheme'); ?></span>
                     <span class="blog-filter__count"><?php echo (int) $total_count; ?></span>
@@ -82,7 +92,7 @@ $global_logo = get_field('global_logo', 'options');
                 $link = get_term_link($term);
                 ?>
                 <li class="blog-filter__item">
-                  <a class="blog-filter__link <?php echo $active ? 'blog-filter__link--active' : ''; ?>"
+                  <a class="button blog-filter__link <?php echo $active ? 'blog-filter__link--active' : ''; ?>"
                     href="<?php echo esc_url($link); ?>">
                     <span class="blog-filter__label"><?php echo esc_html($term->name); ?></span>
                     <span class="blog-filter__count"><?php echo (int) $term->count; ?></span>
@@ -92,19 +102,34 @@ $global_logo = get_field('global_logo', 'options');
                 <?php endif; ?>
               </ul>
             </nav>
+
+            <?php $has_active = $is_all_active || is_category(); ?>
+            <select class="blog-filter__select blog-filter__select--mobile mobile-only"
+              aria-label="<?php esc_attr_e('Filtr kategorii', 'seoleadertheme'); ?>"
+              onchange="if(this.value){window.location.href=this.value;}">
+              <option value="" selected disabled><?php esc_html_e('Kategorie', 'seoleadertheme'); ?></option>
+              <option value="<?php echo esc_url($all_url); ?>">
+                <?php esc_html_e('Wszystko', 'seoleadertheme'); ?> (<?php echo (int) $total_count; ?>)
+              </option>
+              <?php if (!is_wp_error($terms) && !empty($terms)): ?>
+              <?php foreach ($terms as $term): ?>
+              <?php $link = get_term_link($term); ?>
+              <?php if (!is_wp_error($link)): ?>
+              <option value="<?php echo esc_url($link); ?>">
+                <?php echo esc_html($term->name); ?> (<?php echo (int) $term->count; ?>)
+              </option>
+              <?php endif; ?>
+              <?php endforeach; ?>
+              <?php endif; ?>
+            </select>
+
+
           </div>
         </div>
 
 
 
         <div class="theme-blog__wrapper">
-
-          <?php if (!empty($blog_archive_title) && !empty($blog_archive_text)): ?>
-          <div class="theme-blog__intro">
-            <h1 class="theme-blog__section-title"><?php echo esc_html($blog_archive_title); ?></h1>
-            <?php echo apply_filters('acf_the_content', $blog_archive_text); ?>
-          </div>
-          <?php endif; ?>
 
           <div class="theme-blog__items">
 

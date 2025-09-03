@@ -1,10 +1,6 @@
 .single-blog-post {
   width: 100%;
 
-  @media (max-width: 1199px) {
-    padding: 0 10px;
-  }
-
   // separate component, maybe it should be in components
   .post-hero {
     width: 100%;
@@ -16,6 +12,10 @@
       justify-content: space-between;
       align-items: flex-end;
       padding: 0 0 32px;
+
+      @media (max-width: 1199px) {
+        padding: 0 10px 32px;
+      }
 
       div {
         width: 100%;
@@ -36,6 +36,10 @@
     display: flex;
     width: 100%;
     gap: 125px;
+
+    @media (max-width: 1199px) {
+      padding: 0 15px;
+    }
   }
 
   &__content {

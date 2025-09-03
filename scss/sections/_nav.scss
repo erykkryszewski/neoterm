@@ -234,7 +234,7 @@
             p {
               @extend .paragraph;
               margin: 4px 0 0;
-              color: #686868;
+              color: $border-color;
               font-size: 13px;
 
               &:first-of-type {

@@ -506,7 +506,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jque
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("document.addEventListener('DOMContentLoaded', function () {\n  if (window.matchMedia('(min-width: 1200px)').matches) {\n    var themeBlogIntro = document.querySelector('.theme-blog__intro');\n    var themeBlogSidebar = document.querySelector('.theme-blog__sidebar');\n    if (themeBlogIntro && themeBlogSidebar) {\n      var introHeight = themeBlogIntro.offsetHeight;\n      themeBlogSidebar.style.paddingTop = introHeight + 30 + 'px';\n    }\n  }\n});\n\n//# sourceURL=webpack:///./js/src/sections/blog.js?");
+eval("\n\n//# sourceURL=webpack:///./js/src/sections/blog.js?");
 
 /***/ }),
 

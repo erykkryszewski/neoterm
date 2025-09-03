@@ -1467,9 +1467,9 @@
   max-width: 1800px;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1199px) {
   .editor-styles-wrapper .container-fluid--padding {
-    padding: 0 15px;
+    padding: 0 20px;
   }
 }
 
