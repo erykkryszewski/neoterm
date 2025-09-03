@@ -1,78 +1,64 @@
 import $ from 'jquery';
 
-// mobile navigation, jQuery style, done in 2019 :D
+$(document).ready(function () {
+  var navLock = false;
 
-$('document').ready(function () {
+  function openMenu() {
+    $('.hamburger').addClass('active');
+    $('.header').addClass('header--open');
+    $('body').addClass('overflow-hidden');
+    $('.nav').addClass('nav--open');
+    $('.nav__menu').addClass('nav__menu--open display-flex').removeAttr('style');
+    $('.nav__button').addClass('nav__button--open');
+    $('.nav__hamburger').addClass('nav__hamburger--open');
+    $('.menu-item-has-children > ul').stop(true, true).hide();
+  }
+
+  function closeMenu() {
+    $('.hamburger').removeClass('active');
+    $('.header').removeClass('header--open');
+    $('body').removeClass('overflow-hidden');
+    $('.nav').removeClass('nav--open');
+    $('.nav__menu').removeClass('nav__menu--open display-flex').removeAttr('style');
+    $('.nav__button').removeClass('nav__button--open');
+    $('.nav__hamburger').removeClass('nav__hamburger--open');
+    $('.menu-item-has-children > ul').stop(true, true).hide().removeAttr('style');
+  }
+
   $('.hamburger').on('click', function () {
-    $(this).toggleClass('active');
-    $('.header').toggleClass('header--open');
-    $('.nav').toggleClass('nav--open');
-    $('.nav__menu').toggleClass('nav__menu--open');
-    $('.nav .sub-menu').toggleClass('sub-menu--open');
-    $('.nav__button').toggleClass('nav__button--open');
-    $('.nav__hamburger').toggleClass('nav__hamburger--open');
-    $('.nav__menu').slideToggle();
-
-    if (window.matchMedia('(max-width: 1199px)').matches) {
-      if ($('.nav__menu').hasClass('nav__menu--open')) {
-        setTimeout(function () {
-          if ($('.nav__menu').hasClass('nav__menu--open')) {
-            $('.nav__menu').css({ height: 'auto', 'min-height': 'calc(100vh - 118px)' });
-          }
-        }, 500);
-      } else {
-        $('.nav__menu').css({ height: 'calc(100vh - 118px)', 'min-height': 'initial' });
-      }
+    if (navLock) return;
+    navLock = true;
+    var isOpen = $('.nav__menu').hasClass('nav__menu--open');
+    if (isOpen) {
+      closeMenu();
     } else {
-      $('.nav__menu').css({ height: '', 'min-height': '' });
+      openMenu();
     }
+    setTimeout(function () {
+      navLock = false;
+    }, 350);
   });
 
   $('.menu-item-has-children > a').on('click', function (e) {
-    e.preventDefault();
     if (window.matchMedia('(max-width: 1199px)').matches) {
-      $(this).siblings('ul').slideToggle();
+      e.preventDefault();
+      $(this).siblings('ul').stop(true, true).slideToggle(250);
     }
   });
 
   $('.nav__menu li > a').on('click', function () {
     if (window.matchMedia('(max-width: 1199px)').matches && !$(this).parent().hasClass('menu-item-has-children')) {
-      $('.nav__menu').slideUp();
-      $('.menu-item-has-children > a').siblings('ul').slideUp();
-      $('.hamburger').removeClass('active');
+      closeMenu();
     }
   });
 
-  if ($('body').hasClass('theme-subpage')) {
-    $('.nav__menu > li a').each(function () {
-      let currentHref = $(this).attr('href');
-      let hrefFirstLetter = $(this).attr('href').charAt(0);
-
-      if (hrefFirstLetter == '#') {
-        $(this).attr('href', '/' + currentHref);
-      }
-    });
-  }
-
-  // Reset navigation styles on window resize
-  $(window).resize(function () {
+  $(window).on('resize', function () {
     if ($(window).width() > 1199) {
-      // Reset the styles affected by slideToggle
-      $('.nav__menu').removeAttr('style');
+      closeMenu();
       $('.menu-item-has-children > ul').removeAttr('style');
-
-      // Remove classes added for mobile view
-      $('.hamburger').removeClass('active');
-      $('.header').removeClass('header--open');
-      $('.nav').removeClass('nav--open');
-      $('.nav__menu').removeClass('nav__menu--open');
-      $('.nav .sub-menu').removeClass('sub-menu--open');
-      $('.nav__button').removeClass('nav__button--open');
-      $('.nav__hamburger').removeClass('nav__hamburger--open');
     }
   });
 
-  // additional button stuff
   setTimeout(function () {
     if (window.matchMedia('(max-width: 1199px)').matches) {
       var btn = $('.nav__button.nav__button--shop');
