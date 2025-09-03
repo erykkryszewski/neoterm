@@ -17,7 +17,8 @@ $('document').ready(function () {
   $('.menu-item-has-children > a').on('click', function (e) {
     e.preventDefault();
     if (window.matchMedia('(max-width: 1199px)').matches) {
-      $(this).siblings('ul').slideToggle();
+      var $submenu = $(this).siblings('ul');
+      $submenu.stop(true, true).slideToggle(250);
     }
   });
 
@@ -36,6 +37,7 @@ $('document').ready(function () {
       $('.nav .sub-menu').removeClass('sub-menu--open');
       $('.nav__button').removeClass('nav__button--open');
       $('.nav__hamburger').removeClass('nav__hamburger--open');
+      $('.nav__button.nav__button--shop').fadeOut();
     }
   });
 

@@ -7,12 +7,16 @@
 
   &__search-icon {
     position: absolute;
-    top: 11px;
+    top: 12px;
     left: 16px;
     background: none;
     border: none;
     padding: 0;
     cursor: pointer;
+
+    @media (max-width: 1199px) {
+      top: 13px;
+    }
   }
 
   // importants to override the default inputs styles and other browsers
@@ -54,6 +58,7 @@
     margin: 16px 0 0;
     font-weight: 400 !important;
     margin: -3px 0 0;
+    background: $white !important;
 
     option {
       font-size: 17px !important;

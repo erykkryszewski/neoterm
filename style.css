@@ -3290,12 +3290,18 @@ html::-webkit-scrollbar-thumb {
 
 .blog-filter__search-icon {
   position: absolute;
-  top: 11px;
+  top: 12px;
   left: 16px;
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
+}
+
+@media (max-width: 1199px) {
+  .blog-filter__search-icon {
+    top: 13px;
+  }
 }
 
 .blog-filter__search-input, .blog-filter__select {
@@ -3337,6 +3343,7 @@ html::-webkit-scrollbar-thumb {
   margin: 16px 0 0;
   font-weight: 400 !important;
   margin: -3px 0 0;
+  background: #ffffff !important;
 }
 
 .blog-filter__select option {
@@ -3605,7 +3612,8 @@ html::-webkit-scrollbar-thumb {
   display: block;
 }
 
-.contact__form p input {
+.contact__form p input,
+.contact__form p textarea {
   background: transparent !important;
 }
 
@@ -5802,6 +5810,8 @@ body.admin-bar .header--fixed {
   padding: 10px 0;
   text-align: left;
   display: none;
+  overflow: hidden;
+  will-change: height;
   /* submenu other styles */
 }
 
@@ -5980,6 +5990,12 @@ body.admin-bar .header--fixed {
           transform: translateX(50%);
   max-width: calc(100% - 40px);
   text-align: center;
+}
+
+@media (min-width: 1200px) {
+  .nav__button--shop {
+    display: none;
+  }
 }
 
 @-webkit-keyframes pulse {
