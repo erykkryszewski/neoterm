@@ -45,7 +45,11 @@
   }
 
   &__content {
-    padding: 0 0 50px;
+    padding: 0 0 110px;
+
+    @media (max-width: 1199px) {
+      padding: 0 0 50px;
+    }
 
     > .default-block.container,
     .container {
@@ -186,7 +190,12 @@
   }
 
   &__slider {
-    max-width: 100;
+    max-width: 100%;
+    margin: 16px 0 0;
+
+    @media (max-width: 1199px) {
+      padding: 0 10px;
+    }
   }
 
   // other blocks styles
