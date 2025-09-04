@@ -58,23 +58,27 @@
   }
 
   &__items {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
     gap: 20px;
-    flex-wrap: wrap;
+
+    @media (max-width: 1199px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__column {
-    width: calc(33% - 9.1px);
+    grid-column: span 4;
 
     @media (max-width: 1199px) {
-      width: 100%;
+      grid-column: 1 / -1;
     }
 
     &--big {
-      width: calc(66% + 2px);
+      grid-column: span 8;
 
       @media (max-width: 1199px) {
-        width: 100%;
+        grid-column: 1 / -1;
       }
     }
   }
@@ -84,7 +88,7 @@
     background: $very-light-gray;
     border-radius: 10px;
     height: 400px;
-    display: flex;
+    display: flex !important; // override slick default display inline block
     flex-direction: column;
     justify-content: space-between;
     padding: 16px;
@@ -205,6 +209,55 @@
       background: url('./images/blog-calendar-icon.svg') center/contain no-repeat;
       display: block;
       content: '';
+    }
+  }
+
+  &__carousel-rail {
+    width: calc(100vw - (50vw - 50%));
+    max-width: none;
+    margin-left: 0;
+    overflow: visible;
+
+    .slick-arrow {
+      width: 44px;
+      height: 44px;
+      background: red;
+    }
+
+    .slick-prev {
+      transform: rotate(180deg);
+    }
+
+    .slick-arrow.slick-disabled {
+      opacity: 0.35;
+      cursor: default;
+      filter: grayscale(1);
+    }
+  }
+
+  &__carousel {
+    margin: 0 0 100px;
+    overflow: visible;
+
+    .slick-slide {
+      margin: 0 20px 0 0;
+
+      @media (max-width: 1199px) {
+        margin: 0;
+      }
+    }
+
+    .slick-list {
+      overflow: visible;
+      margin: 0 -20px 0 0;
+
+      @media (max-width: 1199px) {
+        margin: 0;
+      }
+    }
+
+    .slick-track {
+      margin-left: 0;
     }
   }
 }

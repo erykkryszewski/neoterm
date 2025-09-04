@@ -185,6 +185,105 @@ $different_hero_on_single_view = get_field('different_hero_on_single_view', $pag
         <?php endif; ?>
 
       </div>
+
+
+      <div class="single-blog-post__slider">
+        <?php
+        $recent_posts_slider = new WP_Query([
+          'post_type' => 'post',
+          'posts_per_page' => 10,
+          'post__not_in' => [get_the_ID()],
+          'ignore_sticky_posts' => true,
+          'no_found_rows' => true,
+          'orderby' => 'date',
+          'order' => 'DESC',
+        ]);
+
+        if ($recent_posts_slider->have_posts()): ?>
+        <div class="theme-blog__carousel">
+          <?php while ($recent_posts_slider->have_posts()):
+
+            $recent_posts_slider->the_post();
+            $permalink = get_permalink();
+            $tags = get_the_tags();
+            ?>
+          <div class="theme-blog__item">
+            <div>
+              <?php if ($tags): ?>
+              <div class="theme-blog__tags">
+                <?php foreach ($tags as $tag): ?>
+                <a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>">
+                  #<?php echo esc_html($tag->name); ?>
+                </a>
+                <?php endforeach; ?>
+              </div>
+              <?php endif; ?>
+
+              <?php if (!empty($permalink)): ?>
+              <a href="<?php echo esc_url($permalink); ?>" class="theme-blog__title">
+                <?php the_title(); ?>
+              </a>
+              <?php endif; ?>
+            </div>
+
+            <div>
+              <?php if (has_post_thumbnail()): ?>
+              <div class="theme-blog__image">
+                <?php if (!empty($permalink)): ?>
+                <a href="<?php echo esc_url($permalink); ?>" class="cover"></a>
+                <?php endif; ?>
+                <?php echo wp_get_attachment_image(get_post_thumbnail_id(), 'large', false, [
+                  'class' => 'object-fit-cover',
+                ]); ?>
+              </div>
+              <?php endif; ?>
+
+              <div class="theme-blog__date"><?php echo esc_html(get_the_date()); ?></div>
+            </div>
+          </div>
+          <div class="theme-blog__item">
+            <div>
+              <?php if ($tags): ?>
+              <div class="theme-blog__tags">
+                <?php foreach ($tags as $tag): ?>
+                <a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>">
+                  #<?php echo esc_html($tag->name); ?>
+                </a>
+                <?php endforeach; ?>
+              </div>
+              <?php endif; ?>
+
+              <?php if (!empty($permalink)): ?>
+              <a href="<?php echo esc_url($permalink); ?>" class="theme-blog__title">
+                <?php the_title(); ?>
+              </a>
+              <?php endif; ?>
+            </div>
+
+            <div>
+              <?php if (has_post_thumbnail()): ?>
+              <div class="theme-blog__image">
+                <?php if (!empty($permalink)): ?>
+                <a href="<?php echo esc_url($permalink); ?>" class="cover"></a>
+                <?php endif; ?>
+                <?php echo wp_get_attachment_image(get_post_thumbnail_id(), 'large', false, [
+                  'class' => 'object-fit-cover',
+                ]); ?>
+              </div>
+              <?php endif; ?>
+
+              <div class="theme-blog__date"><?php echo esc_html(get_the_date()); ?></div>
+            </div>
+          </div>
+          <?php
+          endwhile; ?>
+        </div>
+        <?php endif;
+        wp_reset_postdata();
+        ?>
+      </div>
+
+
     </div>
   </div>
   <?php
