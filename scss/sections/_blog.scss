@@ -213,15 +213,26 @@
   }
 
   &__carousel-rail {
-    width: calc(100vw - (50vw - 50%));
+    width: 100%;
     max-width: none;
     margin-left: 0;
     overflow: visible;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 
     .slick-arrow {
       width: 44px;
       height: 44px;
-      background: red;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background: #fff url('./images/slick-arrow.svg') center/20px 20px no-repeat;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+      font-size: 0;
+      line-height: 0;
+      padding: 0;
+      color: transparent;
+      cursor: pointer;
     }
 
     .slick-prev {
@@ -236,28 +247,58 @@
   }
 
   &__carousel {
-    margin: 0 0 100px;
+    margin: 16px 0 100px;
     overflow: visible;
 
     .slick-slide {
-      margin: 0 20px 0 0;
-
-      @media (max-width: 1199px) {
-        margin: 0;
-      }
+      margin: 0;
     }
 
     .slick-list {
       overflow: visible;
-      margin: 0 -20px 0 0;
-
-      @media (max-width: 1199px) {
-        margin: 0;
-      }
+      margin: 0;
     }
 
     .slick-track {
       margin-left: 0;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    &__carousel-rail {
+      width: calc(100vw - (50vw - 50%));
+      gap: 16px;
+    }
+
+    &__carousel {
+      .slick-slide {
+        margin: 0 20px 0 0;
+      }
+
+      .slick-list {
+        margin: 0 -20px 0 0;
+      }
+    }
+  }
+
+  @media (max-width: 1199px) {
+    &__carousel-rail {
+      width: 100%;
+    }
+
+    &__carousel {
+      margin: 0 0 50px;
+
+      .slick-list {
+        overflow: hidden;
+        margin: 0;
+      }
+      .slick-slide {
+        margin: 0;
+      }
+      .slick-track {
+        margin: 0;
+      }
     }
   }
 }

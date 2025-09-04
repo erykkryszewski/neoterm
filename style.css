@@ -3394,7 +3394,7 @@ html::-webkit-scrollbar-thumb {
 
 @media (max-width: 1199px) {
   .blank-image {
-    padding: 0 5px;
+    padding: 0;
     height: 430px !important;
   }
 }
@@ -6590,16 +6590,33 @@ body.admin-bar .header--fixed {
 }
 
 .theme-blog__carousel-rail {
-  width: calc(100vw - (50vw - 50%));
+  width: 100%;
   max-width: none;
   margin-left: 0;
   overflow: visible;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 12px;
 }
 
 .theme-blog__carousel-rail .slick-arrow {
   width: 44px;
   height: 44px;
-  background: red;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff url("./images/slick-arrow.svg") center/20px 20px no-repeat;
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  font-size: 0;
+  line-height: 0;
+  padding: 0;
+  color: transparent;
+  cursor: pointer;
 }
 
 .theme-blog__carousel-rail .slick-prev {
@@ -6615,33 +6632,53 @@ body.admin-bar .header--fixed {
 }
 
 .theme-blog__carousel {
-  margin: 0 0 100px;
+  margin: 16px 0 100px;
   overflow: visible;
 }
 
 .theme-blog__carousel .slick-slide {
-  margin: 0 20px 0 0;
-}
-
-@media (max-width: 1199px) {
-  .theme-blog__carousel .slick-slide {
-    margin: 0;
-  }
+  margin: 0;
 }
 
 .theme-blog__carousel .slick-list {
   overflow: visible;
-  margin: 0 -20px 0 0;
-}
-
-@media (max-width: 1199px) {
-  .theme-blog__carousel .slick-list {
-    margin: 0;
-  }
+  margin: 0;
 }
 
 .theme-blog__carousel .slick-track {
   margin-left: 0;
+}
+
+@media (min-width: 1200px) {
+  .theme-blog__carousel-rail {
+    width: calc(100vw - (50vw - 50%));
+    gap: 16px;
+  }
+  .theme-blog__carousel .slick-slide {
+    margin: 0 20px 0 0;
+  }
+  .theme-blog__carousel .slick-list {
+    margin: 0 -20px 0 0;
+  }
+}
+
+@media (max-width: 1199px) {
+  .theme-blog__carousel-rail {
+    width: 100%;
+  }
+  .theme-blog__carousel {
+    margin: 0 0 50px;
+  }
+  .theme-blog__carousel .slick-list {
+    overflow: hidden;
+    margin: 0;
+  }
+  .theme-blog__carousel .slick-slide {
+    margin: 0;
+  }
+  .theme-blog__carousel .slick-track {
+    margin: 0;
+  }
 }
 
 .single-blog-post {

@@ -14,23 +14,26 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  var $rail = $('.theme-blog__carousel-rail');
   var $carousel = $('.theme-blog__carousel');
+  var $rail = $('.theme-blog__carousel-rail');
 
-  if ($carousel.length) {
+  if ($carousel.length && !$carousel.hasClass('slick-initialized')) {
     $carousel.slick({
-      slidesToShow: 3,
+      mobileFirst: true,
+      slidesToShow: 1,
       slidesToScroll: 1,
       infinite: false,
       dots: false,
       arrows: true,
-      adaptiveHeight: false,
+      prevArrow: '<button type="button" class="slick-prev" aria-label="Poprzedni"></button>',
+      nextArrow: '<button type="button" class="slick-next" aria-label="Następny"></button>',
+      appendArrows: $rail.length ? $rail : undefined,
       speed: 350,
       cssEase: 'ease',
-      autoplay: false,
-      centerMode: false,
+      adaptiveHeight: false,
       variableWidth: false,
-      responsive: [{ breakpoint: 1199, settings: { slidesToShow: 1 } }],
+      centerMode: false,
+      responsive: [{ breakpoint: 1200, settings: { slidesToShow: 3 } }],
     });
   }
 });
