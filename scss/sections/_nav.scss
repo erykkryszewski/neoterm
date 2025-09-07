@@ -134,6 +134,10 @@
         &:hover {
           color: $theme-color;
 
+          * {
+            color: $theme-color;
+          }
+
           + ul.sub-menu {
             @media (min-width: 1200px) {
               transform: translateX(50%) scale(1, 1);
@@ -221,6 +225,8 @@
             align-items: flex-start;
             justify-content: flex-start;
             text-align: left;
+            border-radius: 10px;
+            transition: all 300ms ease;
 
             @media (max-width: 1199px) {
               font-size: 21px;
@@ -250,6 +256,10 @@
               &:first-of-type {
                 margin: 4px 0 0;
               }
+            }
+
+            &:hover {
+              background: $very-light-gray;
             }
           }
         }

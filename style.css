@@ -2196,28 +2196,28 @@ textarea {
 
 .inputs::-webkit-input-placeholder, input[type='text']::-webkit-input-placeholder, input[type='number']::-webkit-input-placeholder, input[type='email']::-webkit-input-placeholder, input[type='password']::-webkit-input-placeholder, input[type='tel']::-webkit-input-placeholder, select::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   font-size: 15px !important;
-  color: #4e4e4e !important;
+  color: #c3c7cb !important;
   font-weight: 400 !important;
   font-family: "Figtree", serif !important;
 }
 
 .inputs::-moz-placeholder, input[type='text']::-moz-placeholder, input[type='number']::-moz-placeholder, input[type='email']::-moz-placeholder, input[type='password']::-moz-placeholder, input[type='tel']::-moz-placeholder, select::-moz-placeholder, textarea::-moz-placeholder {
   font-size: 15px !important;
-  color: #4e4e4e !important;
+  color: #c3c7cb !important;
   font-weight: 400 !important;
   font-family: "Figtree", serif !important;
 }
 
 .inputs:-ms-input-placeholder, input[type='text']:-ms-input-placeholder, input[type='number']:-ms-input-placeholder, input[type='email']:-ms-input-placeholder, input[type='password']:-ms-input-placeholder, input[type='tel']:-ms-input-placeholder, select:-ms-input-placeholder, textarea:-ms-input-placeholder {
   font-size: 15px !important;
-  color: #4e4e4e !important;
+  color: #c3c7cb !important;
   font-weight: 400 !important;
   font-family: "Figtree", serif !important;
 }
 
 .inputs::-ms-input-placeholder, input[type='text']::-ms-input-placeholder, input[type='number']::-ms-input-placeholder, input[type='email']::-ms-input-placeholder, input[type='password']::-ms-input-placeholder, input[type='tel']::-ms-input-placeholder, select::-ms-input-placeholder, textarea::-ms-input-placeholder {
   font-size: 15px !important;
-  color: #4e4e4e !important;
+  color: #c3c7cb !important;
   font-weight: 400 !important;
   font-family: "Figtree", serif !important;
 }
@@ -2230,7 +2230,7 @@ input[type='tel']::placeholder,
 select::placeholder,
 textarea::placeholder {
   font-size: 15px !important;
-  color: #4e4e4e !important;
+  color: #c3c7cb !important;
   font-weight: 400 !important;
   font-family: "Figtree", serif !important;
 }
@@ -3352,6 +3352,12 @@ html::-webkit-scrollbar-thumb {
   background: #3530ea;
   border: 1px solid #3530ea;
   color: #ffffff;
+}
+
+.blog-filter__link:hover .blog-filter__count, .blog-filter__link--active .blog-filter__count {
+  color: #ffffff;
+  opacity: 0.5;
+  font-weight: 300;
 }
 
 .blog-filter__count {
@@ -5778,6 +5784,10 @@ body.admin-bar .header--fixed {
   color: #3530ea;
 }
 
+.nav__menu > li > a:hover * {
+  color: #3530ea;
+}
+
 @media (min-width: 1200px) {
   .nav__menu > li > a:hover + ul.sub-menu {
     -webkit-transform: translateX(50%) scale(1, 1);
@@ -5886,6 +5896,9 @@ body.admin-bar .header--fixed {
       -ms-flex-pack: start;
           justify-content: flex-start;
   text-align: left;
+  border-radius: 10px;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
 }
 
 @media (max-width: 1199px) {
@@ -5919,6 +5932,10 @@ body.admin-bar .header--fixed {
 
 .nav__menu > li > ul.sub-menu > li > a p:first-of-type {
   margin: 4px 0 0;
+}
+
+.nav__menu > li > ul.sub-menu > li > a:hover {
+  background: #f5f5f5;
 }
 
 @media (min-width: 1200px) {
