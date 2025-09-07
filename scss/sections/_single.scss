@@ -1,5 +1,7 @@
 .single-blog-post {
   width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 
   // separate component, maybe it should be in components
   .post-hero {
