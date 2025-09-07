@@ -18,7 +18,7 @@ h1 > span {
   font-weight: 400;
   letter-spacing: 0px;
 
-  @media (max-width: 767px) {
+  @media (max-width: 991px) {
     font-size: 26px;
     line-height: 115%;
     font-weight: 500;
@@ -37,7 +37,7 @@ h2 > span {
   font-weight: 400;
   letter-spacing: 0px;
 
-  @media (max-width: 767px) {
+  @media (max-width: 991px) {
     font-size: 26px;
   }
 }
@@ -54,7 +54,7 @@ h3 > span {
   font-weight: 400;
   letter-spacing: 0px;
 
-  @media (max-width: 767px) {
+  @media (max-width: 991px) {
     font-size: 26px;
   }
 }
@@ -71,7 +71,7 @@ h4 > span {
   font-weight: 400;
   letter-spacing: 0px;
 
-  @media (max-width: 767px) {
+  @media (max-width: 991px) {
     font-size: 21px;
   }
 }
@@ -88,7 +88,7 @@ h5 > span {
   font-weight: 400;
   letter-spacing: 0px;
 
-  @media (max-width: 767px) {
+  @media (max-width: 991px) {
     font-size: 17px;
   }
 }
@@ -102,7 +102,7 @@ p,
   margin: 20px 0 0;
   color: $black;
 
-  // @media (max-width: 767px) {
+  // @media (max-width: 991px) {
   //   margin: 20px 0 0;
   // }
 

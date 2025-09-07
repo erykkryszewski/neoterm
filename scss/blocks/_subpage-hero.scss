@@ -3,7 +3,7 @@
   position: relative;
   margin: 153px 0 0;
 
-  @media (max-width: 1199px) {
+  @media (max-width: 991px) {
     margin: 20px 0 0;
     padding: 0 10px;
   }
@@ -16,7 +16,7 @@
     position: relative;
     z-index: 2;
 
-    @media (max-width: 1199px) {
+    @media (max-width: 991px) {
       padding: 0 0 62px;
     }
   }
@@ -31,7 +31,7 @@
     color: $black;
     max-width: 543px;
 
-    @media (max-width: 1199px) {
+    @media (max-width: 991px) {
       font-size: 26px;
       font-weight: 500;
       line-height: 1.15;
@@ -45,12 +45,12 @@
     &:first-of-type {
       margin: 0;
 
-      @media (max-width: 1199px) {
+      @media (max-width: 991px) {
         margin: 20px 0 0;
       }
     }
 
-    @media (max-width: 1199px) {
+    @media (max-width: 991px) {
       font-size: 17px;
       line-height: 1.05;
       margin: 20px 0 0;
@@ -60,7 +60,7 @@
   &__button {
     margin: 32px 0 0;
 
-    @media (max-width: 1199px) {
+    @media (max-width: 991px) {
       position: absolute;
       bottom: 0;
       z-index: 1;
