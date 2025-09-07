@@ -1065,8 +1065,8 @@
   gap: 10px;
   background: #3530ea;
   color: #ffffff;
-  -webkit-transition: all 500ms ease;
-  transition: all 500ms ease;
+  -webkit-transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
   white-space: nowrap;
   -ms-flex-negative: 0;
       flex-shrink: 0;
@@ -1129,8 +1129,8 @@
   -webkit-box-ordinal-group: 3;
       -ms-flex-order: 2;
           order: 2;
-  -webkit-transition: all 500ms ease;
-  transition: all 500ms ease;
+  -webkit-transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .editor-styles-wrapper .button--arrow::after {
@@ -1146,16 +1146,16 @@
   position: absolute;
   right: 13px;
   z-index: 2;
-  -webkit-transition: all 500ms ease;
-  transition: all 500ms ease;
+  -webkit-transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
   -webkit-box-ordinal-group: 4;
       -ms-flex-order: 3;
           order: 3;
 }
 
 .editor-styles-wrapper .button--arrow span.animation {
-  -webkit-transition: all 500ms ease;
-  transition: all 500ms ease;
+  -webkit-transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
   width: 0px;
 }
 
@@ -1217,8 +1217,8 @@
   bottom: 0;
   z-index: -1;
   background: #3530ea;
-  -webkit-transition: all 500ms ease;
-  transition: all 500ms ease;
+  -webkit-transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
   border-radius: 5px;
 }
 

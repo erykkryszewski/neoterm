@@ -165,7 +165,22 @@
     }
   }
 
+  &__panel[hidden] {
+    display: none;
+  }
+
   &__answer {
+    opacity: 0;
+    transform: translateY(6px);
+    transition:
+      opacity 0.24s ease,
+      transform 0.24s ease;
+    will-change: opacity, transform;
+
+    &.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
     p {
       margin: 12px 0 0 0;
       text-align: left;
