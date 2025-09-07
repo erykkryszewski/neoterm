@@ -3,16 +3,18 @@
   text-align: left;
   position: relative;
 
-  @media (max-width: 1199px) {
-    padding: 0 10px;
-  }
-
   &--background {
     background: $very-light-gray;
   }
 
   &--padding {
     padding: 80px 0 85px;
+  }
+
+  &__wrapper {
+    @media (max-width: 1199px) {
+      padding: 0 10px;
+    }
   }
 
   &__row {
@@ -47,6 +49,10 @@
 
     &--reverse {
       padding: 0 11px 0 0;
+
+      @media (max-width: 1199px) {
+        padding: 0;
+      }
     }
   }
 
@@ -113,6 +119,7 @@
     font-size: 15px;
     letter-spacing: 0.25px;
     font-weight: 500;
+    line-height: 1.1;
   }
 
   &__link {

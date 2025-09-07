@@ -55,6 +55,9 @@
     @media (max-width: 767px) {
       text-align: left;
       align-items: flex-start;
+      background: none;
+      padding: 5px 0;
+      gap: 10px;
     }
 
     &::before {
@@ -64,6 +67,13 @@
       width: 9px;
       height: 9px;
       border-radius: 50%;
+
+      @media (max-width: 767px) {
+        width: 16px;
+        height: 16px;
+        position: relative;
+        bottom: -1px;
+      }
     }
   }
 

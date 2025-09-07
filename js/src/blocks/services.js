@@ -41,7 +41,9 @@ window.addEventListener('DOMContentLoaded', () => {
     const cs = getComputedStyle(track);
     const gap = parseFloat(cs.columnGap || cs.gap || '0') || 0;
 
-    const speed = parseFloat(slider.getAttribute('data-speed') || '120');
+    const baseSpeed = parseFloat(slider.getAttribute('data-speed') || '120');
+    let speed = window.matchMedia('(max-width: 991px)').matches ? baseSpeed * 0.6 : baseSpeed;
+
     let x = 0;
     let last = performance.now();
 
