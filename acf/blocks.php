@@ -135,6 +135,11 @@ return [
     'category' => 'seoleadertheme',
     'align' => 'full',
   ],
+  'single-gray-content' => [
+    'title' => __('Single gray content', 'seoleadertheme'),
+    'category' => 'seoleadertheme',
+    'align' => 'full',
+  ],
   'services' => ['title' => __('Services', 'seoleadertheme'), 'category' => 'seoleadertheme', 'align' => 'full'],
   'homepage-hero' => [
     'title' => __('Homepage Hero', 'seoleadertheme'),

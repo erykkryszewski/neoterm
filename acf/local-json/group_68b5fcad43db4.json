@@ -1,6 +1,6 @@
 {
     "key": "group_68b5fcad43db4",
-    "title": "Block: Text with image (copy)",
+    "title": "Block: Single image text",
     "fields": [
         {
             "key": "field_68b5fcad49a89",
@@ -152,5 +152,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1756757470
+    "modified": 1757274451
 }

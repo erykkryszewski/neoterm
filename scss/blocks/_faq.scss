@@ -96,7 +96,7 @@
   &__question {
     @extend .h3;
     margin: 0;
-    color: #121f30;
+    color: $text-color-navy;
 
     @media (max-width: 991px) {
       font-size: 17px;
@@ -184,7 +184,7 @@
     p {
       margin: 12px 0 0 0;
       text-align: left;
-      color: #121f30;
+      color: $text-color-navy;
 
       @media (max-width: 991px) {
         font-size: 15px;
