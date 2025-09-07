@@ -5119,9 +5119,12 @@ html::-webkit-scrollbar-thumb {
 .services__wrapper h3,
 .services__wrapper h4,
 .services__wrapper h5,
-.services__wrapper p,
 .services__wrapper span {
   color: #ffffff;
+}
+
+.services__wrapper p {
+  color: #c3c7cb;
 }
 
 .services__boxes {
@@ -5282,6 +5285,7 @@ html::-webkit-scrollbar-thumb {
 
 .services__item p {
   margin: 0;
+  color: #c3c7cb;
 }
 
 .services__icon {
