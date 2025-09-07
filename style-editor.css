@@ -1316,8 +1316,22 @@
   padding: 0 !important;
 }
 
+.editor-styles-wrapper .container.narrow {
+  max-width: 680px;
+}
+
 .editor-styles-wrapper .main--subpage {
   padding: 74px 0 0;
+}
+
+.editor-styles-wrapper .main--seo-page {
+  padding: 120px 0 100px !important;
+}
+
+@media (max-width: 991px) {
+  .editor-styles-wrapper .main--seo-page {
+    padding: 37px 0 40px !important;
+  }
 }
 
 .editor-styles-wrapper .default-block.container,

@@ -95,6 +95,7 @@ import './sections/main';
 import './sections/footer';
 import './sections/blog';
 import './sections/single';
+import './sections/seo-content';
 
 import './components/spacer';
 import './components/popup';
