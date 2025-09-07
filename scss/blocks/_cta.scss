@@ -43,6 +43,10 @@
     padding: 47px 32px;
     background: $white;
     border-radius: 10px;
+
+    @media (max-width: 991px) {
+      border: 1px solid #e6e6e2;
+    }
   }
 
   &__intro {

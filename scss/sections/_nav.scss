@@ -23,7 +23,7 @@
     position: relative;
     transition: all 250ms ease;
 
-    @media (max-width: 767px) {
+    @media (max-width: 991px) {
       position: static;
       width: auto;
       max-width: 104px;
@@ -43,6 +43,10 @@
     justify-content: flex-end;
     padding: 10px 0;
     gap: 16px;
+
+    @media (max-width: 991px) {
+      gap: 8px;
+    }
   }
 
   &__social-media {
@@ -330,7 +334,7 @@
   }
 
   &__button {
-    @media (max-width: 767px) {
+    @media (max-width: 991px) {
       width: auto;
     }
 

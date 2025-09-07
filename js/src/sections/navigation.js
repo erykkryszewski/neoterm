@@ -18,6 +18,7 @@ $('document').ready(function () {
       $('.nav .sub-menu').addClass('sub-menu--open');
       $('.nav__button').addClass('nav__button--open');
       $('.nav__hamburger').addClass('nav__hamburger--open');
+      $('body').addClass('overflow-hidden');
     } else {
       $('.hamburger').removeClass('active');
       $('.header').removeClass('header--open');
@@ -26,6 +27,7 @@ $('document').ready(function () {
       $('.nav .sub-menu').removeClass('sub-menu--open');
       $('.nav__button').removeClass('nav__button--open');
       $('.nav__hamburger').removeClass('nav__hamburger--open');
+      $('body').removeClass('overflow-hidden');
     }
 
     $menu.stop(true, false).slideToggle(250, function () {
