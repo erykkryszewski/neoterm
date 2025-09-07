@@ -107,6 +107,10 @@ $global_logo = get_field('global_logo', 'options');
         </div>
 
         <div class="theme-blog__wrapper">
+          <h2 class="theme-blog__section-title">
+            <?php echo esc_html_e('Wyniki wyszukiwania dla', 'seoleadertheme'); ?>:
+            "<?php echo esc_html($search_query); ?>"
+          </h2>
           <div class="theme-blog__items">
             <?php if (have_posts()): ?>
             <?php while (have_posts()):
