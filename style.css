@@ -6756,7 +6756,7 @@ body.admin-bar .header--fixed {
 
 @media (max-width: 991px) {
   .theme-blog__item {
-    margin: 16px 0 0;
+    margin: 0;
     height: auto;
   }
 }
