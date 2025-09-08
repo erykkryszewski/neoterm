@@ -149,4 +149,12 @@
       }
     }
   }
+
+  &--w-100-mobile {
+    @media (max-width: 991px) {
+      text-align: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
 }

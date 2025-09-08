@@ -59,5 +59,9 @@
   &__title {
     @extend .h4;
     margin: 16px 0 0;
+
+    &:first-of-type {
+      margin: 16px 0 0;
+    }
   }
 }

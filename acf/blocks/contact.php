@@ -99,7 +99,7 @@ $global_opening_hours = get_field('global_opening_hours', 'options');
         <?php if (!empty($form_shortcode)): ?>
         <div class="contact__form">
           <?php echo do_shortcode($form_shortcode); ?>
-          <button class="button button--arrow" id="cf7-form-submit">Wyślij <span class="animation"></span></button>
+          <button class="button button--arrow" id="cf7-form-submit">Wysyłam <span class="animation"></span></button>
         </div>
         <?php endif; ?>
       </div>

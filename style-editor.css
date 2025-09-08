@@ -1233,6 +1233,16 @@
   }
 }
 
+@media (max-width: 991px) {
+  .editor-styles-wrapper .button--w-100-mobile {
+    text-align: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    width: 100%;
+  }
+}
+
 .editor-styles-wrapper *,
 .editor-styles-wrapper ::after,
 .editor-styles-wrapper ::before {
