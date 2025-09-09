@@ -107,7 +107,7 @@ $global_logo = get_field('global_logo', 'options');
         </div>
 
         <div class="theme-blog__wrapper">
-          <h2 class="theme-blog__section-title">
+          <h2 class="theme-blog__section-title mb-32">
             <?php echo esc_html_e('Wyniki wyszukiwania dla', 'seoleadertheme'); ?>:
             "<?php echo esc_html($search_query); ?>"
           </h2>
@@ -158,7 +158,7 @@ $has_thumb
             <?php
             endwhile; ?>
             <?php else: ?>
-            <p><?php esc_html_e('Brak wyników.', 'seoleadertheme'); ?></p>
+            <p class="m-0"><?php esc_html_e('Brak wyników.', 'seoleadertheme'); ?></p>
             <?php endif; ?>
           </div>
         </div>

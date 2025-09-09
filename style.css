@@ -1789,6 +1789,10 @@ ol > li {
   pointer-events: none;
 }
 
+.m-0 {
+  margin: 0 !important;
+}
+
 .mt-5 {
   margin-top: 25px;
 }
@@ -1811,6 +1815,10 @@ ol > li {
 
 .mb-3 {
   margin-bottom: 15px;
+}
+
+.mb-32 {
+  margin-bottom: 32px;
 }
 
 /* RWD helping styles */
