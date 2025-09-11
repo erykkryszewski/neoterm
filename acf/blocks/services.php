@@ -51,7 +51,7 @@ $slider = get_field('slider');
         <?php if (!empty($slider)): ?>
         <div class="row">
           <div class="col-12">
-            <div class="services__slider" data-speed="140">
+            <div class="services__slider" data-speed="70">
               <?php foreach ($slider as $key => $item): ?>
               <div class="services__item">
                 <?php if (!empty($item['icon'])): ?>

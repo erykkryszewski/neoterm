@@ -26,56 +26,85 @@ window.addEventListener('DOMContentLoaded', () => {
     return Promise.resolve();
   };
 
-  const init = async (slider) => {
-    let track = slider.querySelector('.services__track');
-    if (!track) {
-      track = document.createElement('div');
-      track.className = 'services__track';
-      const kids = Array.from(slider.children);
-      kids.forEach((n) => track.appendChild(n));
-      slider.appendChild(track);
+  const init = async (sliderElement) => {
+    let trackElement = sliderElement.querySelector('.services__track');
+    if (!trackElement) {
+      trackElement = document.createElement('div');
+      trackElement.className = 'services__track';
+      const children = Array.from(sliderElement.children);
+      children.forEach(function (node) {
+        trackElement.appendChild(node);
+      });
+      sliderElement.appendChild(trackElement);
     }
 
-    await Promise.all([waitForImages(track), waitForFonts()]);
+    const baseHtmlString = trackElement.dataset.base || trackElement.innerHTML;
+    trackElement.dataset.base = baseHtmlString;
+    trackElement.innerHTML = baseHtmlString;
 
-    const cs = getComputedStyle(track);
-    const gap = parseFloat(cs.columnGap || cs.gap || '0') || 0;
+    await Promise.all([waitForImages(trackElement), waitForFonts()]);
 
-    const baseSpeed = parseFloat(slider.getAttribute('data-speed') || '120');
-    let speed = window.matchMedia('(max-width: 991px)').matches ? baseSpeed * 0.6 : baseSpeed;
+    const computedStyle = getComputedStyle(trackElement);
+    const gapValue = parseFloat(computedStyle.columnGap || computedStyle.gap || '0') || 0;
 
-    let x = 0;
-    let last = performance.now();
-
-    if (track._raf) cancelAnimationFrame(track._raf);
-
-    const step = (now) => {
-      const dt = Math.min((now - last) / 1000, 1 / 60);
-      last = now;
-
-      x -= speed * dt;
-
-      let first = track.firstElementChild;
-      let w = (first ? first.getBoundingClientRect().width : 0) + gap;
-
-      while (first && -x >= w) {
-        track.appendChild(first);
-        x += w;
-        first = track.firstElementChild;
-        w = (first ? first.getBoundingClientRect().width : 0) + gap;
-      }
-
-      track.style.transform = `translate3d(${x}px,0,0)`;
-      track._raf = requestAnimationFrame(step);
+    const widthOfElement = function (el) {
+      return el.getBoundingClientRect().width;
     };
 
-    track._raf = requestAnimationFrame(step);
+    const measureTotalWidth = function () {
+      const items = Array.from(trackElement.children);
+      const itemsWidth = items.reduce(function (sum, el) {
+        return sum + widthOfElement(el);
+      }, 0);
+      return itemsWidth + gapValue * Math.max(0, items.length - 1);
+    };
 
-    let to;
-    const onResize = () => {
-      cancelAnimationFrame(track._raf);
-      clearTimeout(to);
-      to = setTimeout(() => init(slider), 150);
+    const viewportWidth = sliderElement.getBoundingClientRect().width;
+    while (measureTotalWidth() < viewportWidth * 2) {
+      trackElement.insertAdjacentHTML('beforeend', baseHtmlString);
+    }
+
+    let widthsArray = Array.from(trackElement.children, widthOfElement);
+
+    const baseSpeedValue = parseFloat(sliderElement.getAttribute('data-speed') || '120');
+    let speedValue = baseSpeedValue;
+    if (window.matchMedia('(max-width: 991px)').matches) {
+      speedValue = baseSpeedValue * 0.6;
+    }
+
+    let translateX = 0;
+    let headIndex = 0;
+    let lastTime = performance.now();
+
+    if (trackElement._raf) cancelAnimationFrame(trackElement._raf);
+
+    const step = function (now) {
+      const delta = Math.min((now - lastTime) / 1000, 1 / 30);
+      lastTime = now;
+
+      translateX -= speedValue * delta;
+
+      let distance = widthsArray[headIndex] + gapValue;
+      while (-translateX >= distance) {
+        trackElement.appendChild(trackElement.firstElementChild);
+        translateX += distance;
+        headIndex = (headIndex + 1) % widthsArray.length;
+        distance = widthsArray[headIndex] + gapValue;
+      }
+
+      trackElement.style.transform = 'translate3d(' + translateX + 'px,0,0)';
+      trackElement._raf = requestAnimationFrame(step);
+    };
+
+    trackElement._raf = requestAnimationFrame(step);
+
+    let resizeTimer;
+    const onResize = function () {
+      cancelAnimationFrame(trackElement._raf);
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        init(sliderElement);
+      }, 150);
     };
     window.addEventListener('resize', onResize, { passive: true });
   };

@@ -43,30 +43,14 @@
   }
 
   &__image {
-    width: 150px;
-    height: 65px;
+    width: 120px;
+    height: 50px;
     flex: 0 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: none;
 
-    @media (max-width: 1399px) {
-      width: 184px;
-      height: 78px;
-    }
-    @media (max-width: 1199px) {
-      width: 172px;
-      height: 74px;
-    }
-    @media (max-width: 991px) {
-      width: 156px;
-      height: 70px;
-    }
-    @media (max-width: 767px) {
-      width: 128px;
-      height: 64px;
-    }
     @media (max-width: 550px) {
       width: 90px;
       height: 40px;

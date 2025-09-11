@@ -40,6 +40,9 @@ $posts = new WP_Query($args);
           $posts->the_post(); ?>
         <div class="<?php echo esc_html($column_classes); ?> theme-blog__column">
           <div class="theme-blog__item">
+            <?php if (!empty($permalink)): ?>
+            <a href="<?php echo esc_url($permalink); ?>" class="cover"></a>
+            <?php endif; ?>
             <div class="theme-blog__image <?php if ($posts_number == 2) {
               echo 'theme-blog__image--bigger';
             } ?> <?php if ($posts_number == 4) {
@@ -66,8 +69,7 @@ $posts = new WP_Query($args);
                   ?>
                 </p>
               </div>
-              <a href="<?php the_permalink(); ?>"
-                class="theme-blog__button"><?php _e('Czytaj więcej', 'seoleadertheme'); ?></a>
+              <a href="<?php the_permalink(); ?>" class="theme-blog__button"><?php _e('Czytaj więcej', 'seoleadertheme'); ?></a>
             </div>
           </div>
         </div>
@@ -99,8 +101,7 @@ $posts = new WP_Query($args);
                   ?>
                 </p>
               </div>
-              <a href="<?php the_permalink(); ?>"
-                class="theme-blog__button"><?php _e('Czytaj więcej', 'seoleadertheme'); ?></a>
+              <a href="<?php the_permalink(); ?>" class="theme-blog__button"><?php _e('Czytaj więcej', 'seoleadertheme'); ?></a>
             </div>
           </div>
         </div>
@@ -132,8 +133,7 @@ $posts = new WP_Query($args);
                   ?>
                 </p>
               </div>
-              <a href="<?php the_permalink(); ?>"
-                class="theme-blog__button"><?php _e('Czytaj więcej', 'seoleadertheme'); ?></a>
+              <a href="<?php the_permalink(); ?>" class="theme-blog__button"><?php _e('Czytaj więcej', 'seoleadertheme'); ?></a>
             </div>
           </div>
         </div>

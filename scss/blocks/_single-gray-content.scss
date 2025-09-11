@@ -1,6 +1,10 @@
 .single-gray-content {
   width: 100%;
 
+  @media (max-width: 991px) {
+    padding: 0 10px;
+  }
+
   &__wrapper {
     padding: 16px;
     background: $very-light-gray;

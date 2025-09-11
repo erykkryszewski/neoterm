@@ -210,6 +210,9 @@ $different_hero_on_single_view = get_field('different_hero_on_single_view', $pag
             $tags = get_the_tags();
             ?>
           <div class="theme-blog__item">
+            <?php if (!empty($permalink)): ?>
+            <a href="<?php echo esc_url($permalink); ?>" class="cover"></a>
+            <?php endif; ?>
             <div>
               <?php if ($tags): ?>
               <div class="theme-blog__tags">

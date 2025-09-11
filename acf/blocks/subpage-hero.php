@@ -19,10 +19,9 @@ $button = get_field('button');
           <div class="subpage-hero__column subpage-hero__column--left">
             <h1 class="subpage-hero__title"><?php echo apply_filters('the_title', $title); ?></h1>
             <?php if (!empty($button)): ?>
-            <a href="<?php echo esc_url_raw($button['url']); ?>"
-              class="button button--arrow-mobile-light subpage-hero__button"><?php echo esc_html(
+            <a href="<?php echo esc_url_raw($button['url']); ?>" class="button button--arrow-mobile-light subpage-hero__button"><?php echo esc_html(
                 $button['title'],
-              ); ?></a>
+              ); ?><span class="animation"></span></a>
             <?php endif; ?>
           </div>
         </div>

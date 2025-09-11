@@ -98,6 +98,7 @@
     padding: 16px;
     align-items: flex-start;
     gap: 32px;
+    position: relative;
 
     @media (max-width: 991px) {
       margin: 0;
@@ -114,7 +115,7 @@
       }
 
       > div {
-        &:first-child {
+        &:first-of-type {
           max-width: 213px;
           @media (max-width: 991px) {
             max-width: 100%;

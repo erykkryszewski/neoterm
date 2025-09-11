@@ -1574,7 +1574,7 @@ svg {
 
 @media (max-width: 991px) {
   .main--seo-page {
-    padding: 37px 0 40px !important;
+    padding: 120px 0 40px !important;
   }
 }
 
@@ -3415,7 +3415,7 @@ html::-webkit-scrollbar-thumb {
 
 @media (max-width: 991px) {
   .seo-tags__wrapper {
-    padding: 16px 0;
+    padding: 16px 10px;
   }
 }
 
@@ -3453,7 +3453,7 @@ html::-webkit-scrollbar-thumb {
 
 @media (max-width: 1199px) {
   .blank-image {
-    padding: 0;
+    padding: 0 10px;
     height: 430px !important;
   }
 }
@@ -4438,8 +4438,8 @@ html::-webkit-scrollbar-thumb {
 }
 
 .logos__image {
-  width: 150px;
-  height: 65px;
+  width: 120px;
+  height: 50px;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
@@ -4453,34 +4453,6 @@ html::-webkit-scrollbar-thumb {
       -ms-flex-pack: center;
           justify-content: center;
   pointer-events: none;
-}
-
-@media (max-width: 1399px) {
-  .logos__image {
-    width: 184px;
-    height: 78px;
-  }
-}
-
-@media (max-width: 1199px) {
-  .logos__image {
-    width: 172px;
-    height: 74px;
-  }
-}
-
-@media (max-width: 991px) {
-  .logos__image {
-    width: 156px;
-    height: 70px;
-  }
-}
-
-@media (max-width: 767px) {
-  .logos__image {
-    width: 128px;
-    height: 64px;
-  }
 }
 
 @media (max-width: 550px) {
@@ -5765,6 +5737,12 @@ html::-webkit-scrollbar-thumb {
   width: 100%;
 }
 
+@media (max-width: 991px) {
+  .single-gray-content {
+    padding: 0 10px;
+  }
+}
+
 .single-gray-content__wrapper {
   padding: 16px;
   background: #f5f5f5;
@@ -5788,6 +5766,12 @@ html::-webkit-scrollbar-thumb {
 
 .single-image-text {
   width: 100%;
+}
+
+@media (max-width: 991px) {
+  .single-image-text {
+    padding: 0 10px;
+  }
 }
 
 .single-image-text__container {
@@ -6760,6 +6744,7 @@ body.admin-bar .header--fixed {
       -ms-flex-align: start;
           align-items: flex-start;
   gap: 32px;
+  position: relative;
 }
 
 @media (max-width: 991px) {
@@ -6782,12 +6767,12 @@ body.admin-bar .header--fixed {
   }
 }
 
-.theme-blog__item--big > div:first-child {
+.theme-blog__item--big > div:first-of-type {
   max-width: 213px;
 }
 
 @media (max-width: 991px) {
-  .theme-blog__item--big > div:first-child {
+  .theme-blog__item--big > div:first-of-type {
     max-width: 100%;
   }
 }

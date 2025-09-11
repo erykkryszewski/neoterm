@@ -1,6 +1,10 @@
 .single-image-text {
   width: 100%;
 
+  @media (max-width: 991px) {
+    padding: 0 10px;
+  }
+
   &__container {
     padding: 16px;
     background: $very-light-gray;

@@ -47,24 +47,18 @@ $global_logo = get_field('global_logo', 'options');
         <div class="theme-blog__sidebar">
           <div class="blog-filter">
             <form class="blog-filter__search" role="search" method="get" action="<?php echo esc_url(home_url('/')); ?>">
-              <button type="button" class="blog-filter__search-icon"
-                aria-label="<?php esc_attr_e('Szukaj', 'seoleadertheme'); ?>">
+              <button type="button" class="blog-filter__search-icon" aria-label="<?php esc_attr_e('Szukaj', 'seoleadertheme'); ?>">
                 <img src="<?php echo get_template_directory_uri(); ?>/images/search-icon.svg" alt="">
               </button>
-              <input class="blog-filter__search-input" type="search" name="s"
-                placeholder="<?php esc_attr_e('Wyszukaj', 'seoleadertheme'); ?>"
-                value="<?php echo esc_attr($search_query); ?>">
+              <input class="blog-filter__search-input" type="search" name="s" placeholder="<?php esc_attr_e('Wyszukaj', 'seoleadertheme'); ?>" value="<?php echo esc_attr($search_query); ?>">
               <input type="hidden" name="post_type" value="post">
-              <button class="blog-filter__search-submit" type="submit"
-                aria-label="<?php esc_attr_e('Szukaj', 'seoleadertheme'); ?>"></button>
+              <button class="blog-filter__search-submit" type="submit" aria-label="<?php esc_attr_e('Szukaj', 'seoleadertheme'); ?>"></button>
             </form>
 
-            <nav class="blog-filter__nav blog-filter__nav--desktop desktop-only"
-              aria-label="<?php esc_attr_e('Filtr kategorii', 'seoleadertheme'); ?>">
+            <nav class="blog-filter__nav blog-filter__nav--desktop desktop-only" aria-label="<?php esc_attr_e('Filtr kategorii', 'seoleadertheme'); ?>">
               <ul class="blog-filter__list">
                 <li class="blog-filter__item">
-                  <a class="button blog-filter__link <?php echo $is_all_active ? 'blog-filter__link--active' : ''; ?>"
-                    href="<?php echo esc_url($all_url); ?>">
+                  <a class="button blog-filter__link <?php echo $is_all_active ? 'blog-filter__link--active' : ''; ?>" href="<?php echo esc_url($all_url); ?>">
                     <span class="blog-filter__label"><?php esc_html_e('Wszystko', 'seoleadertheme'); ?></span>
                     <span class="blog-filter__count"><?php echo (int) $total_count; ?></span>
                   </a>
@@ -76,8 +70,7 @@ $global_logo = get_field('global_logo', 'options');
                 $link = get_term_link($term);
                 ?>
                 <li class="blog-filter__item">
-                  <a class="button blog-filter__link <?php echo $active ? 'blog-filter__link--active' : ''; ?>"
-                    href="<?php echo esc_url($link); ?>">
+                  <a class="button blog-filter__link <?php echo $active ? 'blog-filter__link--active' : ''; ?>" href="<?php echo esc_url($link); ?>">
                     <span class="blog-filter__label"><?php echo esc_html($term->name); ?></span>
                     <span class="blog-filter__count"><?php echo (int) $term->count; ?></span>
                   </a>
@@ -87,9 +80,7 @@ $global_logo = get_field('global_logo', 'options');
               </ul>
             </nav>
 
-            <select class="blog-filter__select blog-filter__select--mobile mobile-only"
-              aria-label="<?php esc_attr_e('Filtr kategorii', 'seoleadertheme'); ?>"
-              onchange="if(this.value){window.location.href=this.value;}">
+            <select class="blog-filter__select blog-filter__select--mobile mobile-only" aria-label="<?php esc_attr_e('Filtr kategorii', 'seoleadertheme'); ?>" onchange="if(this.value){window.location.href=this.value;}">
               <option value="" selected disabled><?php esc_html_e('Kategorie', 'seoleadertheme'); ?></option>
               <option value="<?php echo esc_url($all_url); ?>"><?php esc_html_e('Wszystko', 'seoleadertheme'); ?>
                 (<?php echo (int) $total_count; ?>)</option>
@@ -123,6 +114,9 @@ $global_logo = get_field('global_logo', 'options');
             ?>
             <div class="theme-blog__column <?php echo $is_first && $has_thumb ? 'theme-blog__column--big' : ''; ?>">
               <div class="theme-blog__item <?php echo $is_first && $has_thumb ? 'theme-blog__item--big' : ''; ?>">
+                <?php if (!empty($permalink)): ?>
+                <a href="<?php echo esc_url($permalink); ?>" class="cover"></a>
+                <?php endif; ?>
                 <div>
                   <?php if ($tags): ?>
                   <div class="theme-blog__tags">
