@@ -94,6 +94,17 @@
     }
   }
 
+  &__box-text {
+    p {
+      margin: 16px 0 0;
+
+      &:first-child,
+      &:first-of-type {
+        margin-top: 16px;
+      }
+    }
+  }
+
   &__slider {
     max-width: 1156px;
     margin: 54px 0 0 5px;

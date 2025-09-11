@@ -19,6 +19,9 @@ $button = get_field('button');
   <?php endif; ?>
   <div class="container">
     <div class="text-with-image__wrapper">
+      <?php if (!empty($button)): ?>
+      <a href="<?php echo esc_html($button['url']); ?>" class="cover mobile-only" target="<?php echo esc_html($button['target']); ?>"></a>
+      <?php endif; ?>
       <div class="row text-with-image__row <?php if ('reverse' == $direction) {
         echo 'text-with-image__row--reverse';
       } ?>">
@@ -37,9 +40,7 @@ $button = get_field('button');
               <?php foreach ($labels as $item): ?>
               <li class="text-with-image__label">
                 <?php if (!empty($item['link'])): ?>
-                <a href="<?php echo esc_html($item['link']['url']); ?>"><?php echo esc_html(
-  $item['link']['title'],
-); ?></a>
+                <a href="<?php echo esc_html($item['link']['url']); ?>"><?php echo esc_html($item['link']['title'],); ?></a>
                 <?php else: ?>
                 <?php echo esc_html($item['text']); ?>
                 <?php endif; ?>
@@ -48,8 +49,8 @@ $button = get_field('button');
             </ul>
             <?php endif; ?>
             <?php if (!empty($button)): ?>
-            <a href="<?php echo esc_html($button['url']); ?>" class="arrow-link text-with-image__link"
-              target="<?php echo esc_html($button['target']); ?>"><?php echo esc_html($button['title']); ?></a>
+            <a href="<?php echo esc_html($button['url']); ?>" class="arrow-link text-with-image__desktop-link desktop-only" target="<?php echo esc_html($button['target']); ?>"><?php echo esc_html($button['title']); ?></a>
+            <a href="<?php echo esc_html($button['url']); ?>" class="button button--arrow-mobile-light text-with-image__mobile-link mobile-only button--w-100" target="<?php echo esc_html($button['target']); ?>"><?php echo esc_html($button['title']); ?></a>
             <?php endif; ?>
           </div>
         </div>
