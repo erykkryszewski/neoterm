@@ -172,6 +172,8 @@
     border-radius: 10px;
     background: $very-light-gray;
     padding: 16px;
+    position: relative;
+    border: 1px solid $very-light-gray;
 
     h3 {
       font-size: 17px;
@@ -190,6 +192,10 @@
 
     a {
       margin: 15px 0 0;
+    }
+
+    &:hover {
+      border: 1px solid rgba(0, 0, 0, 0.15);
     }
   }
 

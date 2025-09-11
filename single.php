@@ -147,6 +147,9 @@ $different_hero_on_single_view = get_field('different_hero_on_single_view', $pag
           foreach ($collected as $p):
             setup_postdata($p); ?>
           <div class="single-blog-post__similar-post">
+            <?php if(!empty(get_permalink($p))): ?>
+            <a class="cover" href="<?php echo esc_url(get_permalink($p)); ?>"></a>
+            <?php endif; ?>
             <h3><?php echo esc_html(get_the_title($p)); ?></h3>
             <?php
             $excerpt_text = '';
@@ -172,10 +175,9 @@ $different_hero_on_single_view = get_field('different_hero_on_single_view', $pag
             }
             ?>
 
-            <a class="arrow-link" href="<?php echo esc_url(get_permalink($p)); ?>"><?php echo esc_html_e(
-  'Więcej',
-  'soleadertheme',
-); ?></a>
+            <?php if(!empty(get_permalink($p))): ?>
+            <a class="arrow-link" href="<?php echo esc_url(get_permalink($p)); ?>"><?php echo esc_html_e('Więcej','soleadertheme',); ?></a>
+            <?php endif; ?>
           </div>
           <?php
           endforeach;
