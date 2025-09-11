@@ -295,6 +295,7 @@
             @media (max-width: 991px) {
               font-size: 21px;
               padding: 12px 0;
+              touch-action: manipulation;
             }
 
             &.button {
@@ -385,6 +386,7 @@
       transform: translateX(50%);
       max-width: calc(100% - 40px);
       text-align: center;
+      padding: 11px;
 
       @media (min-width: 992px) {
         display: none;

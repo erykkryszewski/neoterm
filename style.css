@@ -6289,6 +6289,8 @@ body.admin-bar .header--fixed {
   .nav__menu > li > ul.sub-menu > li > a {
     font-size: 21px;
     padding: 12px 0;
+    -ms-touch-action: manipulation;
+        touch-action: manipulation;
   }
 }
 
@@ -6383,6 +6385,7 @@ body.admin-bar .header--fixed {
           transform: translateX(50%);
   max-width: calc(100% - 40px);
   text-align: center;
+  padding: 11px;
 }
 
 @media (min-width: 992px) {
